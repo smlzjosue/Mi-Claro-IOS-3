@@ -1,0 +1,346 @@
+<script type="text/template" id="debit_direct">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<% include tabs %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div class="basicr-line-i">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-01"></span> D&eacute;bito Directo
+						</div>
+
+						<div class="nroacc">
+							<label class="label-r sidenmbr vcenter">
+									<span class="tabcell">
+										N&uacute;mero de Cuenta
+									</span>
+							</label>
+
+							<select class="sel-f sidesel" id="select-account">
+								<% _.each(accounts, function(value, index) { %>
+								<option value="<%= value.Account %>"  <%= value.Account==selectedAccount.Account?'selected="selected"':'' %> ><%= value.Account %></option>
+								<% }); %>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott m-top-i">
+				<div class="container">
+
+					<div class="autowcont notopbrd">
+
+						<div class="content-active" style="display: none">
+							<div class="basicrow tabtopb f-black roboto-r f-reg">
+								<div class="basicrow text-center m-top-ii">
+									<div class="shortcont">
+										<div class="basicrow m-bott-ii">
+											<div class="userinfo full nomtops">
+												<div class="basicrow">
+													<div class="basicrow f-bmed roboto-b m-bott">
+														Resumen de Afiliaci&oacute;n
+													</div>
+
+													<div class="redstat">
+														<div class="autorow roboto-r pull-left">
+															Afiliado a
+														</div>
+
+														<div class="autorow roboto-b pull-right" id="saved-type">
+															Cuenta de Cheques
+														</div>
+													</div>
+
+													<div class="redstat m-top-ii">
+														<div class="autorow roboto-r pull-left">
+															M&eacute;todo de Pago
+														</div>
+
+														<div class="autorow roboto-b pull-right" id="saved-method">
+															Banco Popular
+														</div>
+													</div>
+
+													<div class="redstat m-top-ii" id="container-saved-name">
+														<div class="autorow roboto-r pull-left">
+															Nombre y Apellido
+														</div>
+
+														<div class="autorow roboto-b pull-right" id="saved-name">
+															Usuario
+														</div>
+													</div>
+
+													<div class="redstat m-top-ii" id="container-saved-card">
+														<div class="autorow roboto-r pull-left">
+															N&uacute;mero de Tarjeta
+														</div>
+
+														<div class="autorow roboto-b pull-right" id="saved-card">
+															XXXXXX4444
+														</div>
+													</div>
+
+													<div class="redstat m-top-ii" id="container-saved-account">
+														<div class="autorow roboto-r pull-left">
+															N&uacute;mero de Cuenta
+														</div>
+
+														<div class="autorow roboto-b pull-right" id="saved-account">
+															XXXXXX4444
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="content-add">
+							<div class="basicrow tabtopb f-black roboto-r f-reg">
+								<div class="basicr-line f-big">
+									Formulario de Afiliaci&oacute;n
+								</div>
+
+								<div class="basicrow text-center">
+									<div class="shortcont">
+										<div class="basicrow m-top-i">
+											<div class="basicrow text-justify">
+												Ahora Claro te brinda el servicio de D&eacute;bito Directo en el que podr&aacute;s afiliar tu pago de renta mensual para que se ejecute de manera autom&aacute;tica, as&iacute; no tendr&aacute;s que preocuparte por recordar tu fecha de facturaci&oacute;n y que tu servicio sea suspendido.
+											</div>
+										</div>
+
+										<div class="basicrow m-top-i m-bott-ii">
+											<div class="basicrow roboto-b f-bmed m-bott-ii">
+												Afiliar a
+											</div>
+
+											<select class="sel-f select-type">
+												<option value="1">Cuenta de Cheques</option>
+												<option value="2">Tarjeta de Cr&eacute;dito</option>
+											</select>
+										</div>
+
+										<div class="basicrow m-top-i">
+											<div class="logline full"></div>
+										</div>
+
+										<div class="content-add-bank">
+											<div class="basicrow roboto-b f-bmed m-top-i">
+												Datos de la Cuenta
+											</div>
+
+											<div class="basicrow m-top-i">
+												<label class="label-f">
+													&#42; Banco
+												</label>
+
+												<select class="sel-f select-bank">
+													<option value="">Número de Ruta Bancaria/Routing Number</option>
+													<option value="021502011">Banco Popular of Puerto Rico</option>
+													<option value="021502341">Banco Santander of Puerto Rico</option>
+													<option value="221571473">Firstbank, P.R.</option>
+													<option value="021502804">Scotiabank of Puerto Rico</option>
+													<option value="221571415">Oriental Bank</option>
+													<option value="221582284">COOP. MANATI</option>
+													<option value="021582785">COOP. ISABELA</option>
+													<option value="021583658">COOP.ENERGIA ELECTRICA</option>
+													<option value="021582727">COOP. SAGRADA FAMILIA</option>
+													<option value="021582853">COOP. LAS PIEDRAS</option>
+													<option value="221582226">COOP. CAMUY</option>
+													<option value="221581706">COOP. MOCA</option>
+													<option value="021583247">COOP. SABANENA</option>
+													<option value="221582459">COOP.LA PUERTORRIQUENA</option>
+													<option value="267089712">FIRST BANK US V.G.</option>
+													<option value="221581641">COOP. ARECIBO</option>
+													<option value="021582743">COOP. SAN JOSE</option>
+													<option value="021584217">COOP. LOS HERMANOS</option>
+													<option value="021582976">COOP. AGUADA</option>
+													<option value="021583373">COOP.BARRIO QUEBRADA</option>
+													<option value="021583593">COOP. VILLALBA</option>
+													<option value="021583137">COOP. ANASCO</option>
+													<option value="021583360">COOP. MAYAGUEZ</option>
+													<option value="221672851">FIRST BANK US V.I.</option>
+													<option value="221581751">COOP. VALENCIANO</option>
+													<option value="221581722">COOP. MAUNABO</option>
+													<option value="221582077">COOP. JAYUYA</option>
+													<option value="021583111">COOP. SAN BLAS</option>
+													<option value="021583140">COOP. NAGUABENA</option>
+													<option value="021582662">COOP. CAGUAS</option>
+													<option value="021583328">COOP. CAPARRA</option>
+													<option value="021583056">COOP. CIALES</option>
+													<option value="021583027">COOP. VEGA ALTA</option>
+													<option value="021582756">COOP. AGUAS BUENAS</option>
+													<option value="221581748">COOP. ORIENTAL</option>
+													<option value="221582310">COOP. CABO ROJO</option>
+													<option value="021582701">COOP. GURABO</option>
+													<option value="021583483">COOP. PARROCOOP</option>
+													<option value="221582174">COOP. YAUCO</option>
+													<option value="021502040">CITIBANK</option>
+													<option value="221582323">HATICOOP</option>
+												</select>
+											</div>
+
+											<div class="basicrow m-top-i m-bott-ii">
+												<label class="label-f">
+													&#42; N&uacute;mero de Cuenta
+												</label>
+
+												<input type="number" class="inp-f bank-number">
+											</div>
+										</div>
+
+										<div class="content-add-card" style="display: none">
+											<div class="basicrow m-top-i">
+												<div class="basicrow roboto-b f-bmed">
+													Datos de la Tarjeta
+												</div>
+
+												<div class="basicrow">
+													<div class="cred-opts card-vs">
+														<div class="autocont vcenter">
+															<div class="tabcell">
+																<input class="radio-vs" type="radio" name="card" data-card-type="VS">
+															</div>
+														</div>
+
+														<img width="100%" src="images/credit01.png">
+													</div>
+
+													<div class="cred-opts card-am">
+														<div class="autocont vcenter">
+															<div class="tabcell">
+																<input class="radio-am" type="radio" name="card" data-card-type="AM">
+															</div>
+														</div>
+
+														<img width="100%" src="images/credit02.png">
+													</div>
+
+													<div class="cred-opts card-mc">
+														<div class="autocont vcenter">
+															<div class="tabcell">
+																<input class="radio-mc" type="radio" name="card" data-card-type="MC">
+															</div>
+														</div>
+
+														<img width="100%" src="images/credit03.png">
+													</div>
+												</div>
+											</div>
+
+											<div class="basicrow m-top-i">
+												<label class="label-f">
+													&#42; Nombre y Apellido
+												</label>
+
+												<input type="text" class="inp-f card-name">
+											</div>
+
+											<div class="basicrow m-top-i">
+												<label class="label-f">
+													&#42; N&uacute;mero de Tarjeta
+												</label>
+
+												<input type="number" class="inp-f card-number">
+											</div>
+
+											<div class="basicrow m-bott-ii">
+												<div class="row">
+													<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 m-top-i">
+														<label class="label-f">
+															&#42; Vencimiento de Tarjeta
+														</label>
+
+														<div class="basicrow">
+															<div class="row">
+																<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6">
+																	<div class="exprdtitle roboto-b vcenter">
+																		<div class="tabcell">
+																			Mes
+																		</div>
+																	</div>
+
+																	<select class="sel-f exprdsize select-year">
+																		<% _.each(months, function(value, index) { %>
+																		<option value="<%= value %>">
+																			<%= value %>
+																		</option>
+																		<% }); %>
+																	</select>
+																</div>
+
+																<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 h-mtop-iv">
+																	<div class="exprdtitle roboto-b vcenter">
+																		<div class="tabcell">
+																			A&ntilde;o
+																		</div>
+																	</div>
+
+																	<select class="sel-f exprdsize select-month">
+																		<% _.each(years, function(value, index) { %>
+																		<option value="<%= value.slice(-2) %>">
+																			<%= value %>
+																		</option>
+																		<% }); %>
+																	</select>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 m-top-i">
+														<label class="label-f">
+															&#42; C&oacute;digo de Seguridad (CVV)
+														</label>
+
+														<input type="number" style="-webkit-text-security:disc;" class="inp-f card-cvv">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="basicrow m-top-i">
+											<div class="logline full"></div>
+										</div>
+
+										<div class="basicrow text-center m-top-i">
+											<div class="btns def-i red pull-right vcenter rippleR continue">
+												<span class="tabcell">
+													Continuar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+												</span>
+											</div>
+
+											<div class="btns def-i gray pull-left vcenter cancel">
+												<span class="tabcell">
+													Cancelar
+												</span>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

@@ -1,0 +1,92 @@
+<script type="text/template" id="payment_credit_sva">
+	<div id="wrapper">
+		<div class="stopfoot-i">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="w-cont din-b f-white">
+				<div class="container">
+					<span class="f-med">Comprar Servicios Adicionales</span>
+				</div>
+			</div>
+
+			<div class="subtitle nbott din-b f-little text-center f-black vcenter">
+				<div class="tabcell">
+					RESUMEN DE ORDEN DE COMPRA
+				</div>
+			</div>
+
+			<div class="infbar">
+				<div class="container norel">
+					<div class="halfbar f-little f-bold text-left vcenter">
+						<div class="tabcell">
+							Cuenta
+						</div>
+					</div>
+
+					<div class="halfbar f-reg f-bold f-black text-right vcenter">
+						<div class="tabcell">
+							<%= selectedAccountValue %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">Servicio Adicional</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							<%= selectedOffer.displayName %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="infbar">
+				<div class="container norel">
+					<div class="halfbar f-little f-bold text-left vcenter">
+						<div class="tabcell">
+							Monto
+						</div>
+					</div>
+
+					<div class="halfbar f-reg f-bold f-red text-right vcenter">
+						<div class="tabcell">
+							<%= selectedOffer.price %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="subtitle nbott din-b f-little text-center f-black vcenter">
+				<div class="tabcell">
+					&iexcl;GRACIAS&excl;
+				</div>
+			</div>
+
+			<div class="autobar f-reg text-center f-black diffr">
+				<div class="container">
+					Se ha agregado exitosamente el Servicio Adicional.
+				</div>
+			</div>
+
+			<div class="autobar diff payment-step-4">
+				<div class="container">
+					<div class="r-btn text-center f-med f-white vcenter">
+						<div class="tabcell">
+							Continuar
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

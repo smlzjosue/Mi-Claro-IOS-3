@@ -1,0 +1,145 @@
+<script type="text/template" id="refiere_step_3">
+
+	<div id="wrapper" class="appsize">
+		<div class="stopfoot-i">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="basicrow m-bott">
+				<div class="basicrow">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+								<div class="basicrow">
+									<div class="fulltitle m-top-i f-btitle">
+										<span class="icon-dash-21"></span> Redimir
+									</div>
+								</div>
+
+								<div class="basicrow f-black roboto-m f-mildt m-top">
+									Bienvenido/a, <span id="accountName" class="f-red"><%= accountName %></span>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+								<div class="basicrow rel bg-gray-iii no-ptop m-top-i">
+									<img width="100%" class="redeemcard" src="images/clarocardmock.png">
+
+									<div class="row">
+										<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 h-mtop-i">
+											<div class="basicrow f-black roboto-b text-center respdef-f">
+												<span class="f-reg">
+													Amigos Referidos
+												</span>
+												<br/>
+												<span id="totalCredits" class="f-lsemi f-red">
+													0
+												</span>
+											</div>
+										</div>
+
+										<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 h-mtop-i">
+											<div class="basicrow f-black roboto-b text-center respdef-f">
+												<span class="f-reg">
+													Amigos Redimidos
+												</span>
+												<br/>
+												<span id="totalRedeem" class="f-lsemi f-red">
+													0
+												</span>
+											</div>
+										</div>
+
+										<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 h-mtop-i">
+											<div class="basicrow f-black roboto-b text-center respdef-f">
+												<span class="f-reg">
+													Amigos por Redimir
+												</span>
+												<br/>
+												<span id="totalPending" class="f-lsemi f-red">
+													0
+												</span>
+											</div>
+										</div>
+
+										<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 h-mtop-i">
+											<div class="basicrow f-black roboto-b text-center respdef-f">
+												<span class="f-reg">
+													Cr&eacute;ditos Disponibles
+												</span>
+												<br/>
+												<span id="sumAvialable" class="f-lsemi f-blue">
+													$0
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="basicrow">
+									<div class="row m-top-i">
+										<div class="col-xs-6">
+											<div class="basicrow f-black roboto-b text-center respdef-f">
+												<span class="basicrow f-black roboto-m f-mildt m-top">Cuenta
+													<span class="f-gray ng-binding"><%= account %></span>
+												</span>
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="basicrow f-black roboto-b text-center respdef-f">
+												<span class="basicrow f-black roboto-m f-mildt m-top">Suscriptor
+													<span class="f-gray ng-binding"><%= subscriber %></span>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="basicrow m-bott-i">
+					<div class="container">
+						<div class="basicrow m-top-i">
+							<div class="onew-title vcenter">
+								<div class="tabcell">
+									Hist&oacute;rico de beneficios obtenidos
+								</div>
+							</div>
+
+							<div id="redeemCreditsList" class="onew-table" style="display: none">
+
+							</div>
+
+							<div id="redeemNone" class="basicrow tabtopb f-black roboto-r f-reg" style="border: 1px solid #cccccc;">
+								<div class="basicrow f-mildt f-black roboto-m">
+									Actualmente no has recibido benefecios.
+								</div>
+							</div>
+						</div>
+
+						<div class="basicrow m-top-i text-center">
+							<div class="basicrow f-mildt f-black roboto-m">
+								Seleccione la siguiente opción para acreditar el beneficio a su balance:
+							</div>
+
+							<div class="basicrow m-top">
+								<a id="pay-invoice" class="redeembox">
+									<i class="fa fa-money" aria-hidden="true"></i>
+									Pagar Factura
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<% include footer %>
+	</div>
+
+</script>

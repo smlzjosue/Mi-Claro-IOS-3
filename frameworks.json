@@ -1,0 +1,17 @@
+{
+    "libz.tbd": 1,
+    "CoreLocation.framework": 2,
+    "AudioToolbox.framework": 1,
+    "SystemConfiguration.framework": 3,
+    "CoreTelephony.framework": 1,
+    "LocalAuthentication.framework": 1,
+    "Security.framework": 1,
+    "StoreKit.framework": 1,
+    "MapKit.framework": 1,
+    "CoreData.framework": 1,
+    "AdSupport.framework": 1,
+    "libz.dylib": 1,
+    "libsqlite3.dylib": 1,
+    "Social.framework": 1,
+    "MessageUI.framework": 1
+}

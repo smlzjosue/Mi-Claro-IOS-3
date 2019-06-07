@@ -1,0 +1,165 @@
+<script type="text/template" id="payment_step_3">
+	<div id="wrapper">
+		<div class="stopfoot-i">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="w-cont din-b f-white">
+				<div class="container">
+					<span class="f-med">Comprar Data Adicional</span>
+				</div>
+			</div>
+
+			<div class="subtitle nbott din-b f-little text-center f-black vcenter">
+				<div class="tabcell">
+					CONFIRMACI&Oacute;N DE PAGO: <%= paymentData.PCRFTransaID %>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">Producto</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							<%= offer.displayName %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">N&uacute;mero de Referencia</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							<%= paymentData.PCRFTransaID %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">Comercio</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							Claro Puerto Rico<br/>
+							PO BOX 70367<br/>
+							San Juan, PR 00936-8367
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">Cuenta</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							<%= paymentData.accountNumber %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray"># Autorizaci&oacute;n</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							<%= paymentData.transactionId %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">Cantidad Pagada</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-red text-justify f-bold">
+							<%= offer.price %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">Fecha Transacci&oacute;n</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							09/11/2013 04:35:22 p.m.
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<%
+			function maskCard(number, characterReplace){
+
+			var subscriberSize,
+			maskSize,
+			subscriberRest,
+			ateriksString;
+
+			subscriberSize = number.length;
+			maskSize = Math.ceil(number.length/2);
+			subscriberRest = number.substring(maskSize, subscriberSize);
+			ateriksString = Array(maskSize + 1).join(characterReplace);
+
+			return  ateriksString+subscriberRest;
+
+			}
+
+			%>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">M&eacute;todo de Pago</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							<%= paymentData.cardType%> (<%= maskCard(paymentData.cardNumber, '*')%>)
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">Descripci&oacute;n de Pago</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							?
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="autobar diff close-aditional-data-payment">
+				<div class="container">
+					<div class="g-btn text-center f-med f-white vcenter">
+						<div class="tabcell">
+							Cerrar
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

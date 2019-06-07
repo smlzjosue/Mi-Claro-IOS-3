@@ -1,0 +1,120 @@
+<script type="text/template" id="confirm_pay_sva">
+        
+	<div id="wrapper">
+		<div class="stopfoot-i">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="w-cont din-b f-white">
+				<div class="container">
+                    <span class="f-med">Comprar Servicios Adicionales</span>
+				</div>
+			</div>            
+            
+            <div class="subtitle nbott din-b f-little text-center f-black vcenter">
+                <div class="tabcell">
+                    RESUMEN DE PAGO
+                </div>
+            </div>
+            
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                            &#161;Gracias por su compra&#33; El Servicio Adicional esta disponible para su consumo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow f-little din-b f-gray"><%= selectedSubscriberValue %></div>
+
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                        M&oacute;vil
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow f-little din-b f-gray">Producto</div>
+
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                            <%= selectedOffer.displayName %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow f-little din-b f-gray">Monto</div>
+
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                            <%= selectedOffer.price %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow f-little din-b f-gray">N&uacute;mero de Transacci&oacute;n</div>
+
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                            <%= detailTransaction.transactionId %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <% if(detailTransaction.confirmationNumber){ %>
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow f-little din-b f-gray">N&uacute;mero de Confirmaci&oacute;n</div>
+
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                            <%= detailTransaction.confirmationNumber %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow f-little din-b f-gray">Fecha</div>
+
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                            <%= detailTransaction.createdDate %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="autobar diff">
+                <div class="container">
+                    <div class="g-btn text-center f-med f-white vcenter btn-close">
+                        <div class="tabcell">
+                            Cerrar
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+        
+        <% include footer %>
+
+	</div>
+</script>

@@ -1,0 +1,1057 @@
+[{
+    "id": 4233,
+    "code": "US-AL",
+    "name": "Alabama",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4234,
+    "code": "US-AK",
+    "name": "Alaska",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4198,
+    "code": "US-AS",
+    "name": "American Samoa",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4194,
+    "code": "US-AZ",
+    "name": "Arizona",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4231,
+    "code": "US-AR",
+    "name": "Arkansas",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4164,
+    "code": "UM-81",
+    "name": "Baker Island",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4199,
+    "code": "US-CA",
+    "name": "California",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4242,
+    "code": "US-CO",
+    "name": "Colorado",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4208,
+    "code": "US-CT",
+    "name": "Connecticut",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4193,
+    "code": "US-DE",
+    "name": "Delaware",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4223,
+    "code": "US-DC",
+    "name": "District of Columbia",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4235,
+    "code": "US-FL",
+    "name": "Florida",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4230,
+    "code": "US-GA",
+    "name": "Georgia",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4197,
+    "code": "US-GU",
+    "name": "Guam",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4203,
+    "code": "US-HI",
+    "name": "Hawaii",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4169,
+    "code": "UM-84",
+    "name": "Howland Island",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4237,
+    "code": "US-ID",
+    "name": "Idaho",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4191,
+    "code": "US-IL",
+    "name": "Illinois",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4220,
+    "code": "US-IN",
+    "name": "Indiana",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4241,
+    "code": "US-IA",
+    "name": "Iowa",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4163,
+    "code": "UM-86",
+    "name": "Jarvis Island",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4167,
+    "code": "UM-67",
+    "name": "Johnston Atoll",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4202,
+    "code": "US-KS",
+    "name": "Kansas",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4225,
+    "code": "US-KY",
+    "name": "Kentucky",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4162,
+    "code": "UM-89",
+    "name": "Kingman Reef",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4213,
+    "code": "US-LA",
+    "name": "Louisiana",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4222,
+    "code": "US-ME",
+    "name": "Maine",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4232,
+    "code": "US-MD",
+    "name": "Maryland",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4204,
+    "code": "US-MA",
+    "name": "Massachusetts",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4221,
+    "code": "US-MI",
+    "name": "Michigan",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4166,
+    "code": "UM-71",
+    "name": "Midway Islands",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4216,
+    "code": "US-MN",
+    "name": "Minnesota",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4212,
+    "code": "US-MS",
+    "name": "Mississippi",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4214,
+    "code": "US-MO",
+    "name": "Missouri",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4211,
+    "code": "US-MT",
+    "name": "Montana",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4165,
+    "code": "UM-76",
+    "name": "Navassa Island",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4195,
+    "code": "US-NE",
+    "name": "Nebraska",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4200,
+    "code": "US-NV",
+    "name": "Nevada",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4209,
+    "code": "US-NH",
+    "name": "New Hampshire",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4226,
+    "code": "US-NJ",
+    "name": "New Jersey",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4244,
+    "code": "US-NM",
+    "name": "New Mexico",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4210,
+    "code": "US-NY",
+    "name": "New York",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4190,
+    "code": "US-NC",
+    "name": "North Carolina",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4228,
+    "code": "US-ND",
+    "name": "North Dakota",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4245,
+    "code": "US-MP",
+    "name": "Northern Mariana Islands",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4207,
+    "code": "US-OH",
+    "name": "Ohio",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4219,
+    "code": "US-OK",
+    "name": "Oklahoma",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4238,
+    "code": "US-OR",
+    "name": "Oregon",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4161,
+    "code": "UM-95",
+    "name": "Palmyra Atoll",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4205,
+    "code": "US-PA",
+    "name": "Pennsylvania",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4240,
+    "code": "US-PR",
+    "name": "Puerto Rico",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4229,
+    "code": "US-RI",
+    "name": "Rhode Island",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4218,
+    "code": "US-SC",
+    "name": "South Carolina",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4243,
+    "code": "US-SD",
+    "name": "South Dakota",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4239,
+    "code": "US-TN",
+    "name": "Tennessee",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4217,
+    "code": "US-TX",
+    "name": "Texas",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4215,
+    "code": "US-UM",
+    "name": "United States Minor Outlying Islands",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4206,
+    "code": "US-UT",
+    "name": "Utah",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4227,
+    "code": "US-VT",
+    "name": "Vermont",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4236,
+    "code": "US-VI",
+    "name": "Virgin Islands, U.S.",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4224,
+    "code": "US-VA",
+    "name": "Virginia",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4168,
+    "code": "UM-79",
+    "name": "Wake Island",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4196,
+    "code": "US-WA",
+    "name": "Washington",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4192,
+    "code": "US-WV",
+    "name": "West Virginia",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4189,
+    "code": "US-WI",
+    "name": "Wisconsin",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }, {
+    "id": 4201,
+    "code": "US-WY",
+    "name": "Wyoming",
+    "stateLicense": "1.111111111111111",
+    "taxPercent": 0.115,
+    "country": {
+        "id": 186,
+        "code": "USA",
+        "name": "United States",
+        "taxPercent": 0.115,
+        "activeOpenAccount": true,
+        "activeTransfers": true,
+        "activeLoadCard": true,
+        "currency": null
+    }
+    }]

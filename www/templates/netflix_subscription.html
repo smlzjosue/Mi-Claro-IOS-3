@@ -1,0 +1,106 @@
+<script type="text/template" id="netflix_subscription">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="basicrow m-top mbott">
+				<div class="container">
+					<div class="basicrow">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-27"></span> Suscripci&oacute;n a Netflix
+						</div>
+					</div>
+
+					<div class="autowcont m-top-ii">
+						<div class="basicrow msidespad m-bott-i">
+							<div class="b-title">
+								<div class="autocont f-black roboto-m f-bmed pull-left vcenter">
+									<div class="tabcell">
+										Agregar Servicio Netflix
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow f-reg roboto-r f-black">
+								Seleccione el n&uacute;mero de cuenta y de tel&eacute;fono donde desea agregar el Servicio Netflix:
+							</div>
+
+							<div class="basicrow m-top-ii">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+
+										<% _.each(fullAccounts, function(account, index) { %>
+
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<div id="container-account<%= index %>" class="select-account optchoice grayb auto roboto-r text-left" data-toggle="collapse" data-target="#account<%= index %>" data-index="<%= index %>">
+												<div class="checkdef">
+													<input type="radio" name="groupA" id="radio<%= index %>" class="css-radio radio-account" disabled data-account="<%= account.account %>">
+													<label for="radio<%= index %>" class="css-label3 radGroup1"></label>
+												</div>
+
+												<div class="basicrow f-bmed roboto-r">Cuenta <span class="roboto-b"><%= account.account %></span></div>
+											</div>
+
+											<div class="netflxaccs collapse" id="account<%= index %>">
+
+												<% _.each(account.subscribers, function(subscriber, position) { %>
+												<div class="select-subscriber optchoice auto roboto-r text-left" data-index="<%= index %>" data-position="<%= position %>">
+													<div class="checkdef">
+														<input type="radio" name="groupS<%= index %>" id="radioS<%= position %>A<%= index %>" class="css-radio radio-subscriber" disabled data-subscriber="<%= subscriber.subscriber %>">
+														<label for="radioS<%= position %>A<%= index %>" class="css-label3 radGroup1"></label>
+													</div>
+
+													<div class="basicrow f-reg roboto-b">
+														Suscriptor<br/>
+														<span class="f-red f-bmed"><%= subscriber.subscriber %></span>
+													</div>
+												</div>
+												<% }); %>
+
+											</div>
+										</div>
+
+										<% }); %>
+
+									</div>
+
+								</div>
+							</div>
+
+							<div class="basicrow">
+								<div class="basicrow m-top-i">
+									<div class="logline full"></div>
+								</div>
+
+								<div class="basicrow text-center m-top">
+									<div class="btns def-i red pull-right vcenter rippleR" id="next">
+											<span class="tabcell">
+												Continuar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+											</span>
+									</div>
+
+									<div class="btns def-i gray pull-left vcenter" id="cancel">
+										<span class="tabcell">
+											Cancelar
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

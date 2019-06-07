@@ -1,0 +1,239 @@
+<script type="text/template" id="dashboard_prepago">
+
+	<div class="basicrow m-top-i lessm">
+		<div class="container">
+			<div class="autowcont dashapp m-top">
+				<div class="basicrow msidespad">
+					<div class="b-title">
+						<div class="autocont f-black roboto-m f-bmed pull-left vcenter">
+							<div class="tabcell">
+								Balance en Prepago
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="basicrow msidespad m-top-u-i">
+		<div class="balancesptr-ii fortimes rfpad text-left">
+			<label class="label-f">N&uacute;mero de Tel&eacute;fono</label>
+
+			<div class="basicrow">
+				<select id="select-subscriber" class="sel-f">
+					<% _.each(currentSubscribers, function(value, index) { %>
+					<option value="<%= value.subscriberNumberField %>" <%= value.subscriberNumberField==selectedSubscriberValue?'selected="selected"':'' %> ">
+					<%= value.subscriberNumberField %>
+					</option>
+					<% }); %>
+				</select>
+			</div>
+		</div>
+
+		<div class="balancesptr-ii fortimes h-nobrd-i text-center">
+			<span class="roboto-b">
+				Balance en Prepago
+			</span>
+			<br/>
+			<span class="f-red f-lsemi roboto-b">
+				&#36;<%= amountDue %>
+			</span>
+		</div>
+
+		<div class="basicrow visible-sm m-bott">
+			<div class="logline full"></div>
+		</div>
+
+		<div class="balancesptr-ii text-center">
+			<span class="roboto-b">
+				Pr&oacute;xima Recarga
+			</span>
+			<br/>
+			<span class="f-black f-big roboto-b">
+				<%= nextRecharge %>
+			</span>
+		</div>
+
+		<!--<div class="balancesptr-ii fortimes no-brd text-center">-->
+			<!--<img width="100%" src="images/prog-rec-icon.png" class="prog-rec">-->
+
+			<!--<div class="linkdefs sched-def">-->
+				<!--Programa<br/>-->
+				<!--tu Recarga&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>-->
+			<!--</div>-->
+		<!--</div>-->
+	</div>
+
+	<div class="basicrow m-top-i lessm bg-gray" style="display: none">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="autowcont dashapp m-top">
+						<div class="basicrow msidespad">
+							<div class="b-title">
+								<div class="autocont f-black roboto-m f-bmed pull-left vcenter">
+									<div class="tabcell">
+										Balance en Mi Claro <span class="f-red">Wallet</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="basicrow msidespad m-top-u-i">
+							<div class="balancesptr-ii fullon text-center">
+								<span class="roboto-b">
+									Cr&eacute;ditos Disponibles
+								</span>
+								<br/>
+								<span class="f-red f-lsemi roboto-b">
+									&#36;5.00
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="basicrow bg-gray">
+		<div class="container">
+			<div class="autowcont dashapp m-top-i">
+				<div class="basicrow msidespad">
+					<div class="b-title">
+						<div class="autocont f-black roboto-m f-bmed pull-left vcenter">
+							<div class="tabcell">
+								Opciones de Pago
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="basicrow msidespad m-top-u-i">
+
+					<% if (redeemProgramAvailable) { %>
+					<div class="balancesptr-i refdef text-center">
+						<span class="roboto-b">
+							Cr&eacute;ditos Disponibles
+						</span>
+						<br/>
+						<span id="sumAvialable" class="f-blue f-lsemi roboto-b">
+							&#36;0.00
+						</span>
+					</div>
+
+					<div class="basicrow m-bott visible-xs">
+						<div class="logline full"></div>
+					</div>
+
+					<div class="balancesptr-iii refdef">
+
+						<div class="title-amount-container">
+							<label class="label-r roboto-b text-title-amount">Monto de Cr&eacute;dito a Aplicar</label>
+
+							<img class="tooltip-amount" data-toggle="popover" data-html="true" data-content="Deberá tener este monto disponible en sus creditos." data-placement="bottom" src="images/tooltip1.png">
+						</div>
+
+						<div class="basicrow">
+
+							<input id="credit-amount" value="&#36;0.00" class="inp-f payup qt" readonly>
+
+							<div id="btn-apply" class="btns blue payup vcenter rippleB">
+								<span class="tabcell">
+									Aplicar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="basicrow m-bott visible-xs">
+						<div class="logline full"></div>
+					</div>
+
+					<% } %>
+
+					<div class="balancesptr-iii refdef no-brd">
+						<div class="title-amount-container">
+							<label class="label-r roboto-b text-title-amount">Monto a Recargar (&#36;)</label>
+
+							<img class="tooltip-amount" data-toggle="popover" data-html="true" data-content="Podras recargar entre $5.00 y $150.00 a tu n&uacute;mero prepago." data-placement="bottom" src="images/tooltip1.png">
+						</div>
+
+						<div class="basicrow rel">
+							<input id="due-amount" type="number" value="<%= amountPayable %>" class="inp-f payup qt">
+
+							<div id="btn-recharge" class="btns red payup vcenter rippleR">
+								<span class="tabcell">
+									Recargar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="basicrow">
+		<div class="container">
+			<div class="row">
+
+				<% if (selectedAccount.guest == false) { %>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="dashdirect-digf">
+						<img class="digf-def-i" width="100%" src="images/fact-dig.png">
+						<% if (paperless) { %>
+						<div class="autocont nofloat alrd-mleft">
+							<div class="autocont f-green-i vcenter">
+								<div class="tabcell">
+									<span class="f-newfdig">Suscrito a Factura Electr&oacute;nica</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="autocont nofloat">
+							<div class="autocont vcenter">
+								<div class="tabcell">
+									<img class="fdig-check" width="100%" src="images/fact-dig-check.png">
+								</div>
+							</div>
+						</div>
+						<% } else { %>
+						<div class="autocont nofloat m-septrt">
+							<div class="autocont vcenter">
+								<div class="tabcell">
+									Factura Electr&oacute;nica:
+								</div>
+							</div>
+						</div>
+
+						<div class="autocont nofloat m-septrt">
+							<div class="autocont vcenter">
+								<div class="tabcell">
+									<label class="switch m-left-i">
+										<input data-switch-type="PAPERLESS" type="checkbox" id="paperless-switch" class="paperless-switch">
+										<span class="slider"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<% } %>
+					</div>
+				</div>
+				<% } %>
+
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="dashdirect-chat vcenter">
+						<img class="direct-chat-i" width="100%" src="images/chatnow-icon.png">
+
+						<span class="tabcell">
+							Chatea con Nosotros
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+</script>

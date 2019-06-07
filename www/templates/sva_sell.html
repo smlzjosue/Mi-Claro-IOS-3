@@ -1,0 +1,98 @@
+<script type="text/template" id="sva_sell">
+
+	<div id="wrapper">
+		<div class="stopfoot">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="w-cont din-b f-white">
+				<div class="container">
+					<span class="f-med">Comprar Servicios Adicionales</span>
+				</div>
+			</div>
+
+			<div class="basicrow">
+				<div class="container">
+					<div class="basicrow f-little din-b m-top-ii">
+						N&uacute;mero de Cuenta
+					</div>
+
+					<div class="basicrow text-center">
+						<select id="select-account" class="selln f-bold f-med f-black">
+							<% _.each(accounts, function(value, index) { %>
+							<option value="<%= value.Account %>"  <%= value.Account==selectedAccountValue?'selected="selected"':'' %> >
+							<%= value.Account %>
+							</option>
+							<% }); %>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="subtitle nbott din-b f-little text-center f-black m-top vcenter">
+				<div class="tabcell">
+					SERVICIOS ADICIONALES
+				</div>
+			</div>
+
+			<div class="lineb">
+				<% _.each(subscribers, function(value, index) { %>
+				<% if(typeOfTelephony(value.ProductType) == "Móvil") {%>
+
+				<div data-toggle="collapse" data-target="#phone<%= index %>" class="phonebar select-subscriber" data-value="<%= value.subscriber%>" data-index="<%= index %>" id="select-subscriber-<%= index %>" data-search-info=false>
+					<div class="container rel vcenter">
+						<div class="tabcell">
+
+							<div id="plus" class="p-sts f-gray">
+								+
+							</div>
+
+							<div id="minus" class="p-sts f-gray">
+								-
+							</div>
+
+							<span class="f-med f-black"><%= value.subscriber %></span><br/>
+							<span class="f-reg f-gray"><%= typeOfTelephony(value.ProductType) %></span>
+						</div>
+					</div>
+				</div>
+
+				<div id="phone<%= index %>" class="collapse"></div>
+				<%} else{ %>
+
+
+				<div class="subtitle nbott din-b f-little text-center f-black vcenter">
+					<div class="tabcell">
+						AVISO
+					</div>
+				</div>
+				<div class="container rel vcenter">
+					<div class="tabcell">
+						<div class="nbott din-b f-little text-center f-red">Los servicios adicionales no se pueden aplicar a suscriptores de telefon&iacute;a fija.</div>
+					</div>
+				</div>
+				<% } %>
+
+				<div id="errorCont" style="display:none">
+					<div class="subtitle nbott din-b f-little text-center f-black vcenter">
+						<div class="tabcell">
+							AVISO
+						</div>
+					</div>
+					<div class="container rel vcenter">
+						<div class="tabcell">
+							<div class="nbott din-b f-little text-center f-red padding-alert" id="errorMsg"></div>
+						</div>
+					</div>
+				</div>
+				<% }); %>
+			</div>
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

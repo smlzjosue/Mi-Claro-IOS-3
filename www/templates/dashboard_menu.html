@@ -1,0 +1,200 @@
+<script type="text/template" id="dashboard_menu">
+
+	<div class="basicrow m-top-i">
+
+		<div class="row dashboard">
+
+			<% _.each(accountSections, function(section) { %>
+
+			<% _.each(section.Pages, function(page) { %>
+
+			<% if (page.accessID == 9) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox gray vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_invoice' %>">
+					<span class="tabcell">
+						<span class="icon-dash-01"></span>
+						Factura y Pago
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 14 && selectedAccount.postpago == true) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox blue vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_consumption_others' %>">
+					<span class="tabcell">
+						<span class="icon-dash-02"></span>
+						Consumo de Voz, Mensajer&iacute;a y Roaming
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 14 && selectedAccount.postpago == true) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox red vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_consumption_data' %>">
+					<span class="tabcell">
+						<span class="icon-dash-03"></span>
+						Consumo de Datos
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 28) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox blue vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_consumption_prepaid' %>">
+					<span class="tabcell">
+						<span class="icon-dash-02"></span>
+						Mi Consumo
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 16 || page.accessID == 34) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox white vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_services' %>">
+					<span class="tabcell">
+						<span class="icon-dash-25"></span>
+						Mis Servicios
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 21) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox blue vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_data_plan' %>">
+					<span class="tabcell">
+						<span class="icon-dash-08"></span>
+						Compra de Data Adicional
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 17) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox red vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_change_plan' %>">
+					<span class="tabcell">
+						<span class="icon-dash-05"></span>
+						Cambio de Plan
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 35) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox blue vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_change_plan' %>">
+					<span class="tabcell">
+						<span class="icon-dash-05"></span>
+						Cambio de Plan
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 33) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox red vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_fault_report' %>">
+					<span class="tabcell">
+						<span class="icon-dash-13"></span>
+						Reporta Interrupci&oacute;n
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 7) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox white vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_store' %>">
+					<span class="tabcell">
+						<span class="icon-dash-07"></span>
+						Tienda
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 24) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<a class="dashbox gray vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_send_1gb' %>">
+					<span class="tabcell">
+						<span class="icon-dash-23"></span>
+						Regala 1 GB a un Amigo/a o Familiar Postpago​
+					</span>
+				</a>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 25) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox red vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_send_recharge' %>">
+					<span class="tabcell">
+						<span class="icon-dash-10"></span>
+						Regala una Recarga Prepago
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 13) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox gray vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_electronic_bill' %>">
+					<span class="tabcell">
+						<span class="icon-dash-11"></span>
+						Factura Digital
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 2) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox blue vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_account' %>">
+					<span class="tabcell">
+						<span class="icon-dash-14"></span>
+						Configuraci&oacute;n de Cuenta
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 18 || page.accessID == 36) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox red vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_netflix' %>">
+					<span class="tabcell">
+						<span class="icon-dash-16"></span>
+						Netflix
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% if (page.accessID == 19 || page.accessID == 31 || page.accessID == 37) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox blue vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_referrer' %>">
+					<span class="tabcell">
+						<span class="icon-dash-21"></span>
+						Programa de Referidos
+					</span>
+				</div>
+			</div>
+			<% } %>
+
+			<% }); %>
+
+			<% }); %>
+
+		</div>
+	</div>
+
+	<div class="basicrow m-top-i m-bott">
+		<div class="container">
+			<img width="100%" src="images/clarobannernetflix.jpg">
+		</div>
+	</div>
+
+</script>

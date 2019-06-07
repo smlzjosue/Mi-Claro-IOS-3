@@ -1,0 +1,35 @@
+<script type="text/template" id="menu">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="stopfoot-i">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="basicrow m-top-ii m-bott-i f-black f-lsemi roboto-l visible-sm visible-xs">
+				<div class="container">
+					Hola <%= name %>
+				</div>
+			</div>
+
+			<% include tabs %>
+
+			<% if (selectedAccount.postpago) { %>
+				<% include dashboard_postpago %>
+			<% } else if (selectedAccount.prepago) { %>
+				<% include dashboard_prepago %>
+			<% } else if (selectedAccount.telefonia) { %>
+				<% include dashboard_telefonia %>
+			<% } %>
+
+			<% include dashboard_menu %>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

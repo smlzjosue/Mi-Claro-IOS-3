@@ -1,0 +1,111 @@
+<script type="text/template" id="payment_history">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<% include tabs %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div class="basicr-line-i">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-01"></span> Historial de Pagos
+						</div>
+
+						<div class="nroacc">
+							<label class="label-r sidenmbr vcenter">
+									<span class="tabcell">
+										N&uacute;mero de Cuenta
+									</span>
+							</label>
+
+							<select class="sel-f sidesel" id="select-account">
+								<% _.each(accounts, function(value, index) { %>
+								<option value="<%= value.Account %>"  <%= value.Account==selectedAccount.Account?'selected="selected"':'' %> ><%= value.Account %></option>
+								<% }); %>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott n-mtop">
+				<div class="container">
+					<div class="basicrow m-top allpads bordsdef f-reg roboto-r f-black text-justify">
+						Recuerda que tu pago puede tardar entre 24-48 horas en verse reflejado en Mi Claro.​
+						Esta lista solo contiene pagos efectuados en los ultimos 13 meses.​
+					</div>
+
+					<div class="basicrow">
+
+						<div class="autorow pull-left m-right f-reg m-top-u-iii">
+							<select class="sel-f sidesel" id="select-year">
+								<% _.each(years, function(value, index) { %>
+								<option value="<%= value.slice(-2) %>">
+									<%= value %>
+								</option>
+								<% }); %>
+							</select>
+						</div>
+
+					</div>
+					
+					<div class="basicrow">
+						<div class="basicrow m-top-i">
+							<div class="autorow pull-left f-tabletitle f-black roboto-r m-right">
+								Factura Actual
+							</div>
+						</div>
+
+						<!-- [INIT TABLA WEB] -->
+						<div class="basicrow m-top">
+							<div class="boxtbl">
+								<div class="tab-tbar evless">
+									<div class="frwds frths rline vcenter">
+										<div class="tabcell">
+											Fecha de Facturaci&oacute;n
+										</div>
+									</div>
+
+									<div class="frwds frths rline vcenter">
+										<div class="tabcell">
+											M&eacute;todo
+										</div>
+									</div>
+
+									<div class="frwds frths rline vcenter">
+										<div class="tabcell">
+											Status
+										</div>
+									</div>
+
+									<div class="frwds frths vcenter">
+										<div class="tabcell">
+											Cantidad
+										</div>
+									</div>
+								</div>
+
+								<div class="basicrow" id="table">
+
+								</div>
+							</div>
+						</div>
+						<!-- [END TABLA WEB] -->
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

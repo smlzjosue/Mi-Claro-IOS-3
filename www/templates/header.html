@@ -1,0 +1,41 @@
+<script type="text/template" id="header">
+
+	<div class="menubar">
+
+		<div class="header container rel">
+
+			<div id="btn-menu" class="mc-logo mcenter">
+				<span class="autocont vcenter">
+					<span class="tabcell">
+						<img width="100%" src="images/miclaro-logo.png">
+					</span>
+				</span>
+			</div>
+
+			<% if (showBackBth) { %>
+			<div class="item pull-left" id="btn-back">
+				<img class="dispicon" src="images/back.svg">
+			</div>
+			<% } else { %>
+			<div class="item pull-left" id="btn-notifications">
+				<div class="autocont ntif f-reg roboto-m" id="bag-not-count" style="display: none">
+					<div id="count-notifications" class="notifc">
+						0
+					</div>
+				</div>
+				<img class="dispicon" src="images/user.svg">
+			</div>
+			<% } %>
+
+			<div class="item pull-right" id="nav-open">
+				<img class="dispicon" src="images/bars.svg">
+			</div>
+
+			<div class="item pull-right" id="nav-close" style="display: none">
+				<img class="dispicon" src="images/times.svg">
+			</div>
+
+		</div>
+	</div>
+    
+</script>

@@ -1,0 +1,121 @@
+<script type="text/template" id="success_debit_direct">
+
+  <div id="wrapper">
+    <div class="stopfoot-i">
+
+      <% include header %>
+
+        <% include navmenu %>
+
+          <div class="w-cont din-b f-white">
+            <div class="container">
+              <span class="f-med">D&eacute;bito Directo</span>
+            </div>
+          </div>
+
+          <div class="subtitle nbott din-b f-little text-center f-black vcenter">
+            <div class="tabcell">
+              RESUMEN DE AFILIACI&Oacute;N
+            </div>
+          </div>
+
+          <div class="autobar diffr">
+            <div class="container">
+              <div class="basicrow m-top-ii">
+                <div class="contspace full f-med f-black text-justify f-bold">
+                  Estimado usuario, ya est&aacute;s afiliado al servicio de D&eacute;bito directo en el que tu pago de renta mensual se ejecuta de manera autom&aacute;tica. Si deseas cancelar el servicio haz click en el bot&oacute;n Cancelar. Recuerda que con D&eacute;bito
+                  Directo no tendr&aacute;s que preocuparte por recordar tu fecha de facturaci&oacute;n y que tu servicio sea suspendido.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="autobar diffr">
+            <div class="container">
+              <div class="basicrow f-little din-b f-gray">Afiliado a</div>
+
+              <div class="basicrow m-top-ii">
+                <div class="contspace full f-med f-black text-justify f-bold">
+                  <%= typeTransaction %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <% if(typeTransaction=="Creditcard"){ %>
+            <div class="autobar diffr">
+              <div class="container">
+                <div class="basicrow f-little din-b f-gray">M&eacute;todo de Pago</div>
+
+                <div class="basicrow m-top-ii">
+                  <div class="contspace full f-med f-black text-justify f-bold">
+                    <%= detailTransaction.creditCardType %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="autobar diffr">
+              <div class="container">
+                <div class="basicrow f-little din-b f-gray">Nombre y Apellido</div>
+
+                <div class="basicrow m-top-ii">
+                  <div class="contspace full f-med f-black text-justify f-bold">
+                    <%= detailTransaction.creditCardMemberName %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="autobar diffr">
+              <div class="container">
+                <div class="basicrow f-little din-b f-gray">N&uacute;mero de Tarjeta</div>
+
+                <div class="basicrow m-top-ii">
+                  <div class="contspace full f-med f-black text-justify f-bold">
+                    <%= detailTransaction.creditCardNo %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% } %>
+              <% if(typeTransaction!=="Creditcard"){ %>
+                <div class="autobar diffr">
+                  <div class="container">
+                    <div class="basicrow f-little din-b f-gray">Banco</div>
+
+                    <div class="basicrow m-top-ii">
+                      <div class="contspace full f-med f-black text-justify f-bold">
+                        <%= detailTransaction.bankAccountNo %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="autobar diffr">
+                  <div class="container">
+                    <div class="basicrow f-little din-b f-gray">N&uacute;mero de Cuenta</div>
+
+                    <div class="basicrow m-top-ii">
+                      <div class="contspace full f-med f-black text-justify f-bold">
+                        <%= detailTransaction.bankCode %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+                  <div class="autobar diff">
+                    <div class="container">
+                      <div class="g-btn text-center f-med f-white vcenter btn-close">
+                        <div class="tabcell">
+                          Cerrar
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    </div>
+
+    <% include footer %>
+
+  </div>
+</script>

@@ -1,0 +1,232 @@
+<script type="text/template" id="payment_step_1">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div>
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-25"></span> Paga en Línea
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott m-top-i">
+				<div class="container">
+					<div class="autowcont notopbrd m-top-ii">
+
+						<div class="basicrow tabtopb f-black roboto-r f-reg">
+
+							<div class="basicrow text-center">
+								<div class="shortcont">
+									<div class="basicrow m-bott-ii">
+										<div class="userinfo full nomtops">
+											<div class="basicrow">
+												<div class="basicrow f-bmed roboto-b m-bott">
+													Resumen de Pago
+												</div>
+
+												<%= paymentSummary %>
+
+											</div>
+										</div>
+									</div>
+
+									<div class="basicrow m-top-i">
+										<div class="basicrow roboto-b f-bmed">
+											Datos de la Tarjeta
+										</div>
+
+										<div class="basicrow">
+											<div class="cred-opts card-vs">
+												<div class="autocont vcenter">
+													<div class="tabcell">
+														<input class="radio-vs" type="radio" name="card" data-card-type="V">
+													</div>
+												</div>
+
+												<img width="100%" src="images/credit01.png">
+											</div>
+
+											<div class="cred-opts card-am">
+												<div class="autocont vcenter">
+													<div class="tabcell">
+														<input class="radio-am" type="radio" name="card" data-card-type="A">
+													</div>
+												</div>
+
+												<img width="100%" src="images/credit02.png">
+											</div>
+
+											<div class="cred-opts card-mc">
+												<div class="autocont vcenter">
+													<div class="tabcell">
+														<input class="radio-mc" type="radio" name="card" data-card-type="M">
+													</div>
+												</div>
+
+												<img width="100%" src="images/credit03.png">
+											</div>
+										</div>
+									</div>
+
+									<div class="basicrow m-top-i">
+										<label class="label-f">
+											&#42; Nombre y Apellido
+										</label>
+
+										<input id="card-name" type="text" class="inp-f">
+									</div>
+
+									<div class="basicrow m-top-i">
+										<label class="label-f">
+											&#42; N&uacute;mero de Tarjeta
+										</label>
+
+										<input id="card-number" type="number" class="inp-f">
+									</div>
+
+
+									<div class="basicrow m-bott-ii">
+										<div class="row">
+											<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 m-top-i">
+												<label class="label-f">
+													&#42; Vencimiento de Tarjeta
+												</label>
+
+												<div class="basicrow">
+													<div class="row">
+														<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6">
+															<div class="exprdtitle roboto-b vcenter">
+																<div class="tabcell">
+																	Mes
+																</div>
+															</div>
+
+															<select id="select-month" class="sel-f exprdsize">
+																<% _.each(months, function(value, index) { %>
+																<option value="<%= value %>">
+																	<%= value %>
+																</option>
+																<% }); %>
+															</select>
+														</div>
+
+														<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 h-mtop-iv">
+															<div class="exprdtitle roboto-b vcenter">
+																<div class="tabcell">
+																	A&ntilde;o
+																</div>
+															</div>
+
+															<select id="select-year" class="sel-f exprdsize">
+																<% _.each(years, function(value, index) { %>
+																<option value="<%= value.slice(-2) %>">
+																	<%= value %>
+																</option>
+																<% }); %>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 m-top-i">
+												<label class="label-f">
+													&#42; C&oacute;digo de Seguridad (CVV)
+												</label>
+
+												<input id="card-cvv" type="number" style="-webkit-text-security:disc;" class="inp-f">
+											</div>
+										</div>
+									</div>
+
+									<div class="basicrow m-top-i">
+										<div class="basicrow roboto-b f-bmed">
+											Direcci&oacute;n de Facturaci&oacute;n
+										</div>
+
+										<div class="basicrow m-top-ii">
+											Por favor ingrese su direcci&oacute;n principal de facturaci&oacute;n. La direcci&oacute;n debe ser valida.
+										</div>
+									</div>
+
+									<div class="basicrow m-top-i">
+										<label class="label-f">
+											&#42; Direcci&oacute;n 1
+										</label>
+
+										<input id="user-address" type="text" class="inp-f">
+									</div>
+
+									<div class="basicrow m-top-i">
+										<label class="label-f">
+											Direcci&oacute;n 2 (Opcional)
+										</label>
+
+										<input id="user-address2" type="text"  class="inp-f">
+									</div>
+
+									<div class="basicrow m-top-i">
+										<label class="label-f">
+											&#42; Ciudad
+										</label>
+
+										<input id="user-city" type="text" class="inp-f">
+									</div>
+
+									<div class="basicrow m-top-i">
+										<label class="label-f">
+											&#42; Estado
+										</label>
+
+										<select id="select-state" class="sel-f">
+											<option value="PR">Puerto Rico</option>
+										</select>
+									</div>
+
+									<div class="basicrow m-top-i">
+										<label class="label-f">
+											&#42; C&oacute;digo Postal
+										</label>
+
+										<input id="user-zip" type="text"  class="inp-f">
+									</div>
+
+									<div class="basicrow m-top-i">
+										<div class="logline full"></div>
+									</div>
+
+									<div class="basicrow text-center m-top-i">
+										<div id="btn-pay" class="btns def-i red pull-right vcenter rippleR">
+											<span class="tabcell">
+												Pagar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+											</span>
+										</div>
+
+										<div id="btn-return" class="btns def-i gray pull-left vcenter">
+											<span class="tabcell">
+												Cancelar
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

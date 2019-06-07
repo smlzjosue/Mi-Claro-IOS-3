@@ -1,0 +1,120 @@
+<script type="text/template" id="pay_quota">
+
+  <div id="wrapper">
+    <div class="stopfoot-i">
+
+      <% include header %>
+
+        <% include navmenu %>
+
+          <div class="w-cont din-b f-white">
+            <div class="container">
+              <span class="f-med">Pagar Equipo</span>
+            </div>
+          </div>
+
+          <div class="autobar diffr">
+            <div class="container">
+              <div class="basicrow">
+                <div class="basicrow f-med f-black text-justify f-bold">
+                  <%= dataSubscriber.Divice %>
+                </div>
+              </div>
+
+              <div class="basicrow m-top">
+                <div class="contspace f-med f-black text-justify f-bold">
+                  Monto Cuota
+                </div>
+
+                <div class="phonespace f-lmed f-red din-b text-right">
+                  <%= dataSubscriber.UpdateRent %>
+                </div>
+              </div>
+
+              <div class="basicrow m-top">
+                <div class="contspace f-med f-black text-justify f-bold">
+                  Cuotas Restantes
+                </div>
+
+                <div class="phonespace f-lmed f-red din-b text-right">
+                  <%= dataSubscriber.UpdateMonths %>
+                </div>
+              </div>
+
+              <div class="basicrow m-top">
+                <div class="contspace f-med f-black text-justify f-bold">
+                  Total Deuda
+                </div>
+
+                <div class="phonespace f-lmed f-red din-b text-right">
+                  $<%= dataSubscriber.totalAmount %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="subtitle nbott din-b f-little text-center f-black vcenter">
+            <div class="tabcell">
+              DESEO
+            </div>
+          </div>
+
+          <div class="planspc dheight input-check-container">
+            <div class="container norel">
+              <div class="spc-i vcenter">
+                <div class="tabcell">
+                  <input type="checkbox" name="typeofPay" id="typeofPay1" class="css-checkbox2 css-checkbox" value="Total" />
+                </div>
+              </div>
+
+              <div class="spc-ii f-reg f-bold text-justify vcenter">
+                <div class="tabcell">
+                  <label for="typeofPay1">Pagar deuda total</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="planspc dheight input-check-container">
+            <div class="container norel">
+              <div class="spc-i vcenter">
+                <div class="tabcell">
+                  <input type="checkbox" name="typeofPay" id="typeofPay2" class="css-checkbox2 css-checkbox" value="Quotas" />
+                </div>
+              </div>
+
+              <div class="spc-ii f-reg f-bold text-justify vcenter">
+                <div class="tabcell">
+                  <label for="typeofPay2">Pagar una cantidad de cuotas</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="numQuotas">
+          </div>
+
+          <div class="autobar diff text-center">
+            <div id="totalAmountPay">
+            </div>
+          </div>
+
+          <div class="autobar diff no-bord">
+            <div class="container">
+              <div class="r-btn text-center f-med f-white vcenter">
+                <div class="tabcell" id="continue-1">
+                  Continuar
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+  </div>
+
+  <% include footer %>
+
+    </div>
+
+
+</script>

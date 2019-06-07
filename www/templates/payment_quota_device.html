@@ -1,0 +1,205 @@
+<script type="text/template" id="payment_quota_device">
+	<div id="wrapper">
+		<div class="stopfoot-i">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="w-cont din-b f-white">
+				<div class="container">
+					<span class="f-med">Pagar Equipo</span>
+				</div>
+			</div>
+
+			<div class="subtitle nbott din-b f-little text-center f-black vcenter">
+				<div class="tabcell">
+					RESUMEN DE PAGO
+				</div>
+			</div>
+
+			<div class="autobar diffr">
+				<div class="container">
+					<div class="basicrow f-little din-b f-gray">Equipo</div>
+
+					<div class="basicrow m-top-ii">
+						<div class="contspace full f-med f-black text-justify f-bold">
+							<%= detailPay.device %>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow f-little din-b f-gray">Cuotas</div>
+            
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                            <%= detailPay.quotas %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="autobar diffr">
+                <div class="container">
+                    <div class="basicrow f-little din-b f-gray">Monto</div>
+            
+                    <div class="basicrow m-top-ii">
+                        <div class="contspace full f-med f-black text-justify f-bold">
+                            $<%= detailPay.amount %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+			<div class="subtitle nbott din-b f-little text-center f-black vcenter">
+				<div class="tabcell">
+					SELECCI&Oacute;N DE FORMA DE PAGO
+				</div>
+			</div>
+
+			<form id="form-payment-step-1">
+
+				<div class="autobar f-reg text-center f-black diffr">
+					<div class="container">
+						<div class="credcard btn-card <%= (paymentData!= null && paymentData.cardType=='VISA')?'on':'' %>" id="card-VISA" data-card-type="VISA"">
+							<div class="cardimg">
+								<img width="100%" src="images/card-a.png">
+							</div>
+						</div>
+
+						<div class="credcard btn-card <%= (paymentData != null && paymentData.cardType=='MASTER')?'on':'' %>" id="card-MASTER" data-card-type="MASTER"">
+							<div class="cardimg">
+								<img width="100%" src="images/card-b.png">
+							</div>
+						</div>
+
+						<div class="credcard btn-card <%= (paymentData != null && paymentData.cardType=='AMERICAN')?'on':'' %>" id="card-AMERICAN" data-card-type="AMERICAN">
+							<div class="cardimg">
+								<img width="100%" src="images/card-d.png">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="subtitle nbott din-b f-little text-center f-black vcenter">
+					<div class="tabcell">
+						DATOS DE LA TARJETA
+					</div>
+				</div>
+
+				<div class="autobar diffr">
+					<div class="container">
+						<div class="basicrow">
+							<input type="text" name="full_name" class="inpln f-bold f-reg f-black" maxlength="85" value="<%= (paymentData!= null)?paymentData.fullName:'' %>" placeholder="Nombres y apellidos">
+						</div>
+
+						<div class="basicrow m-top">
+							<input type="text" id="credit-card" name="card_number" maxlength="16" class="inpln f-bold f-reg f-black" value="<%= (paymentData!= null)?paymentData.cardNumber:'' %>" placeholder="N&uacute;mero de tarjeta" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+						</div>
+
+						<div class="basicrow m-top">
+							<div class="basicrow f-little din-b">
+								Fecha de Vencimiento
+							</div>
+
+							<div class="basicrow">
+								<div class="row">
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<div class="basicrow">
+											<select class="selln f-bold f-med f-black" name="card_expiration_month" id="card_expiration_month">
+												<option value="">Mes</option>
+												<% _.each(months, function(value, index) { %>
+												<option value="<%= value %>" <%= (paymentData!= null && paymentData.cardExpirationDate.substring(0, 2)==value)?'selected':'' %>>
+												<%= value %>
+												</option>
+												<% }); %>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<div class="basicrow">
+											<select class="selln f-bold f-med f-black" name="card_expiration_year" id="card_expiration_year" >
+												<option value="">A&ntilde;o</option>
+												<% _.each(years, function(value, index) { %>
+												<option value="<%= value.slice(-2) %>" <%= (paymentData!= null && paymentData.cardExpirationDate.slice(-2)==value.slice(-2))?'selected':'' %>>
+												<%= value %>
+												</option>
+												<% }); %>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="basicrow m-top">
+							<input type="password" name="security_code" class="inpln f-bold f-reg f-black" value="<%= (paymentData!= null)?paymentData.securityCode:'' %>" placeholder="C&oacute;digo de Seguridad (CCV)" size="4" maxlength="4" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+						</div>
+					</div>
+				</div>
+                
+                <div class="subtitle nbott din-b f-little text-center f-black vcenter">
+                    <div class="tabcell">
+                        DIRECCI&Oacute;N POSTAL DE LA TARJETA
+                    </div>
+                </div>
+                
+                <div class="autobar diffr">
+                    <div class="container">
+                        <div class="basicrow">
+                            <input type="text" name="address_1" maxlength="85" class="inpln f-bold f-reg f-black" value="<%= (paymentData!= null)?paymentData.address1:'' %>" placeholder="Direcci&oacute;n 1">
+                        </div>
+                
+                        <div class="basicrow m-top">
+                            <input type="text" name="address_2" maxlength="85" class="inpln f-bold f-reg f-black" value="<%= (paymentData!= null)?paymentData.address2:'' %>" placeholder="Direcci&oacute;n 2 (Opcional)">
+                        </div>
+                
+                        <div class="basicrow m-top-ii">
+                            <select class="selln f-bold f-med f-black" name="state">
+                                <% _.each(states, function(state, index) { %>
+                                          <option value="<%= state.code%>" <%=( state.code==defaultState)? 'selected': ''%>>
+                                            <%=state.name%>
+                                          </option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        
+                        <div class="basicrow m-top">
+                        	<input type="text" name="city" maxlength="85" class="inpln f-bold f-reg f-black" value="<%= (paymentData!= null)?paymentData.city:'' %>" placeholder="Ciudad">
+                        </div>
+                        
+                        <div class="basicrow m-top">
+                            <input type="text" name="postal_code" class="inpln f-bold f-reg f-black" value="<%= (paymentData!= null)?paymentData.postalCode:'' %>" placeholder="C&oacute;digo Postal" maxlength="5" onkeypress="return event.charCode >= 48 && event.charCode <= 57" novalidate>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="autobar diff">
+                <div class="container">
+                    <div class="r-btn text-center f-med f-white vcenter payment-step-2">
+                        <div class="tabcell">
+                            Continuar
+                        </div>
+                    </div>
+
+                    <div class="g-btn text-center f-med f-white vcenter btn-back">
+                        <div class="tabcell">
+                            Cancelar
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <% include footer %>
+
+</div>
+
+
+</script>

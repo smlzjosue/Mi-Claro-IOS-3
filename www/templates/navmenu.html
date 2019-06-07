@@ -1,0 +1,48 @@
+<script type="text/template" id="navmenu">
+
+	<div id="mySidenav" class="sidenav appnav">
+
+
+		<% _.each(accountSections, function(section, index) { %>
+
+		<% if (section.Pages.length > 1) { %>
+
+		<div data-toggle="collapse" data-target="#section<%= index %>" class="m-menubar vcenter" id="section-head<%= index %>">
+			<span class="tabcell">
+				<%= section.sectionName %>
+
+				<i class="fa fa-plus" aria-hidden="true"></i>
+
+				<i class="fa fa-minus" aria-hidden="true"></i>
+			</span>
+		</div>
+
+		<div id="section<%= index %>" class="collapse">
+
+			<% _.each(section.Pages, function(page, index) { %>
+
+			<div class="m-menuin vcenter <%= page.extraClass %>" id="<%= page.extraClass == 'offnouse' ? 'nav-access-off'+page.accessID : 'nav-access'+page.accessID %>">
+				<span class="tabcell">
+					<p><%= page.pageName %></p> <i class="fa <%= page.accessID == 8 ? 'fa-times-circle' : 'fa-angle-right' %>" aria-hidden="true"></i>
+				</span>
+			</div>
+
+			<% }); %>
+
+		</div>
+
+		<% } else { %>
+
+		<div class="m-menubar vcenter <%= section.Pages[0].extraClass %>" id="<%= section.Pages[0].extraClass == 'offnouse' ? 'nav-access-off'+section.Pages[0].accessID : 'nav-access'+section.Pages[0].accessID %>">
+			<span class="tabcell">
+				<p><%= section.Pages[0].pageName %></p> <i class="fa fa-angle-right" aria-hidden="true"></i>
+			</span>
+		</div>
+
+		<% } %>
+
+		<% }); %>
+
+	</div>
+
+</script>

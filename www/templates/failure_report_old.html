@@ -1,0 +1,101 @@
+<script type="text/template" id="failure_report">
+
+    <div id="wrapper">
+        <div class="stopfoot-i">
+
+            <div class="headbar text-center vcenter">
+                <div class="container rel vcenter">
+                    <div class="tabcell">
+                        <% if (showBackBth) { %>
+                        <div class="btn-back">
+                            <img class="dispicon" width="100%" src="images/backicon2.png">
+                        </div>
+                        <% } %>
+
+                        <img class="headlogo" width="100%" src="images/miclarologo.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-cont din-b f-white">
+                <div class="container">
+                    <span class="f-med">Reportar Falla</span>
+                </div>
+            </div>
+
+            <div class="subtitle nbott din-b f-little text-center f-black vcenter">
+                <div class="tabcell">
+                    ELIGE LA CATEGOR&Iacute;A MAS ADECUADA
+                </div>
+            </div>
+
+            <div class="autobar f-reg text-justify f-black diffr">
+                <div class="container">
+                    <div class="basicrow rclick">
+                        <input type="radio" name="failure_category" id="radio-choice-v-2a" value="C01" class="css-radio" /><label for="radio-choice-v-2a" class="css-label3 radGroup1">&nbsp;La aplicaci&oacute;n no permite ingresar</label>
+                    </div>
+
+                    <div class="basicrow rclick m-top-ii">
+                        <input type="radio" name="failure_category" id="radio-choice-v-2b" value="C02" class="css-radio"/><label for="radio-choice-v-2b" class="css-label3 radGroup1">&nbsp;La aplicaci&oacute;n no actualiza correctamente</label>
+                    </div>
+
+                    <div class="basicrow rclick m-top-ii">
+                        <input type="radio" name="failure_category" id="radio-choice-v-2c" value="C03" class="css-radio" /><label for="radio-choice-v-2c" class="css-label3 radGroup1">&nbsp;La aplicaci&oacute;n no funciona en el tel&eacute;fono</label>
+                    </div>
+
+                    <div class="basicrow rclick m-top-ii">
+                        <input type="radio" name="failure_category" id="radio-choice-v-2d" value="C04" class="css-radio" /><label for="radio-choice-v-2d" class="css-label3 radGroup1">&nbsp;La aplicaci&oacute;n se traba</label>
+                    </div>
+
+                    <div class="basicrow rclick m-top-ii">
+                        <input type="radio" name="failure_category" id="radio-choice-v-2e" value="C05" class="css-radio" /><label for="radio-choice-v-2e" class="css-label3 radGroup1">&nbsp;La aplicaci&oacute;n cierra inesperadamente</label>
+                    </div>
+                </div>
+            </div>
+
+            <%if(profiles==null){%>
+
+            <div class="subtitle nbott din-b f-little text-center f-black vcenter">
+                <div class="tabcell">
+                    CORREO ELECTR&Oacute;NICO
+                </div>
+            </div>
+
+            <div class="autobar f-reg f-black diffr">
+                <div class="container">
+                    <div class="basicrow">
+                        <input id="email" name="email" type="email" class="inpln inf f-bold f-med f-black">
+                    </div>
+                </div>
+            </div>
+
+            <% } %>
+
+            <div class="subtitle nbott din-b f-little text-center f-black vcenter">
+                <div class="tabcell">
+                    DETALLA TU COMENTARIO
+                </div>
+            </div>
+
+            <div class="autobar f-reg f-black diffr">
+                <div class="container">
+                    <div class="basicrow">
+                        <textarea class="cdef f-bold f-med f-black" name="failure_comment" id="failure-comment" maxlength="500"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="autobar diff" id="send-failure">
+                <div class="container">
+                    <div class="r-btn text-center f-med f-white vcenter">
+                        <div class="tabcell">
+                            Enviar
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</script>

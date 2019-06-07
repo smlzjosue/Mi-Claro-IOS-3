@@ -1,0 +1,137 @@
+<script type="text/template" id="fault_report_a">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div class="basicr-line-i">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-13"></span> Reporte de Aver&iacute;as
+						</div>
+
+						<div class="nroacc">
+							<label class="label-r sidenmbr vcenter">
+									<span class="tabcell">
+										N&uacute;mero de Cuenta
+									</span>
+							</label>
+
+							<select class="sel-f sidesel" id="select-account">
+								<% _.each(accounts, function(value, index) { %>
+								<option value="<%= value.Account %>"  <%= value.Account==selectedAccount.Account?'selected="selected"':'' %> ><%= value.Account %></option>
+								<% }); %>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow">
+				<div class="container">
+					<div class="basicrow m-top-i m-bott text-center">
+						<div class="stepsvone">
+							<div class="stepautoc on first">
+								Tipo de Aver&iacute;a
+
+								<div class="stepcirc text-center">
+									<div class="circ-in"></div>
+								</div>
+							</div>
+
+							<div class="stepautoc middle">
+								Solo L&iacute;nea
+								<div class="stepcirc">
+									<div class="circ-in"></div>
+								</div>
+							</div>
+
+							<div class="stepautoc last">
+								Confirmaci&oacute;n
+								<div class="stepcirc">
+									<div class="circ-in"></div>
+								</div>
+							</div>
+
+							<div class="stepsline"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott m-top-ii">
+				<div class="container">
+					<div class="autowcont notopbrd m-top-ii">
+						<div class="subgtitle">
+
+							<label class="label-r sidenmbr vcenter">
+									<span class="tabcell">
+										N&uacute;mero de línea
+									</span>
+							</label>
+
+							<select class="sel-f sidesel" id="select-subscriber">
+								<% _.each(subscribers, function(value, index) { %>
+								<option value="<%= value.subscriberNumberField %>"><%= value.subscriberNumberField %></option>
+								<% }); %>
+							</select>
+
+						</div>
+
+						<div class="basicrow allpads f-reg roboto-r f-black">
+							<div class="basicrow text-center m-top-u">
+								Por favor, especifique el tipo de aver&iacute;a que desea reportar, sea por su L&iacute;nea Fija o su L&iacute;nea Fija + DSL.
+							</div>
+
+							<div class="basicrow text-center m-top">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-offset-4 col-md-offset-4 col-sm-offset-3">
+										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center roboto-b">
+											<div class="autorow pointerdef">
+												<input id="radio_1" type="radio" name="radio" class="pointerdef" checked="checked"> Solo L&iacute;nea
+											</div>
+										</div>
+
+										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center roboto-b">
+											<div class="autorow pointerdef">
+												<input id="radio_2" type="radio" name="radio" class="pointerdef"> L&iacute;nea + DSL
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow m-top">
+								<div class="btns def-i red pull-right vcenter rippleR" id="next_step">
+									<span class="tabcell">
+										Continuar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</span>
+								</div>
+
+								<div class="btns def-i gray pull-left vcenter" id="return">
+									<span class="tabcell">
+										<i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Regresar
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

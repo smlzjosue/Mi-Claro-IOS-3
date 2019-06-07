@@ -1,0 +1,329 @@
+<script type="text/template" id="profile">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<% include tabs %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div class="basicr-line-i">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-14"></span> Mi Perfil
+						</div>
+
+						<div class="nroacc">
+							<label class="label-r sidenmbr vcenter">
+								<span class="tabcell">
+									N&uacute;mero de Cuenta
+								</span>
+							</label>
+
+							<select class="sel-f sidesel" id="select-account">
+								<% _.each(accounts, function(value, index) { %>
+								<option value="<%= value.Account %>"  <%= value.Account==selectedAccount.Account?'selected="selected"':'' %> ><%= value.Account %></option>
+								<% }); %>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott-i">
+				<div class="container">
+					<div class="basicrow m-top-i mbott">
+						<div class="difftabs">
+							<div id="tab-info" class="difft-def on fourths">
+								Informaci&oacute;n Personal
+							</div>
+
+							<div id="tab-email" class="difft-def fourths">
+								Actualiza Tu Correo
+							</div>
+
+							<div id="tab-password" class="difft-def fourths">
+								Cambiar Contrase&ntilde;a
+							</div>
+
+							<div id="tab-postal" class="difft-def fourths">
+								Direcci&oacute;n Postal
+							</div>
+						</div>
+					</div>
+
+					<div id="content-info" class="basicrow f-black roboto-r f-reg m-top-ii text-center">
+						<div class="shortcont">
+							<div class="basicrow">
+								<div class="basicrow">
+									<label class="label-f">
+										&#42; Nombre y Apellido
+									</label>
+
+									<input id="name" class="inp-f off">
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; N&uacute;mero de Celular
+									</label>
+
+									<input id="phone" type="number" class="inp-f">
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Tel&eacute;fono del Hogar
+									</label>
+
+									<input id="phone_f" type="number" class="inp-f">
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow m-top-i text-center">
+								<div class="btns def-iv red centr vcenter rippleR" id="save-personal">
+									<span class="tabcell">
+										Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="content-email" class="basicrow f-black roboto-r f-reg m-top-ii text-center" style="display: none">
+						<div class="shortcont">
+							<div class="basicrow bg-gray-u-i allpads bordsdef m-top-ii roboto-b text-justify">
+								Mant&eacute;n actualizado tu correo electr&oacute;nico por el cual podr&aacute;s recibir tu factura de manera electr&oacute;nica.
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="basicrow">
+									<label class="label-f">
+										&#42; Correo Electr&oacute;nico Actual
+									</label>
+
+									<input id="email" class="inp-f off">
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Nuevo Correo Electr&oacute;nico
+									</label>
+
+									<input id="new_email" type="email" placeholder="Ingresa el nuevo correo" class="inp-f">
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Confirmar Correo Electr&oacute;nico
+									</label>
+
+									<input id="repeat_email" type="email" placeholder="Confirma el nuevo correo" class="inp-f">
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow m-top-i text-center">
+								<div class="btns def-iv red centr vcenter rippleR" id="save-email">
+									<span class="tabcell">
+										Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="content-password" class="basicrow f-black roboto-r f-reg m-top-ii text-center" style="display: none">
+						<div class="shortcont">
+
+							<div id="container_required_update" style="display: none">
+								<div id="label_update" class="basicrow bg-gray-u-i allpads bordsdef m-top-ii roboto-b text-justify text-required">
+									<b>Actualización de Acceso:</b> Por su seguridad, es necesario que actualice su usuario y contraseña
+								</div>
+
+								<div class="basicrow m-top-i">
+									<div class="logline full"></div>
+								</div>
+
+								<div class="basicrow m-top text-justify">
+									Para crear un nuevo usuario, debe ingresar un correo electrónico
+								</div>
+
+								<div class="basicrow m-top-i">
+									<div class="basicrow">
+										<label class="label-f">
+											&#42; Usuario Actual
+										</label>
+
+										<input id="current_user" class="inp-f off">
+									</div>
+
+									<div class="basicrow m-top-i">
+										<label class="label-f">
+											&#42; Crear Nuevo Usuario
+										</label>
+
+										<input id="new_user" type="email" placeholder="Escribe un correo electrónico" class="inp-f">
+									</div>
+								</div>
+
+								<div class="basicrow m-top-i">
+									<div class="logline full"></div>
+								</div>
+							</div>
+
+							<div id="container_no_update" class="basicrow bg-gray-u-i allpads bordsdef m-top-ii roboto-b text-justify">
+								El cambio de contrase&ntilde;a s&oacute;lo es efectivo si llena los tres campos provistos: anterior, nuevo y confirmaci&oacute;n, y presiona Guardar Cambios. Si no desea cambiar los dem&aacute;s campos de la p&aacute;gina, d&eacute;jelos en blanco pues la forma los ignorar&aacute;.
+							</div>
+
+							<div class="basicrow m-top text-justify">
+								La contrase&ntilde;a debe tener entre 8 y 10 caracteres, incluyendo un m&iacute;nimo de 2 n&uacute;meros, diferenciando entre may&uacute;sculas y min&uacute;sculas.
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="basicrow">
+									<label class="label-f">
+										&#42; Contrase&ntilde;a Actual
+									</label>
+
+									<input id="password-old" type="password" class="inp-f" placeholder="Escribe tu contrase&ntilde;a actual">
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Nueva Contrase&ntilde;a
+									</label>
+
+									<input  id="password-new" type="password"  placeholder="Escribe una nueva contrase&ntilde;a" class="inp-f">
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Confirmar Nueva Contrase&ntilde;a
+									</label>
+
+									<input  id="password-repeat" type="password"  placeholder="Confirma la nueva contrase&ntilde;a" class="inp-f">
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow m-top-i text-center">
+								<div class="btns def-iv red centr vcenter rippleR" id="save-password">
+									<span class="tabcell">
+										Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="content-postal" class="basicrow f-black roboto-r f-reg m-top-ii text-center" style="display: none">
+						<div class="shortcont">
+							<div class="basicrow m-top-ii">
+								<div class="basicrow">
+									<label class="label-f">
+										&#42; Direcci&oacute;n 1
+									</label>
+
+									<input id="address_1" class="inp-f">
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										Direcci&oacute;n 2
+									</label>
+
+									<input id="address_2" class="inp-f">
+								</div>
+
+								<div class="basicrow">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
+											<label class="label-f">
+												&#42; Ciudad
+											</label>
+
+											<input id="city" class="inp-f">
+										</div>
+
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
+											<label class="label-f">
+												&#42; Estado
+											</label>
+
+											<input id="state" class="inp-f off">
+										</div>
+									</div>
+								</div>
+
+								<div class="basicrow">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
+											<label class="label-f">
+												&#42; Pais
+											</label>
+
+											<input id="country" class="inp-f off">
+										</div>
+
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
+											<label class="label-f">
+												C&oacute;digo Postal
+											</label>
+
+											<input id="zip_code" class="inp-f">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow m-top-i text-center">
+								<div class="btns def-iv red centr vcenter rippleR" id="save-address">
+									<span class="tabcell">
+										Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+	<div id="popover-content-input-password" class="hide">
+		<div style="background-color: #FFF;">
+			<ul>
+				<li class="validate-length"><img src="images/accept.png" class="hide img-accept"/><img src="images/cancel.png" class="img-cancel" /> Debe tener entre 8 y 15 caracteres.</li>
+				<li class="validate-lower"><img src="images/accept.png" class="hide img-accept"/><img src="images/cancel.png" class="img-cancel"/> Al menos una letra min&uacute;scula.</li>
+				<li class="validate-upper"><img src="images/accept.png" class="hide img-accept"/><img src="images/cancel.png" class="img-cancel"/> Al menos una letra may&uacute;scula .</li>
+				<li class="validate-number"><img src="images/accept.png" class="hide img-accept"/><img src="images/cancel.png" class="img-cancel"/> Al menos 2 n&uacute;meros </li>
+				<li class="validate-character"><img src="images/accept.png" class="hide img-accept"/><img src="images/cancel.png" class="img-cancel"/> No est&aacute; permitido ning&uacute;n car&aacute;cter especial o no alfanum&eacute;rico. </li>
+			</ul>
+		</div>
+	</div>
+
+</script>
