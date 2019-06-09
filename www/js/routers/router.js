@@ -10,12 +10,10 @@ $(function() {
 		history: [],
 
 	    routes:{
-			''	 							:'login',
-	        'login'	 						:'login',
+            'login'	 						:'login',
 	        'login/:section'				:'login',
 	        'help'							:'help',
             'menu'							:'menu',
-            'account'						:'account',
             'device'						:'device',
             'service'						:'service',
             'plan_detail'					:'planDetail',
@@ -90,7 +88,6 @@ $(function() {
             'signin_step_2'                 :'signinStep2',
             'signin_step_3'                 :'signinStep3',
             'signin_step_4'                 :'signinStep4',
-            'passport'                      :'passport',
             'password_step_1'               :'passwordStep1',
             'password_step_2'               :'passwordStep2',
             'password_step_3'               :'passwordStep3',
@@ -104,6 +101,7 @@ $(function() {
             'refiere_step_2'               	:'refiereStep2',
             'refiere_step_3'               	:'refiereStep3',
             'refiere_step_4'               	:'refiereStep4',
+            'refiere_questions'             :'refiereQuestions',
             'data_packages'              	:'dataPackages',
             'invoice_download'              :'invoiceDownload',
             'electronic_bill'               :'electronicBill',
@@ -112,6 +110,8 @@ $(function() {
             'netflix'          				:'netflix',
             'netflix_subscription'          :'netflixSubscription',
             'netflix_support'          		:'netflixSupport',
+			'netflix_claims'  	        	:'netflixClaims',
+            'netflix_redirect'          	:'netflixRedirect',
             'payment_history'               :'paymentHistory',
             'purchases'               		:'purchases',
             'support'               		:'support',
@@ -124,13 +124,26 @@ $(function() {
             'change_password'	 			:'changePassword',
             'no_product_associated'	 		:'noProductAssociated',
             'change_plan'               	:'changePlan',
+            'change_plan_prepaid'           :'changePlanPrepaid',
             'change_plan_confirm'           :'changePlanConfirm',
             'change_plan_success'           :'changePlanSuccess',
             'gift_1gb'                      :'gift1gb',
             'gift_recharge'                 :'giftRecharge',
+            'gift_sent'                 	:'giftSent',
             'invoice_details'				:'invoiceDetails',
-            'my_store'                      :'myStore'
-
+            'purchase_additional_service'	:'purchaseAdditionalService',
+            'device_payment_1'				:'devicePayment1',
+            'calls_details'					:'callsDetails',
+            'consumption_prepaid'			:'consumptionPrepaid',
+            'history_prepaid'				:'historyPrepaid',
+            'recharge_prepaid'				:'rechargePrepaid',
+            'recharge_prepaid_confirm'		:'rechargePrepaidConfirm',
+            'recharge_prepaid_payment'		:'rechargePrepaidPayment',
+            'recharge_prepaid_success'		:'rechargePrepaidSuccess',
+            'transactions_prepaid'			:'transactionsPrepaid',
+            'data_plan_success'				:'dataPlanSuccess',
+            'profile_update_username'		:'profileUpdateUsername',
+            'profile_update_questions'		:'profileUpdateQuestions',
 	    },
 
 	    initialize: function() {
@@ -147,11 +160,6 @@ $(function() {
 	        ));
 	    },
 
-		help:function () {
-	        console.log('#help');
-	        this.changePage(new app.views.HelpView());
-	    },
-
 	    menu:function () {
 	        console.log('#menu');
 	        this.changePage(new app.views.MenuView(
@@ -162,15 +170,6 @@ $(function() {
                     paymentModel: new app.models.Payment()
                 }
             ));
-	    },
-
-	    account:function () {
-	        console.log('#account');
-	        this.changePage(new app.views.AccountView(
-        		{
-	        		accountModel: new app.models.Account()
-	        	}
-	        ));
 	    },
 
 	    device:function () {
@@ -190,11 +189,6 @@ $(function() {
 	        		subscriberModel: new app.models.Subscriber()
 	        	}
 	        ));
-	    },
-
-	    planDetail:function () {
-	        console.log('#plan_detail');
-	        this.changePage(new app.views.PlanDetailView());
 	    },
 
 	    profile:function () {
@@ -217,25 +211,6 @@ $(function() {
 	        ));
 	    },
 
-	    consumptionLimit:function () {
-	        console.log('#consumption_limits');
-	        this.changePage(new app.views.ConsumptionLimitView(
-	        	{
-                    loginModel: new app.models.Login(),
-                    customerModel: new app.models.Customer()
-	        	}
-	        ));
-	    },
-
-	    consumptionLimitSubscriber:function () {
-	        console.log('#consumption_limits_subscriber');
-	        this.changePage(new app.views.ConsumptionLimitSubscriberView(
-	        	{
-	        		accountModel: new app.models.Account()
-	        	}
-	        ));
-	    },
-
 	    contactUs: function() {
 	    	console.log('#contact_us');
 	        this.changePage(new app.views.ContactUsView());
@@ -251,14 +226,13 @@ $(function() {
 	        ));
 	    },
 
-	    dataRoaming: function() {
-	    	console.log('#data_roaming');
-	        this.changePage(new app.views.DataRoamingView());
-	    },
-
 	    paymentStep1: function() {
 	    	console.log('#paymentStep1');
-	        this.changePage(new app.views.PaymentStep1View());
+             this.changePage(new app.views.PaymentStep1View(
+				{
+                    paymentModel: new app.models.Payment()
+				}
+			));
 	    },
 
 	    paymentStep2: function() {
@@ -266,7 +240,8 @@ $(function() {
 	        this.changePage(new app.views.PaymentStep2View(
                 {
                     paymentModel: new app.models.Payment(),
-                    offerModel: new app.models.Offer()
+                    offerModel: new app.models.Offer(),
+                    customerModel: new app.models.Customer(),
                 }
             ));
 	    },
@@ -275,12 +250,7 @@ $(function() {
 	    	console.log('#paymentStep3');
 	        this.changePage(new app.views.PaymentStep3View());
 	    },
-
-	    paymentStep4: function() {
-	    	console.log('#paymentStep4');
-	        this.changePage(new app.views.PaymentStep4View());
-	    },
-
+	   
 	    manageNotifications: function() {
 	    	console.log('#manageNotifications');
 	        this.changePage(new app.views.ManageNotificationsView(
@@ -289,16 +259,6 @@ $(function() {
                     accountModel: new app.models.Account()
 		        }
 	        ));
-	    },
-
-	    paymentConfirmation: function() {
-	    	console.log('#paymentConfirmation');
-	        this.changePage(new app.views.PaymentConfirmationView());
-	    },
-
-	    orderSummary: function() {
-	    	console.log('#order_summary');
-	        this.changePage(new app.views.OrderSummaryView());
 	    },
 
 	    invoice:function () {
@@ -312,44 +272,9 @@ $(function() {
 	        ));
 	    },
 
-	    billingInfo: function() {
-	    	console.log('#billing_info');
-	        this.changePage(new app.views.BillingInfoView());
-	    },
-
 	    chat: function() {
 	    	console.log('#chat');
 	        this.changePage(new app.views.ChatView());
-	    },
-
-		helpEmail:function () {
-	        console.log('#help_email');
-	        this.changePage(new app.views.HelpEmailView());
-	    },
-
-		helpEmailWeb:function () {
-	        console.log('#help_email_web');
-	        this.changePage(new app.views.HelpEmailWebView());
-	    },
-
-		helpPin:function () {
-	        console.log('#help_pin');
-	        this.changePage(new app.views.HelpPinView());
-	    },
-
-		helpPinWeb:function () {
-	        console.log('#help_pin_web');
-	        this.changePage(new app.views.HelpPinView());
-	    },
-
-		condition:function () {
-	        console.log('#Condition');
-	        this.changePage(new app.views.ConditionView());
-	    },
-
-		conditionWeb:function () {
-	        console.log('#conditionWeb');
-	        this.changePage(new app.views.ConditionWebView());
 	    },
 
 		helpSection:function () {
@@ -404,30 +329,10 @@ $(function() {
             ));
 	    },
 
-	    helpNewPasswProfile: function() {
-	    	console.log('#help_new_passw_profile');
-	        this.changePage(new app.views.HelpNewPasswProfileView());
-	    },
-
-	    helpOldPasswProfile: function() {
-	    	console.log('#help_old_passw_profile');
-	        this.changePage(new app.views.HelpOldPasswProfileView());
-	    },
-
-	    helpPinProfile: function() {
-	    	console.log('#help_pin_profile');
-	        this.changePage(new app.views.HelpPinProfileView());
-	    },
-
 	    updateApp:function () {
 	        console.log('#updateApp');
 	        this.changePage(new app.views.UpdateAppView());
 	    },
-
-        emailUpdateView: function() {
-            console.log('#email_update');
-            this.changePage(new app.views.EmailUpdateView());
-        },
 
 	    addAccounts:function () {
 	        console.log('#add_accounts');
@@ -437,17 +342,6 @@ $(function() {
 	        	}
 	        ));
 	    },
-
-        touchIdSetup: function() {
-			console.log('#touch_id_setup');
-	        this.changePage(new app.views.TouchIdSetupView());
-        },
-
-
-        resetPassword:function () {
-            console.log('#reset_password');
-            this.changePage(new app.views.ResetPasswordView());
-        },
 
 	    changePage: function (page) {
 
@@ -502,105 +396,46 @@ $(function() {
 
         backPage:function(){
 
-            // Hidden loading
-            app.utils.loader.hide();
+              // Hidden loading
+              app.utils.loader.hide();
 
-            var current = this.history.pop();
-            var prev = this.history.pop();
-
-            if(Backbone.history.fragment=='menu' || (current=='chat' && prev=='login')){
-	        	app.router.navigate('login', {trigger: true});
-	        } else if(Backbone.history.fragment=='login' || Backbone.history.fragment=='login_guest' || Backbone.history.fragment == ''){
-	    		// Exit application for Android
-	    		navigator.app.exitApp();
-	    	} else {
-	    		app.router.navigate(prev, {trigger: true});
-	    	}
-
+              var current = this.history.pop();
+              var prev = this.history.pop();
+  
+              if (current=='chat' && prev=='login'){
+                  app.router.navigate('login', {trigger: true});
+              } else if(Backbone.history.fragment=='login'
+                  || Backbone.history.fragment=='login_guest'
+                  || Backbone.history.fragment == ''){
+                  // Exit application for Android
+                  navigator.app.exitApp();
+              } else if(Backbone.history.fragment=='menu'){
+                  showConfirm(
+                      'Confirmación',
+                      '¿Esta seguro que desea salir de la aplicación?',
+                      ['Cancelar', 'Si, Salir'],
+                      function (btnIndex) {
+                          if (btnIndex == 2) {
+                              navigator.app.exitApp();
+                          }
+  
+                      }
+                  );
+              } else {
+                  app.router.navigate(prev, {trigger: true});
+              }
+  
 	    },
-
-         fixedFailureReport:function () {
-             console.log('#fixedFailureReport');
-             this.changePage(new app.views.FixedFailureReportView(
-                 {
-                   accountModel: new app.models.Account()
-                 }
-             ));
-         },
-
-         payQuota: function() {
-             console.log('#pay_quota');
-             this.changePage(new app.views.PayQuotaView());
-         },
-
-         paymentQuotaDevice: function() {
-             console.log('#payment_quota_device');
-             this.changePage(new app.views.PaymentQuotaDeviceView(
-                 {
-                     paymentModel: new app.models.Payment()
-                 }
-             ));
-         },
-
-         confirmPayQuota: function() {
-             console.log('#confirm_pay_quota');
-             this.changePage(new app.views.ConfirmPayQuotaView());
-         },
-
-         svaSell: function() {
-             console.log('#sva_sell');
-             this.changePage(new app.views.SvaSellView(
-                 {
-                     accountModel: new app.models.Account(),
-                     offerModel: new app.models.Offer()
-                 }
-             ));
-         },
-
-         myOrder: function() {
-             console.log('#my_order');
-             this.changePage(new app.views.MyOrderView(
-                 {
-                     accountModel: new app.models.Account()
-                 }
-             ));
-
-         },
-
-         paymentCreditSva: function() {
-             console.log('#payment_sva');
-             this.changePage(new app.views.PaymentCreditSvaView());
-         },
-
-         paymentSva: function() {
-             console.log('#payment_sva');
-             this.changePage(new app.views.PaymentSvaView(
-                 {
-                     paymentModel: new app.models.Payment()
-                 }
-             ));
-         },
-
-         confirmPaySva: function() {
-             console.log('#confirm_pay_quota');
-             this.changePage(new app.views.ConfirmPaySvaView());
-         },
-
-         debitDirect: function() {
+        
+        debitDirect: function() {
             console.log('#debitDirect');
-            this.changePage(new app.views.DebitDirectView());
+            this.changePage(new app.views.DebitDirectView(
+                {
+                    paymentModel: new app.models.Payment()
+                }
+            ));
         },
-
-        confirmDebit: function() {
-            console.log('#confirm_debit');
-            this.changePage(new app.views.ConfirmDebitView());
-        },
-
-        svaTerms: function() {
-            console.log('#sva_terms');
-            this.changePage(new app.views.SvaTermsView());
-        },
-
+    
         signinStep1: function () {
             console.log('#signin_step_1');
             this.changePage(new app.views.SigninStep1View(
@@ -712,9 +547,13 @@ $(function() {
 
         notificationsApp: function () {
             console.log('#notifications_app');
-            this.changePage(new app.views.NotificationsAppView());
+            this.changePage(new app.views.NotificationsAppView(
+                {
+                    userModel: new app.models.User()
+                }
+            ));
         },
-
+        
         refiereStep1: function () {
             console.log('#refiere_step_1');
             this.changePage(new app.views.RefiereStep1(
@@ -755,6 +594,15 @@ $(function() {
             ));
         },
 
+        refiereQuestions: function () {
+            console.log('#refiere_questions');
+            this.changePage(new app.views.RefiereQuestionsView(
+                {
+
+                }
+            ));
+        },
+
         changePlan: function () {
             console.log('#change_plan');
             this.changePage(new app.views.ChangePlanView(
@@ -764,11 +612,22 @@ $(function() {
             ));
         },
 
-        changePlanConfirm: function () {
+        changePlanPrepaid: function () {
+            console.log('#change_plan_prepaid');
+            this.changePage(new app.views.ChangePlanPrepaidView(
+                {
+                    offerModel: new app.models.Offer()
+                }
+            ));
+        },
+
+         changePlanConfirm: function () {
             console.log('#change_plan_confirm');
             this.changePage(new app.views.ChangePlanConfirmView(
                 {
-                    offerModel: new app.models.Offer()
+                    offerModel: new app.models.Offer(),
+                    customerModel: new app.models.Customer(),
+                    paymentModel: new app.models.Payment()
                 }
             ));
         },
@@ -780,11 +639,6 @@ $(function() {
                     customerModel: new app.models.Customer()
                 }
             ));
-        },
-
-        dataPackages: function () {
-            console.log('#data_packages');
-            this.changePage(new app.views.DataPackagesView());
         },
 
         invoiceDownload: function () {
@@ -808,12 +662,11 @@ $(function() {
 
         myOrders: function () {
             console.log('#my_orders');
-            this.changePage(new app.views.MyOrdersView());
-        },
-
-        myServices: function () {
-            console.log('#my_services');
-            this.changePage(new app.views.MyServicesView());
+            this.changePage(new app.views.MyOrdersView(
+                {
+                    accountModel: new app.models.Account()
+                }
+			));
         },
 
         netflix: function () {
@@ -823,12 +676,30 @@ $(function() {
 
         netflixSubscription: function () {
             console.log('#netflix_subscription');
-            this.changePage(new app.views.NetflixSubscriptionView());
+            this.changePage(new app.views.NetflixSubscriptionView(
+                {
+                    accountModel: new app.models.Account()
+                }
+            ));
         },
 
         netflixSupport: function () {
             console.log('#netflix_support');
             this.changePage(new app.views.NetflixSupportView());
+        },
+
+        netflixClaims: function () {
+            console.log('#netflix_claims');
+            this.changePage(new app.views.NetflixClaimsView());
+        },
+
+        netflixRedirect: function () {
+            console.log('#netflix_redirect');
+            this.changePage(new app.views.NetflixRedirectView(
+                {
+                    accountModel: new app.models.Account()
+                }
+			));
         },
 
         purchases: function () {
@@ -839,11 +710,6 @@ $(function() {
         support: function () {
             console.log('#support');
             this.changePage(new app.views.SupportView());
-        },
-
-        myServicesFijo: function () {
-            console.log('#my_services_fijo');
-            this.changePage(new app.views.MyServicesFijoView());
         },
 
         faultReportA: function () {
@@ -908,7 +774,8 @@ $(function() {
             console.log('#gift_1gb');
             this.changePage(new app.views.Gift1gbView(
                 {
-                    customerModel: new app.models.Customer()
+                    customerModel: new app.models.Customer(),
+                    offerModel: new app.models.Offer()
                 }
             ));
         },
@@ -917,9 +784,15 @@ $(function() {
             console.log('#gift_recharge');
             this.changePage(new app.views.GiftRechargeView(
                 {
-                    customerModel: new app.models.Customer()
+                    customerModel: new app.models.Customer(),
+                    offerModel: new app.models.Offer()
                 }
             ));
+        },
+
+        giftSent: function () {
+            console.log('#gift_sent');
+            this.changePage(new app.views.GiftSentView());
         },
 
         paymentHistory: function () {
@@ -936,6 +809,102 @@ $(function() {
 			this.changePage(new app.views.InvoiceDetailsView());
         },
         
+        purchaseAdditionalService: function () {
+            console.log('#purchase_additional_service');
+            this.changePage(new app.views.PurchaseServiceView());
+        },
+
+        devicePayment1: function () {
+            console.log('#device_payment_1');
+            this.changePage(new app.views.DevicePayment1View());
+        },
+
+        callsDetails:function () {
+            console.log('#calls_details');
+            this.changePage(new app.views.CallsDetailsView());
+        },
+
+        consumptionPrepaid:function () {
+            console.log('#consumption_prepaid');
+            this.changePage(new app.views.ConsumptionPrepaidView(
+                {
+                    loginModel: new app.models.Login(),
+                    customerModel: new app.models.Customer()
+                }
+            ));
+        },
+
+        historyPrepaid:function () {
+            console.log('#history_prepaid');
+            this.changePage(new app.views.HistoryPrepaidView());
+        },
+
+        rechargePrepaid:function () {
+            console.log('#recharge_prepaid');
+            this.changePage(new app.views.RechargePrepaidView(
+                {
+                    paymentModel: new app.models.Payment()
+                }
+            ));
+        },
+
+        rechargePrepaidConfirm:function () {
+            console.log('#recharge_prepaid_confirm');
+            this.changePage(new app.views.RechargePrepaidConfirmView(
+                {
+                    paymentModel: new app.models.Payment()
+                }
+            ));
+        },
+
+        rechargePrepaidPayment:function () {
+            console.log('#recharge_prepaid_payment');
+            this.changePage(new app.views.RechargePrepaidPaymentView(
+                {
+                    paymentModel: new app.models.Payment()
+                }
+            ));
+        },
+
+        rechargePrepaidSuccess:function () {
+            console.log('#recharge_prepaid_payment');
+            this.changePage(new app.views.RechargePrepaidSuccessView());
+        },
+
+        transactionsPrepaid:function () {
+            console.log('#transactions_prepaid');
+            this.changePage(new app.views.TransactionsPrepaidView(
+                {
+                    paymentModel: new app.models.Payment()
+                }
+            ));
+        },
+
+        dataPlanSuccess:function () {
+            console.log('#data_plan_success');
+            this.changePage(new app.views.DataPlanSuccessView());
+        },
+
+        profileUpdateUsername: function() {
+            console.log('#profile_update_username');
+            this.changePage(new app.views.ProfileUpdateUsernameView(
+                {
+                    userModel: new app.models.User(),
+                    accountModel: new app.models.Account()
+                }
+            ));
+        },
+
+        profileUpdateQuestions: function() {
+            console.log('#profile_update_questions');
+            this.changePage(new app.views.ProfileUpdateQuestionsView(
+                {
+                    userModel: new app.models.User(),
+                    accountModel: new app.models.Account()
+                }
+            ));
+        }
+/*
         passport: function() {
             console.log('#passport');
             this.changePage(new app.views.PassportView());
@@ -945,7 +914,7 @@ $(function() {
             console.log('#my_store');
             this.changePage(new app.views.MyStoreView());
 
-        },
+        },*/
 
 
 	});

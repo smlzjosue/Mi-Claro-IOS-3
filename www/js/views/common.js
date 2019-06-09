@@ -32,7 +32,7 @@ $(function() {
         activateMenu: function(e) {
             var self = this;
 
-            app.resetTimer();
+            //app.resetTimer();
 
             $('.m-menuin.offnouse').click(function(){
                 self.dialogAccessLimited();
@@ -115,6 +115,7 @@ $(function() {
             $('#nav-access8').click(function() { self.logout(); });
 
             // Dashboard
+            $('.dash_recharge').click(function() { self.navigatePrepaidRecharge(); });
             $('.dash_invoice').click(function() { self.navigateInvoiceSummary(); });
             $('.dash_consumption_data').click(function() { self.navigateConsumptionData(); });
             $('.dash_consumption_others').click(function() { self.navigateConsumptionOthers(); });
@@ -239,48 +240,43 @@ $(function() {
             $('#nav-access'+id).find('p').html(name);
         },
 
-
-        clickSubMenu1: function() {
-            $('#postpaid1-head').toggleClass('open-ins');
-        },
-
-        clickSubMenu2: function() {
-            $('#postpaid2-head').toggleClass('open-ins');
-        },
-
-        clickSubMenu3: function() {
-            $('#postpaid3-head').toggleClass('open-ins');
-        },
-
-        clickSubMenu4: function() {
-            $('#postpaid4-head').toggleClass('open-ins');
-        },
-
-        clickSubMenu5: function() {
-            $('#postpaid5-head').toggleClass('open-ins');
-        },
-
         openNav: function() {
+            /*
             document.getElementById("mySidenav").style.left = "0";
             //document.getElementById("mySidenav").style.visibility = "visible";            
             $('.mnu-icon').addClass('m-open');
             $.mobile.activePage.find('.mySidenav').offcanvas('show');
             app.isMenuOpen = true;
+            */
+           var sideNav = document.getElementById("mySidenav");
+           sideNav.style.right = "0";
+           $('#nav-open').hide();
+           $('#nav-close').show();
+           app.isMenuOpen = true;
+            
         },
 
         closeNav: function () {
             if (app.isMenuOpen === true) {
+                /*
                 document.getElementById("mySidenav").style.left= "-100%";
                 //document.getElementById("mySidenav").style.visibility = "hidden";
                 $('.mnu-icon').removeClass('m-open');
                 $.mobile.activePage.find('.mySidenav').offcanvas('hide');
                 
                 app.isMenuOpen = false;
+                */
+
+               var sideNav = document.getElementById("mySidenav");
+               sideNav.style.right = "100%";
+               $('#nav-close').hide();
+               $('#nav-open').show();
+               app.isMenuOpen = false;
                 
             }
         },
 
-        back: function(e) {
+        back: function(e){
 
             if (Backbone.history.fragment=='profile_update_username') {
                 showConfirm(
@@ -300,7 +296,7 @@ $(function() {
 
             var analytics = null;
 
-            if (analytics != null) {
+            if(analytics !=null ){
                 // send google statistics
                 analytics.trackEvent('button', 'click', 'back');
             }
@@ -351,6 +347,10 @@ $(function() {
             app.router.history	= ['menu']; // TODO, este es el correcto
             app.router.navigate('menu',{trigger: true}); // TODO, este es el correcto
             //app.router.navigate('payment_step_1',{trigger: true}); // TODO, Borrar
+            //app.router.navigate('payment_step_2',{trigger: true}); // TODO, Borrar
+            //app.router.navigate('device',{trigger: true}); // TODO, Borrar
+            //app.router.navigate('change_plan',{trigger: true}); // TODO, Borrar
+            //this.navigatePrepaidRecharge(); // TODO, Borrar
         },
 
         navigateInvoiceSummary: function() {
@@ -638,23 +638,7 @@ $(function() {
             app.router.navigate('help_section',{trigger: true});
 
         },
-
-        back: function(e) {
-            
-                        var analytics = null;
-            
-                        if (analytics != null) {
-                            // send google statistics
-                            analytics.trackEvent('button', 'click', 'back');
-                        }
-            
-                        e.preventDefault();
-                        app.router.back = true;
-            
-                        app.router.backPage();
-                    },
-
-
+ 
         getUserAccess: function() {
             var listSections = app.utils.Storage.getSessionItem('accounts-available-sections');
 
@@ -718,14 +702,14 @@ $(function() {
         active: function(e){
 
 
-            var self = this;
+            var	self = this;
             url = app.utils.Storage.getSessionItem('navegation-path');
 
             //alert('on commons.active: ' + url);
 
             app.utils.Storage.removeSessionItem('navegation-path');
 
-            switch (url) {
+            switch(url) {
                 case 'account':
                     self.account();
                     break;
@@ -772,6 +756,7 @@ $(function() {
         toggleClass: function(e){
             $(e.currentTarget).toggleClass('mon');
         },
+        
         dialogAccessLimited: function() {
             var self = this;
             showConfirm('', 'Actualmente, estas en modo de usuario invitado. Si eres el dueño de la cuenta, debes autenticarte y/o registrarte para esta y otras secciones transacciones solo disponibles para el administrador.',
@@ -911,7 +896,58 @@ $(function() {
                 errorFunction
             );
         },
+//-----------------------------------------------------------------updateTokenPrepaid: function(account, subscriber) {
+    updateTokenPrepaid: function(account, subscriber) {
+            var self = this;
+            var subscribers = app.utils.Storage.getSessionItem('subscribers-info');
+            var subscriberObj = null;
+            if (this.isCurrentAccountPrepaid()){
+                var selectedSubscriberValue = app.utils.Storage.getSessionItem('selected-subscriber-value');
+                $.each(subscribers, function(index, subscriber) {
+                    if (subscriber.subscriberNumberField == selectedSubscriberValue) {
+                        subscriberObj = subscriber;
+                    }
+                });
+            }
 
+            if (self.isPrepaidTokenSaved(subscriber)) {
+                self.updateTokenPrepaidSuccess();
+            } else {
+                var customerModel = new app.models.Customer();
+                customerModel.updateToken(
+                    subscriber,
+                    account,
+                    function (response) {
+                        self.updateTokenPrepaidSuccess();
+                    },
+                    function (error) {
+                        self.updateTokenPrepaidSuccess();
+                    }
+                );
+            }
+        },
+
+        updateTokenPrepaidSuccess: function() {
+
+        },
+
+        isPrepaidTokenSaved: function(subscriber) {
+            var isLoaded = false;
+            var tokenSaved = app.utils.Storage.getSessionItem('subscribers-prepaid-tokens');
+            if (tokenSaved == undefined || tokenSaved == null) {
+                return isLoaded;
+            }
+            $.each(tokenSaved, function(index, tokenU) {
+                if (tokenU.subscriber == subscriber) {
+                    isLoaded = true;
+                }
+            });
+            return isLoaded;
+        },
+
+
+
+//-------------------------------------------------------------------
         getAccountAccess: function(selectedAccount, subscriber, successFunction, errorFunction) {
             var self = this;
             var customerModel = new app.models.Customer();
@@ -1132,13 +1168,6 @@ $(function() {
             }
             return planInfo;
         },
-        
-
-        giftSendRecharge: function(e) {
-            app.router.navigate('gift_send_recharge', {
-                trigger: true
-            });
-        },
                                                 
         myOrder: function(e) {
             var self = this,
@@ -1225,7 +1254,7 @@ $(function() {
 
         },
 
-        sva: function(e) {
+     /*   sva: function(e) {
 
             var self = this,
                 accountNumber = app.utils.Storage.getSessionItem('selected-account-value'),
@@ -1310,7 +1339,7 @@ $(function() {
             }
 
             return false;
-        },
+        },*/
         
 
 
