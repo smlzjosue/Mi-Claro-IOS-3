@@ -138,7 +138,7 @@
 
 .container .reflinkdef {
     min-height: 50px !important;
-    display: flex !important;
+    display: flex; !important;
 }
 
 #share-link {
@@ -185,7 +185,97 @@ input:focus, .tags-input.focus {
 }
 /* for input emails */
 
-#mySidenav{
-    left: -100%;
+.text-required {
+    color: #ef3829
 }
+
+/* for remove padding bottom on chat */
+.ui-page-active {
+    padding-bottom: 0 !important;
+}
+
+.cred-opts.prep {
+    padding: 3px;
+    border: 1px solid white;
+    margin-right: 0;
+    margin-top: 6px;
+}
+.cred-opts.prep.on {
+    border: 1px solid #cccccc;
+    background-color: #1f97ae;
+    color: #ffffff;
+}
+
+.cred-opts.prep img {
+    width: 63px;
+    height: auto;
+    margin-left: 0;
+}
+
+/* init styles for header*/
+.header.container.rel {
+    padding: 0 1%
+}
+
+.header .item {
+    width: 50px;
+    height: 50px;
+    display: flex
+}
+
+.header .item img {
+    position: inherit
+}
+
+#count-notifications {
+    margin-left: 12px
+}
+
+.item .autocont {
+    position: absolute;
+}
+/* finished styles for header*/
+
+#maincont, .ui-page-active {
+    padding-bottom: 0;
+}
+
+.termr-t {
+    white-space: pre-line;
+}
+
+.flicker.active {
+    background-color: #edf2fa;
+}
+
+.flicker.active {
+    animation-name: flicker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+
+    -webkit-animation-name:flicker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+}
+
+@-moz-keyframes flicker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes flicker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+/*
+@keyframes flicker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+*/
 

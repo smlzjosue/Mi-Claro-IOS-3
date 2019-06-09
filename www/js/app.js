@@ -1,13 +1,13 @@
 var app = {
 
+
     // App Information
     id: '775322054',
     country: 'pr',
-    os: 'IOS',
-    device: 'iphone',
     version: null,
     build: null,
     uuid: 0,
+    os: 'IOS',
     connectionType: '',
     registrationId: null,
     rate: null,
@@ -17,59 +17,24 @@ var app = {
     sessionPasswordTime: 10,
 
     // Gateway Application ID
-	gatewayAppId: 'At01bMi0aXhr6ktmTaow',
+    gatewayAppId: 'At01bMi0aXhr6ktmTaow',
+    
+    apiKey: '6af3982a-ce65-41a0-93d9-52bd172685cd',
 
 	 // Debug mode
     debug: true,
-
-    newUrl: 'http://mcloginws.claroinfo.com/api/',
-    // Procesos url
-    processURL: 'http://mcloginapp.claroinfo.com/proccess/procesos2.aspx',
-    processOLD: 'http://miclarouatend.claropr.com/proccess/procesos.aspx',
-    // Production URL
-    url: 'https://miclaro.clarotodo.com/ClaroMobileServicesV2.0.0/',
-    //url: 'https://miclaro.clarotodo.com/ClaroMobileServicesV1.5.0QA23/',
-    alterUrl: 'https://miclaro.clarotodo.com/ClaroMobileServicesV2.0.0/',
-    //alterUrl: 'https://miclaro.clarotodo.com/ClaroMobileServicesV1.5.0QA23/',
-
-    // MiClaro API
-    // Production-Active
-    // apiUrl: 'https://wsclarorprodnew.claropr.com/api-miclaro-services-prod-new/miclaro/',
-    //apiUrl: 'https://miclaroapi.claropr.com/v2.1/miclaro/', // production-OLD
-    apiUrl: 'http://184.106.10.165:9080/api-miclaro-services/miclaro/',  // develop
-    apiKey: '6af3982a-ce65-41a0-93d9-52bd172685cd',
-
-    //MiClaro services
-    // Prod-Active
-    // v3URL: 'https://miclarowsuidsprod.claropr.com/Service/v3/',
-    v3URL: 'http://50.56.55.63/Service/v3/', // DEV
-
-    // Payment Prod
-    pcrfUrl: 'https://paymentswstransact.clarotodo.com/payment/creditcard/process',
-
+     /**** START URLs REBRANDING ****/
+     newUrl: 'http://wslogin2.claroinfo.com/api/', // PROD
+  // processURL: 'http://miclaroreferals.claroinfo.com/proccess/procesos-dev.aspx', // DEV
+    processURL: 'http://rebranding.claroinfo.com/proccess/procesos-dev.aspx', // PROD
+     // Chat URL
+     chatURL: 'https://chat3.claropr.com/webapiserver/ECSApp/ChatWidget3/ChatPanel.aspx',
+     /**** END URLs REBRANDING ****/
+ 
+    
     // Help URL
     helpURL: 'http://soporteapps.speedymovil.com:8090/appFeedback/service/feedback/application',
 
-    // Chat URL
-    chatURL: 'https://chat.clarotodo.com/newversion/chat_movil.html',
-
-    // Register App URL
-    // registerAppUrl: 'https://registro.claropr.com/',
-    registerAppUrl: 'http://184.106.10.165:9090/claro-registro/', // QA
-
-    // Prepaid URL
-    // prepaidURL: 'https://miclaroprepago.claropr.com/',
-    prepaidURL: 'http://184.106.10.165:8880/', //QA
-
-    // 1Gb Gift
-    giftSendUrl: 'https://miclaro.clarotodo.com/Regala1GBv2/landing.html?',
-    giftAcceptUrl: 'https://miclaro.clarotodo.com/Regala1GBv2/activacion.html?',
-
-    // R1R
-    // PROD Active
-    // giftSendR1R: 'https://miclaro.clarotodo.com/r1r/enviar-1-recarga',
-    giftSendR1R: 'http://184.106.10.165:9090/r1r/enviar-1-recarga', //QA
-    
     // Captive Portal
     captivePortalURL: 'http://datapaqqa-ws.clarotodo.com/',
 
@@ -217,15 +182,6 @@ var app = {
             app.apiUrl + 'widgets/getInvoiceInfo'
         );
 
-    },
-
-    removeSession: function() {
-        app.utils.Storage.removeLocalItem('username');
-        app.utils.Storage.removeLocalItem('password');
-
-        app.utils.Storage.removeLocalItem('isLogged');
-        app.utils.Storage.removeLocalItem('logged-guest');
-        app.utils.Storage.removeLocalItem('logged-subscriber');
     },
 
     // Resume Event Handler for retrieved from the background.

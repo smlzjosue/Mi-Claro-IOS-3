@@ -42,7 +42,7 @@ $(function() {
 			}
 			
 		},
-		
+
 		getLocalItem: function(key) {
 			
 			var value = null;
@@ -107,8 +107,8 @@ $(function() {
 			expire.setTime(time);
 
 			if(window.sessionStorage.getItem('token') != null && now.getTime() > time){
-				document.location.href='#login';
-				//this.cleanCache();
+				console.log("go to login is called");
+				//document.location.href='#login'; // TODO cambiado el sistema de redireccionamiento
 			}
 			
 			// check support
@@ -125,7 +125,7 @@ $(function() {
 			
 			//session update
 			now.setTime(now.getTime() + (1000 * 60 * this.sessionStorageTime));
-			window.sessionStorage.setItem('time',now.getTime());
+			window.sessionStorage.setItem('time', now.getTime());
 			
 			return value;
 		},

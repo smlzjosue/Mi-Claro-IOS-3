@@ -11,8 +11,7 @@ $(function() {
 
         errorFunction: function (data) {
             if (data.responseJSON.code == "001") {
-                showAlert('Error', "Disculpe, su sesión ha expirado", 'Aceptar', function(){})
-                app.router.navigate('login',{trigger: true});
+                app.goInactive();
             } else {
                 showAlert('Error', app.utils.network.errorMsg, 'Aceptar', function(){});
             }
@@ -22,22 +21,11 @@ $(function() {
 	        if (message) {
                 showAlert('Error', message, 'Aceptar', function(){});
             } else if (status == 401) {
-                showAlert('Error', "Disculpe, su sesión ha expirado", 'Aceptar', function(){})
-                app.router.navigate('login',{trigger: true});
+                app.goInactive();
             } else {
                 showAlert('Error', app.utils.network.errorMsg, 'Aceptar', function(){});
             }
         },
-        
-        customErrorFunction: function(data) {
-        	console.log(data.responseJSON.desc);
-        	if (data.responseJSON.code == "001") {
-        		showAlert('Error', "Disculpe, su sesión ha expirado", 'Aceptar', function(){})
-        		app.router.navigate('login',{trigger: true});
-        	} else {
-        		showAlert('Error', data.responseJSON.desc, 'Aceptar', function(){});
-        	}
-        },	
 		
         /*************************************************************************/
         //method -> method url or name
@@ -250,7 +238,7 @@ $(function() {
 
 
 
-        processRequest: function(parameters, successCB, errorCB) {
+        processRequest: function(parameters, successCB, errorCB, skip) {
 
             var self = this;
             // Timeout time
@@ -259,6 +247,12 @@ $(function() {
             app.utils.loader.show();
 
             if (self.attempts > 2) {
+                return;
+            }
+
+            if (!skip && !app.utils.tools.isSessionActive()) {
+                console.log('Session is expired!!!');
+                app.utils.loader.hide();
                 return;
             }
 
@@ -275,6 +269,26 @@ $(function() {
                 },
                 error: function (data, status, error) {
                     app.utils.loader.hide();
+                    errorCB(data, status);
+                }
+            });
+        },
+
+        processRequestNotDialog: function(parameters, successCB, errorCB) {
+            // Timeout time
+            var timeoutValue = 90000;
+
+            $.ajax({
+                type: 'POST',
+                url: app.processURL,
+                contentType: 'application/json; charset=utf-8',
+                data: parameters,
+                dataType: 'json',
+                timeout: timeoutValue,
+                success: function (data, textStatus) {
+                    successCB(data);
+                },
+                error: function (data, status, error) {
                     errorCB(data, status);
                 }
             });
@@ -353,11 +367,36 @@ $(function() {
             });
         },
 
+        requestValidate: function(method, headers, parameters, successCB, errorCB) {
 
+            var self = this;
+            // Timeout time
+            var timeoutValue = 70000;
+            // Show loading
+            app.utils.loader.show();
 
+            if (self.attempts > 2) {
+                return;
+            }
 
-
-
+            $.ajax({
+                type: 'POST',
+                url: app.validateUrl + method,
+                contentType: 'application/json; charset=utf-8',
+                data: parameters,
+                dataType: 'json',
+                timeout: timeoutValue,
+                headers: headers != null? headers : '',
+                success: function (data, textStatus) {
+                    app.utils.loader.hide();
+                    successCB(data);
+                },
+                error: function (data, status, error) {
+                    app.utils.loader.hide();
+                    errorCB(data, status);
+                }
+            });
+        },
 
 		sendComment: function(commentInfo, parameters, successCB, errorCB){
 
@@ -542,7 +581,6 @@ $(function() {
 			    }
 			});
 
-		} 		 		
-		
+		},
 	};
 });

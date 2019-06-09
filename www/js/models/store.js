@@ -19,7 +19,7 @@ $(function() {
                     
                     parameters = '{' +
                                     '"type":"' + storeType + '"' +
-                                '}';  
+                                 '}';  
                     
                 }else{
                     
