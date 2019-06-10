@@ -1029,7 +1029,7 @@ a.menu-ls.on {
 }
 
 .mnu-icon i.fa-times,
-.mnu-icon.m-open i.fa-bars {
+.mnu-icon.c i.fa-bars {
   display: none;
 }
 
@@ -5131,6 +5131,50 @@ a.qcklinks {
   display: none;
 }
 
+.inp-f.updt-inp {
+  background-color: #ffe6a4;
+}
+
+.ortxtcnt {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.updt-textcont {
+  background-color: #ffe6a4;
+  float: left;
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  font-size: 18px;
+  position: relative;
+}
+
+.updt-textcont {
+  padding-left: 15%;
+}
+
+.advrt-icn {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 4%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.difft-def {
+  height: 44px;
+}
+
+
 /* --- MEDIA QUERY definition -------------------------------------------------*/
 
 @media (max-width: 1255px) {
@@ -5655,6 +5699,12 @@ a.qcklinks {
 }
 
 @media (max-width: 768px) {
+  .tab-cbar.evless,
+  .tab-tbar.evless {
+    font-size: 11px;
+    line-height: 11px;
+  }
+
   .tab-cbar.h-def-ii {
     height: auto;
   }
@@ -6515,6 +6565,14 @@ a.qcklinks {
   .mdtail {
     display: inline-block;
   }
+
+  .pull-right.chg-left {
+    float: left!important;
+  }
+
+  .updt-textcont {
+    padding-left: 24%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -6526,6 +6584,13 @@ a.qcklinks {
 }
 
 @media (max-width: 550px) {
+
+  .tab-cbar.evless,
+  .tab-tbar.evless {
+    font-size: 10px;
+    line-height: 10px;
+  }
+
 
   .qcklinks {
     width: 100%;
@@ -6868,4 +6933,26 @@ input:checked + .slider:before {
     -ms-transform: translateX(100%);
     transform: translateX(100%);
   }
+}
+
+/* --- Nuevas Clases 02-05-19 definition -------------------------------------------------*/
+
+.dashconts.offnouse {
+  zoom: 1;
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+  /*pointer-events: none;*/
+}
+
+.m-menubar.offnouse {
+  color: #fcdbd9;
+  background-color: #f47369;
+  /*pointer-events: none;*/
+}
+
+.m-menuin.offnouse i,
+.m-menuin.offnouse,
+a.m-menuin.offnouse {
+  color: #c2c2c2;
+  /*pointer-events: none;*/
 }

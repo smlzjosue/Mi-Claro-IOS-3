@@ -138,7 +138,7 @@
 
 .container .reflinkdef {
     min-height: 50px !important;
-    display: flex; !important;
+    display: flex !important;
 }
 
 #share-link {
@@ -169,11 +169,6 @@
     padding-top: 1px;
 }
 
-#nav-close,
-#nav-open  {
-    padding-top: 4px;
-}
-
 /* for input emails */
 input:focus, .tags-input.focus {
     border-color: #59F;
@@ -184,6 +179,7 @@ input:focus, .tags-input.focus {
     border: none !important;
 }
 /* for input emails */
+
 
 .text-required {
     color: #ef3829
@@ -271,11 +267,25 @@ input:focus, .tags-input.focus {
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
 }
-/*
+
 @keyframes flicker {
     0% { opacity: 1.0; }
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
 }
+
+/*Esto es para poder hacer scroll luego de la ultima actualizacion de chrome en Android*/
+/*
+.ui-page-active {
+    overflow-x: auto;
+}
 */
+/*
+#nav-close,
+#nav-open  {
+    padding-top: 4px;
+}*/
+#mySidenav{
+    left: -100%;
+}
 
