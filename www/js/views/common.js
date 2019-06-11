@@ -249,7 +249,7 @@ $(function() {
             app.isMenuOpen = true;
             */
            var sideNav = document.getElementById("mySidenav");
-           sideNav.style.right = "0";
+           sideNav.style.left = "0";
            $('#nav-open').hide();
            $('#nav-close').show();
            app.isMenuOpen = true;
@@ -268,7 +268,7 @@ $(function() {
                 */
 
                var sideNav = document.getElementById("mySidenav");
-               sideNav.style.right = "100%";
+               sideNav.style.left = "-100%";
                $('#nav-close').hide();
                $('#nav-open').show();
                app.isMenuOpen = false;
