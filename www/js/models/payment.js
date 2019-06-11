@@ -118,6 +118,7 @@ $(function () {
             const method = 'refillHistory';
 
             const parameters = JSON.stringify({
+                suscriber: subscriber,
                 idCustomerCard: idCustomerCard,
                 index: index,
                 year: year,
@@ -125,7 +126,7 @@ $(function () {
                 status: status,
                 type: type,
                 method: method,
-                token: tokenSession+subscriber
+                token: tokenSession
             });
 
             app.utils.network.processRequest(parameters, successCB, errorCB);
@@ -176,7 +177,8 @@ $(function () {
             const tokenSession = app.utils.Storage.getSessionItem('token');
             const method = 'prepaidPayment';
 
-            data.token = tokenSession+subscriber;
+            data.suscriber = subscriber;
+            data.token = tokenSession;
             data.method = method;
 
             const parameters = JSON.stringify(data);
@@ -189,7 +191,8 @@ $(function () {
             const tokenSession = app.utils.Storage.getSessionItem('token');
             const method = 'prepaidPaymentATH';
 
-            data.token = tokenSession+subscriber;
+            data.suscriber = subscriber;
+            data.token = tokenSession;
             data.method = method;
 
             const parameters = JSON.stringify(data);
@@ -202,7 +205,9 @@ $(function () {
             const tokenSession = app.utils.Storage.getSessionItem('token');
             const method = 'minutesRecharge';
 
-            data.token = tokenSession+subscriber;
+
+            data.suscriber = subscriber;
+            data.token = tokenSession;
             data.method = method;
 
             const parameters = JSON.stringify(data);
@@ -216,9 +221,10 @@ $(function () {
             const method = 'productserviceList';
 
             const parameters = JSON.stringify({
+                suscriber: subscriber,
                 idProductType: idProduct,
                 method: method,
-                token: tokenSession+subscriber
+                token: tokenSession
             });
 
             app.utils.network.processRequest(parameters, successCB, errorCB);
@@ -230,8 +236,9 @@ $(function () {
             const method = 'prepaidAddress';
 
             const parameters = JSON.stringify({
+                suscriber: subscriber,
                 method: method,
-                token: tokenSession+subscriber
+                token: tokenSession
             });
 
             app.utils.network.processRequest(parameters, successCB, errorCB);
@@ -243,8 +250,9 @@ $(function () {
             const method = 'listTypesPayments';
 
             const parameters = JSON.stringify({
+                suscriber: subscriber,
                 method: method,
-                token: tokenSession+subscriber
+                token: tokenSession
             });
 
             app.utils.network.processRequest(parameters, successCB, errorCB);

@@ -15,13 +15,14 @@ $(function() {
             const method = 'validateAccount';
 
             const parameters = JSON.stringify({
+                suscriber: subscriber,
                 ban: account,
                 currentAccountSubType: accountSubType,
                 currentAccountType: accountType,
                 newAccountSubType: accountSubType,
                 newAccountType: accountType,
                 method: method,
-                token: tokenSession+subscriber
+                token: tokenSession
             });
 
             app.utils.network.processRequest(parameters, successCB, errorCB);
@@ -210,7 +211,7 @@ $(function() {
             app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
-        GetGift1GBSend: function(account, successCB, errorCB){
+        getGift1GBSend: function(account, successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
 
@@ -223,20 +224,19 @@ $(function() {
             app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
-        validateRechargePrepaid: function(subscriber, successCB, errorCB){
-
-            const parameters = JSON.stringify({
-                subscriber: subscriber,
-            });
+        getGift1GBByGUI: function (account, gui, successCB, errorCB) {
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
 
-            const method = 'prepaid/validate';
+            const parameters = JSON.stringify({
+                BAN: account,
+                GUI:gui,
+                method: 'GetGift1GBByGUI',
+                token: tokenSession
+            });
 
-            app.utils.network.requestValidate(method, headers, parameters, successCB, errorCB);
-        },
-
+            app.utils.network.processRequest(parameters, successCB, errorCB);
+        }
 
     });
 

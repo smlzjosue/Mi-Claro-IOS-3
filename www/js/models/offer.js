@@ -210,16 +210,18 @@ $(function () {
             app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
-        getPlansPrepaid: function(subscriberToken, customerType, technology, successCB, errorCB){
+        getPlansPrepaid: function(account ,subscriber, customerType, technology, successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
             const method = 'getChangePlanPrepago';
 
             const parameters = JSON.stringify({
+                account: account,
+                suscriber: subscriber,
                 accountType: customerType,
                 tech: technology,
                 method: method,
-                token: tokenSession+subscriberToken
+                token: tokenSession
             });
 
             app.utils.network.processRequest(parameters, successCB, errorCB);
@@ -300,6 +302,7 @@ $(function () {
             const method = 'changePrepaidAccount';
 
             const parameters = JSON.stringify({
+                suscriber: subscriber,
                 amount: amount,
                 ban: account,
                 currentAccountSubType: accountSubType,
@@ -311,7 +314,7 @@ $(function () {
                 planName: planName,
                 rechargeMinutes: rechargeMinutes,
                 method: method,
-                token: tokenSession+subscriber
+                token: tokenSession
             });
 
             app.utils.network.processRequest(parameters, successCB, errorCB);

@@ -254,6 +254,7 @@ $(function() {
 
             app.utils.Storage.setSessionItem('token', response.token);
             app.utils.Storage.setLocalItem('isLogged', true);
+            app.utils.Storage.setLocalItem('logged-is-active', true);
             app.utils.Storage.setLocalItem('logged-subscriber', response.subscriber);
 		    app.utils.Storage.setLocalItem('logged-guest', response.guest);
             app.utils.Storage.setLocalItem('username', response.username);

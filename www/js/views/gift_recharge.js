@@ -245,7 +245,7 @@ $(function() {
                 message: message,
                 source: 'mobile',
                 subscriberFrom: subscriberSender,
-                subscriberTo: subscriberReceiver,
+                subscriberTo: subscriberReceiver
             };
         },
 
@@ -255,8 +255,8 @@ $(function() {
                 function (success) {
                     if (!success.HasError) {
                         app.utils.Storage.setSessionItem('gift-send-text',
-                            'Gracias: La recarga se ha enviado con <span class="roboto-b">éxito</span>');
-                        app.router.navigate('gift_sent', {
+                        'Gracias: La recarga se ha enviado con <span class="roboto-b">Éxito</span>');
+                            app.router.navigate('gift_sent', {
                             trigger: true,
                             replace: true
                         });

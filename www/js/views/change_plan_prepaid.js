@@ -28,18 +28,11 @@ $(function() {
             }
 
             var subscribers = app.utils.Storage.getSessionItem('subscribers-info');
-            var selectedSubscriberValue = app.utils.Storage.getSessionItem('selected-subscriber-value');
-            var subscriberObj = null;
-            $.each(subscribers, function(index, subscriber) {
-                if (subscriber.subscriberNumberField == selectedSubscriberValue) {
-                    subscriberObj = subscriber;
-                }
-            });
 
             var self = this,
                 variables = {
                     typeOfTelephony: app.utils.tools.typeOfTelephony,
-                    subscribers: [subscriberObj],
+                    subscribers: subscribers,
                     isPrepaid: this.isCurrentAccountPrepaid(),
                     prepaidBalance: this.getCurrentAccountPrepaidBalance(),
                     accounts: this.getSelectTabAccounts(),
@@ -62,22 +55,18 @@ $(function() {
             var self = this;
             self.activateMenu(e);
 
-            $('.select-subscriber').eq(0).trigger('click');
+            var subscribers = app.utils.Storage.getSessionItem('subscribers-info');
+            if (subscribers.length == 1) {
+                $('.select-subscriber').eq(0).trigger('click');
+            }
         },
 
         changeSubscriber: function(e) {
             var self = this;
 
-            var currentIndex = $(e.currentTarget).data('index');
-
-            var subscribers = app.utils.Storage.getSessionItem('subscribers-info');
-            var selectedSubscriberValue = app.utils.Storage.getSessionItem('selected-subscriber-value');
-            var subscriber = null;
-            $.each(subscribers, function(index, subscriberR) {
-                if (subscriberR.subscriberNumberField == selectedSubscriberValue) {
-                    subscriber = subscriberR;
-                }
-            });
+            var currentIndex = $(e.currentTarget).data('index'),
+                subscribers = app.utils.Storage.getSessionItem('subscribers-info'),
+                subscriber = subscribers[currentIndex];
 
             var htmlID = '#subscriber'+currentIndex;
 
@@ -121,9 +110,10 @@ $(function() {
             var accountInfo = app.utils.Storage.getSessionItem('account-info');
 
             self.options.offerModel.getPlansPrepaid(
-                selectedSubscriberValue,
+                accountInfo.bANField+'',
+                subscriber.subscriberNumberField,
                 accountInfo.accountTypeField,
-                "LTE",
+                subscriber.equipmentInfoField.techField == null ? "LTE" : subscriber.equipmentInfoField.techField, // TODO, le coloca la tech como LTE si viene null
                 function(success) {
                     if (success.success) {
                         const availablePlans = [];
@@ -132,7 +122,7 @@ $(function() {
                                 availablePlans.push(plan);
                             }
                         });
-                        self.setOffers(htmlID, currentIndex, subscriber, availablePlans, 2);
+                        self.setOffers(htmlID, currentIndex, subscriber, availablePlans);
                     }
                 },
                 // error function
@@ -140,7 +130,7 @@ $(function() {
             );
         },
 
-        setOffers: function (htmlID, currentIndex, subscriber, offers, type) { // type 1 postpaid, 2 prepaid, 3 dsl
+        setOffers: function (htmlID, currentIndex, subscriber, offers) {
 
             if (offers != null && offers.length > 0) {
 

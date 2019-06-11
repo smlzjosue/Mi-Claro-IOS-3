@@ -73,6 +73,13 @@ $(function() {
                     const subscriber = app.utils.Storage.getLocalItem('logged-subscriber-used');
                     if (subscriber != null) {
                         self.signOnGuest(subscriber);
+                    } else {
+                        const isGuest = app.utils.Storage.getLocalItem('logged-guest');
+                        if (!isGuest) {
+                            app.router.navigate('login', {
+                                trigger: true
+                            });
+                        }
                     }
                 } else {
                     var loginGuest = true;
@@ -202,6 +209,7 @@ $(function() {
 
             app.utils.Storage.setSessionItem('token', response.token);
             app.utils.Storage.setLocalItem('isLogged', true);
+            app.utils.Storage.setLocalItem('logged-is-active', true);
             app.utils.Storage.setLocalItem('logged-subscriber', response.subscriber);
 		    app.utils.Storage.setLocalItem('logged-guest', true);
             app.utils.Storage.setLocalItem('username', response.username);

@@ -643,6 +643,7 @@ $(function() {
             var listSections = app.utils.Storage.getSessionItem('accounts-available-sections');
 
             const isGuest = app.utils.Storage.getLocalItem('logged-guest');
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');///*
 
             const newList = [];
             listSections.forEach(function(section) {
@@ -651,6 +652,8 @@ $(function() {
                     if (page.accessID != 11  // TODO, modulo detalles de facturar
                         && page.accessID != 15 // TODO, modulo detalles de llamadas
                         && page.accessID != 22 // TODO, modulo SVA (Compra de servicios de Valor Agregado)
+                        && !(page.accessID == 24 && app.utils.tools.accountIsTelephony(selectedAccount.mAccountType, selectedAccount.mAccountSubType, selectedAccount.mProductType)) // TODO, modulo regala 1 gb en fijo
+                        && !(page.accessID == 25 && app.utils.tools.accountIsTelephony(selectedAccount.mAccountType, selectedAccount.mAccountSubType, selectedAccount.mProductType)) // TODO, modulo regala 1 recarga en fijo
                         && page.accessID != 27 // TODO, modulo de historico de recargas (prepago)
                         && page.accessID != 29 // TODO, modulo de transaferencias (prepago)
                         && page.accessID != 33) { // TODO, modulo reporta interrupcion
@@ -896,7 +899,7 @@ $(function() {
                 errorFunction
             );
         },
-//-----------------------------------------------------------------updateTokenPrepaid: function(account, subscriber) {
+
     updateTokenPrepaid: function(account, subscriber) {
             var self = this;
             var subscribers = app.utils.Storage.getSessionItem('subscribers-info');
@@ -945,9 +948,6 @@ $(function() {
             return isLoaded;
         },
 
-
-
-//-------------------------------------------------------------------
         getAccountAccess: function(selectedAccount, subscriber, successFunction, errorFunction) {
             var self = this;
             var customerModel = new app.models.Customer();

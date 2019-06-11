@@ -15,7 +15,7 @@ $(function() {
 
             // Content
             'change #select-account':                   'simpleChangeAccount',
-            'click .select-subscriber':                 'changeSubscriber',
+            'click .select-subscriber':                 'changeSubscriber'
 
         },
 

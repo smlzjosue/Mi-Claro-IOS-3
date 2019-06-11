@@ -8,6 +8,17 @@
 
 			<% _.each(section.Pages, function(page) { %>
 
+				<% if (page.accessID == 26) { %>
+					<div class="dashconts <%= page.extraClass %>">
+						<div class="dashbox gray vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_recharge' %>">
+							<span class="tabcell">
+								<span class="icon-dash-24"></span>
+								Recarga
+							</span>
+						</div>
+					</div>
+					<% } %>
+
 			<% if (page.accessID == 9) { %>
 			<div class="dashconts <%= page.extraClass %>">
 				<div class="dashbox gray vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_invoice' %>">

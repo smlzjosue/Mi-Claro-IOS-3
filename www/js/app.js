@@ -31,7 +31,6 @@ var app = {
      chatURL: 'https://chat3.claropr.com/webapiserver/ECSApp/ChatWidget3/ChatPanel.aspx',
      /**** END URLs REBRANDING ****/
  
-    
     // Help URL
     helpURL: 'http://soporteapps.speedymovil.com:8090/appFeedback/service/feedback/application',
 
@@ -105,7 +104,11 @@ var app = {
         Backbone.history.start();
 
     	// save init session time
-    	this.utils.Storage.setSessionItem('init-session',new Date());
+        this.utils.Storage.setSessionItem('init-session',new Date());
+        this.utils.Storage.setLocalItem('loginModeGuest', true);//*
+        this.utils.Storage.setLocalItem('skip_signin', false);//*
+        this.utils.Storage.setLocalItem('logged-is-active', false);//*
+
 
         // init loader
         app.utils.Loader.initialize();
@@ -121,6 +124,26 @@ var app = {
 
     },
 
+    //-------------------------------------------------------------
+    startTimer: function() {
+        app.timeoutID = window.setTimeout(app.goInactive, (1000 * 60 * app.sessionPasswordTime));
+    },
+
+    resetTimer: function(e) {
+        window.clearTimeout(app.timeoutID);
+        if (app.utils.Storage.getLocalItem('logged-is-active') == true && app.utils.Storage.getLocalItem('skip_signin') == false) {
+            app.startTimer();
+        }
+    },
+
+    goInactive: function() {
+        app.utils.Storage.setLocalItem('logged-is-active', false);
+        showAlert("Sesión Expirada", "Estimado cliente su sesión ha expirado.", "OK", function () {
+            location.reload();
+        });
+    },
+
+    //-------------------------------------------------------------
     // deviceready Event Handler
     onDeviceReady: function() {
 
@@ -329,18 +352,38 @@ var app = {
             outdatedApp = app.utils.Storage.getLocalItem('outdated-app');
 
             // if device hasn't connection
-            if(navigator.connection.type==Connection.NONE || navigator.connection.type==Connection.UNKNOWN){
+            if(navigator.connection.type == Connection.NONE || navigator.connection.type == Connection.UNKNOWN){
 
-                if(outdatedApp!=null && outdatedApp){
+                navigator.splashscreen.hide();
 
-                    app.router.navigate('update_app',{trigger: true});
+                app.utils.Storage.setLocalItem('connection-inactive', true);
+                app.router.navigate('login_guest',{trigger: true});
 
-                }else{
+                showConfirm(
+                    'Error',
+                    'Por favor compruebe su conexión a internet.',
+                    ['Volver a Intentar', 'Salir'],
+                    function (i) {
+                        switch (i) {
+                            case 1:
+                                navigator.splashscreen.show();
+                                location.reload();
+                                break;
+                            case 2:
+                                navigator.app.exitApp();
+                                break;
+                        }
+                    });
 
-                    app.router.navigate('login',{trigger: true});
-                }
+		    } else {
 
-            }else{
+                app.utils.Storage.setLocalItem('connection-inactive', false);
+
+		        // TODO, para no chequear version
+                navigator.splashscreen.hide();
+                app.utils.Storage.setLocalItem('outdated-app', false);
+                app.router.navigate('login_guest',{trigger: true});
+                return;  
 
                 parameters = '{' +
                     '"appId":"' + app.id + '",' +
@@ -359,33 +402,28 @@ var app = {
                         navigator.splashscreen.hide();
 
                         if(!response.hasError){
-                            if(response.object.enabled=='Y'){
-                                app.utils.Storage.setLocalItem('outdated-app', false);
-                                app.router.navigate('login',{trigger: true});
-                            }else{
+                            if(response.object.enabled == 'Y'){
+		    					app.utils.Storage.setLocalItem('outdated-app', false);
+                                app.router.navigate('login_guest',{trigger: true});
+		    				} else {
                                 app.utils.Storage.setLocalItem('outdated-app', true);
                                 app.router.navigate('update_app',{trigger: true});
-
                             }
-                        }else{
+                        } else {
                             app.utils.Storage.setLocalItem('outdated-app', true);
                             app.router.navigate('update_app',{trigger: true});
                         }
                     },
-
                     // error function
                     function(error){
 
                         //hide splash screen
                         navigator.splashscreen.hide();
 
-                        if(outdatedApp!=null && outdatedApp){
-
+                        if(outdatedApp != null && outdatedApp){
                             app.router.navigate('update_app',{trigger: true});
-
-                        }else{
-
-                            app.router.navigate('login',{trigger: true});
+                        } else {
+                            app.router.navigate('login_guest',{trigger: true});
                         }
 
                     }
@@ -395,6 +433,20 @@ var app = {
 
     },
 
+    //--------------------------------------------------------------------------------
+    removeSession: function() {
+        app.utils.Storage.removeLocalItem('username');
+        app.utils.Storage.removeLocalItem('password');
+
+        app.utils.Storage.removeLocalItem('isLogged');
+        app.utils.Storage.removeLocalItem('logged-guest');
+        app.utils.Storage.removeLocalItem('logged-subscriber');
+        app.utils.Storage.removeLocalItem('logged-subscriber-used');
+        app.utils.Storage.setLocalItem('loginModeGuest', true);
+        app.utils.Storage.setLocalItem('logged-is-active', false);
+    },
+
+    //--------------------------------------------------------------------------------
     showAppRate: function() {
 
         app.rate = AppRate;

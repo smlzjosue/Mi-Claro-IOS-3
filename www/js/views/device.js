@@ -190,6 +190,7 @@ $(function() {
 
             var image = info.itemImageField;
 
+            var brand = info.itemBrandField == 'no_set' ? "No disponible" : info.itemBrandField;
 
             var htmlID = '#subscriber-device'+currentIndex;
 
@@ -205,9 +206,9 @@ $(function() {
                 }
             });
 
-            $(htmlID).find('.equipment-imei').html(imei); // TODO, falta el imei
+            $(htmlID).find('.equipment-imei').html(imei);
 
-            $(htmlID).find('.equipment-brand').html("No disponible"); // TODO, falta la marca
+            $(htmlID).find('.equipment-brand').html(brand);
 
             $(e.currentTarget).toggleClass('mon');
         },

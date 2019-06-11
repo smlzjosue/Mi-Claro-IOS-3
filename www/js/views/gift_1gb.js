@@ -234,7 +234,7 @@ $(function() {
                 NameSender: nameSender,
                 PaymentID: "",
                 SubscriberReceiver: subscriberReceiver,
-                SubscriberSender: subscriberSender,
+                SubscriberSender: subscriberSender
             };
         },
 
@@ -244,7 +244,7 @@ $(function() {
                 function (success) {
                     if (!success.HasError) {
                         app.utils.Storage.setSessionItem('gift-send-text',
-                            'Gracias: El regalo se ha enviado con <span class="roboto-b">éxito</span>');
+                        'Gracias: El regalo se ha enviado con <span class="roboto-b">Éxito</span>');
                         app.router.navigate('gift_sent', {
                             trigger: true,
                             replace: true

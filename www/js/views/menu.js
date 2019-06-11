@@ -8,6 +8,8 @@ $(function() {
 		name:'menu',
 
         rechargeAmount: 0,
+
+        dataGiftReceived: null,
 				
 		// The DOM events specific.
 		events: {
@@ -17,11 +19,12 @@ $(function() {
 
             'change #select-account':					    'simpleChangeAccount',
             'change #select-subscriber':					'changeSubscriber',
-            'click #btn-bill': 					            'billPayment',
+            'click .btn-bill': 					            'billPayment',
             'click #btn-recharge': 					        'recharge',
             'click #btn-apply': 					        'applyCredits',
             'click .dashdirect-chat':                       'chat',
             'click #paperless-switch':                      'changePaperless',
+            'click #close-1gb':                             'closePopup1GB',
 
             'show.bs.popover div[data-toggle="popover"]':   'showPopOver'
 		},
@@ -60,6 +63,7 @@ $(function() {
                 }
 
                 variables = {
+                    isPrepaid: self.isCurrentAccountPrepaid(),
                     selectedTab: app.utils.Storage.getSessionItem('selected-tab'),
                     requiredAssociate: app.utils.Storage.getSessionItem('required-associate-account'),
                     accounts: this.getSelectTabAccounts(),
@@ -105,9 +109,15 @@ $(function() {
             $('body').unbind('keypress');
             self.activateMenu(e);
 
-            $('#due-amount').on('click focus', function (e) {
+            $('.due-amount').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#due-amount").offset().top-50
+                    scrollTop: $(".due-amount").offset().top-50
+                }, 1000);
+            });
+
+            $('.recharge-amount').on('click focus', function (e) {
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $(".recharge-amount").offset().top-50
                 }, 1000);
             });
 			
@@ -146,6 +156,15 @@ $(function() {
 
 	        /* obtain credits for user */
             self.getUserCredits();
+
+            /* check gifts if is postpaid */
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');
+            if (app.utils.tools.accountIsPostpaid(
+                    selectedAccount.mAccountType,
+                    selectedAccount.mAccountSubType,
+                    selectedAccount.mProductType)) {
+                self.get1GBReceived();
+            }
 		},
 
         setupNotifications: function() {
@@ -212,6 +231,51 @@ $(function() {
                         $('#sumAvialable').html(sumAvialable+'');
                     } else {
                         showAlert('Error', response.errorDisplay, 'Aceptar');
+                    }
+                },
+                app.utils.network.errorRequest
+            );
+        },
+
+        get1GBReceived: function() {
+            var self = this;
+            var selectedAccountValue = app.utils.Storage.getSessionItem('selected-account-value');
+            self.options.customerModel.getGift1GBSend(selectedAccountValue,
+                function (response) {
+                    if (!response.HasError) {
+                        if (response.Gift1GBsents.length > 0) {
+                            const product = response.Gift1GBsents[0];
+                            self.dataGiftReceived = product;
+                            $('.popup-1gb').show();
+                            $('.popup-1gb').find('.sender-name').html(product.NameSender);
+                            $('.popup-1gb').find('.sender-message').html(product.Message);
+                        }
+                    } else {
+                        showAlert('Error', response.ErrorDesc, 'Aceptar');
+                    }
+                },
+                app.utils.network.errorRequest
+            );
+        },
+
+        closePopup1GB: function(e) {
+            $('.popup-1gb').hide();
+
+            var self = this;
+            self.options.customerModel.getGift1GBByGUI(
+                self.dataGiftReceived.BANReceiver,
+                self.dataGiftReceived.GUI,
+                function (response) {
+                    if (!response.HasError) {
+                        showAlert('', 'El Regalo ha sido aceptado con Éxito', 'ok',
+                            function () {
+                                self.render(function(){
+                                    $.mobile.activePage.trigger('pagecreate');
+                                });
+                            }
+                        );
+                    } else {
+                        showAlert('Error', response.ErrorDesc, 'Aceptar');
                     }
                 },
                 app.utils.network.errorRequest
@@ -334,7 +398,7 @@ $(function() {
         billPayment: function(e){
             var self = this,
                 accountInfo = app.utils.Storage.getSessionItem('account-info'),
-                amountDue = parseFloat($('#due-amount').val()),
+                amountDue = parseFloat($('.due-amount').val()),
                 creditAmountDue = accountInfo.billBalanceField.includes('CR') ? accountInfo.billBalanceField.replace('CR','') : 0,
                 billBalance = accountInfo.billBalanceField.includes('CR') ? 0 : accountInfo.billBalanceField,
                 selectedAccountValue = app.utils.Storage.getSessionItem('selected-account-value');
@@ -350,7 +414,7 @@ $(function() {
                 return;
             }
 
-            $('#due-amount').val(parseFloat(String(amountDue)).toFixed(2));
+            $('.due-amount').val(parseFloat(String(amountDue)).toFixed(2));
 
             if (!$.isNumeric(amountDue)){
                 showAlert('Error','El monto a pagar no es un número válido.','Aceptar');
@@ -385,13 +449,13 @@ $(function() {
 
         recharge: function(e) {
             var self = this,
-                amountDue = parseFloat($('#due-amount').val());
+                amountDue = parseFloat($('.recharge-amount').val());
 
             if(app.utils.loader.isVisible()){
                 return;
             }
 
-            $('#due-amount').val(parseFloat(String(amountDue)).toFixed(2));
+            $('.recharge-amount').val(parseFloat(String(amountDue)).toFixed(2));
 
             if (!$.isNumeric(amountDue)){
                 showAlert('Error','El monto de recarga no es un número válido.','Aceptar');
