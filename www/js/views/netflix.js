@@ -11,10 +11,9 @@ $(function() {
 
             // content
             'click #subscription':					'subscription',
-            'click #support':					    'support',
-            'click #claims':					    'claims',
             'click #show-terms':                    'showTerms',
-            'click #close-terms':                   'closeTerms',
+            'click #faq':					        'faq',
+            'click #support':					    'support'
         },
 
         // Render the template elements
@@ -47,27 +46,22 @@ $(function() {
             self.activateMenu(e);
         },
 
-        subscription: function(e){
+        subscription: function(e) {
             app.utils.Storage.setSessionItem('netflix-accounts-subscribers-is-loaded', false);
             app.router.navigate('netflix_subscription', {trigger: true});
         },
 
-        support: function(e){
-            app.router.navigate('netflix_support', {trigger: true});
-        },
-
-        claims: function (e) {
-            app.router.navigate('netflix_claims', {trigger: true});
-        },
-
         showTerms: function(e) {
-            $('.popupbg').show();
+            app.router.navigate('netflix_terms', {trigger: true});
         },
 
-        closeTerms: function(e) {
-            $('.popupbg').hide();
+        faq: function (e) {
+            app.router.navigate('netflix_faq', {trigger: true});
         },
 
+        support: function(e) {
+            app.router.navigate('netflix_support', {trigger: true});
+        }
     });
 
 });

@@ -110,7 +110,8 @@ $(function() {
             'netflix'          				:'netflix',
             'netflix_subscription'          :'netflixSubscription',
             'netflix_support'          		:'netflixSupport',
-			'netflix_claims'  	        	:'netflixClaims',
+			'netflix_faq'   	        	:'netflixFaq',
+            'netflix_terms'  	        	:'netflixTerms',
             'netflix_redirect'          	:'netflixRedirect',
             'payment_history'               :'paymentHistory',
             'purchases'               		:'purchases',
@@ -688,9 +689,14 @@ $(function() {
             this.changePage(new app.views.NetflixSupportView());
         },
 
-        netflixClaims: function () {
-            console.log('#netflix_claims');
-            this.changePage(new app.views.NetflixClaimsView());
+        netflixFaq: function () {
+            console.log('#netflix_faq');
+            this.changePage(new app.views.NetflixFaqView());
+        },
+
+        netflixTerms: function () {
+            console.log('#netflix_terms');
+            this.changePage(new app.views.NetflixTermsView());
         },
 
         netflixRedirect: function () {
@@ -904,19 +910,6 @@ $(function() {
                 }
             ));
         }
-/*
-        passport: function() {
-            console.log('#passport');
-            this.changePage(new app.views.PassportView());
-        },
-
-        myStore: function() {
-            console.log('#my_store');
-            this.changePage(new app.views.MyStoreView());
-
-        },*/
-
-
 	});
 
 });

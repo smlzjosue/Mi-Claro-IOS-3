@@ -11,6 +11,8 @@ $(function() {
         events: {
             // events
             'pagecreate':                           'pageCreate',
+
+            'click #netflix-support':               'netflixSupport'
         },
 
         // Render the template elements
@@ -41,12 +43,12 @@ $(function() {
         pageCreate: function(e) {
             var self = this;
             self.activateMenu(e);
-
-            $(".preg-f").click(function() {
-                $( this ).toggleClass( "on" );
-            });
         },
 
+        netflixSupport: function (e) {
+            var browser = app.utils.browser.show('https://help.netflix.com/es', true);
+            browser.show();
+        }
     });
 
 });

@@ -346,7 +346,6 @@ $(function() {
         navigateHome: function() {
             app.router.history	= ['menu']; // TODO, este es el correcto
             app.router.navigate('menu',{trigger: true}); // TODO, este es el correcto
-            //app.router.navigate('payment_step_1',{trigger: true}); // TODO, Borrar
             //app.router.navigate('payment_step_2',{trigger: true}); // TODO, Borrar
             //app.router.navigate('device',{trigger: true}); // TODO, Borrar
             //app.router.navigate('change_plan',{trigger: true}); // TODO, Borrar
@@ -1253,96 +1252,6 @@ $(function() {
             var ref2 = cordova.InAppBrowser.open('https://miclaro.clarotodo.com/', '_system', null);
 
         },
-
-     /*   sva: function(e) {
-
-            var self = this,
-                accountNumber = app.utils.Storage.getSessionItem('selected-account-value'),
-                accountModel = new app.models.Account(),
-                selectedSubscriber = null,
-                analytics = null;
-
-            // close side menu
-            if (app.isMenuOpen == true) {
-                this.closeMenu();
-            }
-
-            if (analytics != null) {
-                // send google statistics
-                analytics.trackEvent('button', 'click', 'account');
-            }
-
-            if (app.utils.Storage.getSessionItem(accountNumber) == null) {
-                accountModel.getAccountInfo(
-                    app.utils.Storage.getSessionItem('token'),
-                    accountNumber,
-
-                    //success callback
-                    function(data) {
-
-                        if (!data.HasError) {
-                            // session
-                            app.utils.Storage.setSessionItem('selected-account', data);
-
-                            // cache
-                            app.utils.Storage.setSessionItem(accountNumber, data);
-
-                            app.utils.Storage.setSessionItem('subscribers', data.Subscribers);
-                            app.utils.Storage.setSessionItem('selected-subscriber', data.Subscribers[0]);
-
-                            // cache
-                            app.utils.Storage.setSessionItem('subscribers-' + accountNumber, data.Subscribers);
-
-                            var accountSuspend = false;
-
-                            for (var i = 0; i < data.Subscribers.length; i++) {
-                                if (data.Subscribers[i].status == 'S') {
-                                    accountSuspend = true;
-                                    break;
-                                }
-                            }
-
-                            if (!app.utils.Storage.getSessionItem('suspend-account') && accountSuspend) {
-                                self.showSuspendedAccount();
-                            }
-
-                            app.router.navigate('sva_sell', {
-                                trigger: true
-                            });
-
-                        } else {
-
-                            showAlert('Error', data.Desc, 'Aceptar');
-                        }
-                    },
-                    // error function
-                    app.utils.network.errorFunction
-                );
-
-            } else {
-
-                var account = app.utils.Storage.getSessionItem(accountNumber);
-
-                // cache
-                app.utils.Storage.setSessionItem('selected-account', account);
-
-                var subscribers = app.utils.Storage.getSessionItem('subscribers-' + accountNumber);
-
-                // cache
-                app.utils.Storage.setSessionItem('subscribers', subscribers);
-                app.utils.Storage.setSessionItem('selected-subscriber', subscribers[0]);
-
-                // goto view
-                app.router.navigate('sva_sell', {
-                    trigger: true
-                });
-            }
-
-            return false;
-        },*/
-        
-
-
     });
 
 });

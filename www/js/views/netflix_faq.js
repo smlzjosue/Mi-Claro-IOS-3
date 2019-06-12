@@ -3,9 +3,9 @@ $(function() {
     // Register step 1 View
     // ---------------
 
-    app.views.NetflixClaimsView = app.views.CommonView.extend({
+    app.views.NetflixFaqView = app.views.CommonView.extend({
 
-        name: 'netflix_claims',
+        name: 'netflix_faq',
 
         // The DOM events specific.
         events: {
