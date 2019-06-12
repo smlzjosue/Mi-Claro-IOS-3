@@ -112,12 +112,13 @@ $(function () {
             app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
-        prepaidHistory : function(subscriber, idCustomerCard, index, year, month, status, type, successCB, errorCB){
+        prepaidHistory : function(account, subscriber, idCustomerCard, index, year, month, status, type, successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
             const method = 'refillHistory';
 
             const parameters = JSON.stringify({
+                account: account,
                 suscriber: subscriber,
                 idCustomerCard: idCustomerCard,
                 index: index,
