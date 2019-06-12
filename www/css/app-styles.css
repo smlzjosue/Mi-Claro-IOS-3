@@ -138,7 +138,7 @@
 
 .container .reflinkdef {
     min-height: 50px !important;
-    display: flex !important;
+    display: flex; !important;
 }
 
 #share-link {
@@ -235,7 +235,7 @@ input:focus, .tags-input.focus {
     padding-bottom: 0;
 }
 
-.termr-t {
+.termr-t, .text-terms {
     white-space: pre-line;
 }
 

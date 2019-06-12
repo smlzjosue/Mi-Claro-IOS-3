@@ -22,122 +22,136 @@
 
 			<div class="basicrow mbott m-top-i">
 				<div class="container">
-					<div class="autowcont notopbrd">
-						<div class="digs-box defnohov vcenter">
+
+					<div class="autowcont notopbrd list-subscriber">
+
+						<% _.each(subscribers, function(subscriberObj, subscriberIndex) { %>
+
+						<div data-toggle="collapse" data-target="#subscriber<%= subscriberIndex %>" class="digs-box vcenter select-subscriber" data-index="<%= subscriberIndex %>" data-subscriber="<%= subscriberObj.subscriberNumberField %>">
 							<div class="tabcell">
 								<div class="autorow pull-left">
 									<span class="roboto-l"><%= typeOfTelephony(subscriberObj.productTypeField) %></span> <span class="roboto-m"><%= formatNumber(subscriberObj.subscriberNumberField) %></span>
 								</div>
-							</div>
-						</div>
 
-						<div class="basicrow tabtopb f-black roboto-r f-reg">
-							<div class="basicr-line f-big">
-								Hist&oacute;rico de Transacciones
-							</div>
+								<div class="autorow pull-right">
+									<i class="fa fa-minus" aria-hidden="true"></i>
 
-							<div class="basicrow m-top-i text-center">
-								<div class="shortcont">
-									<div class="basicrow">
-										<div class="basicrow f-bmed roboto-b">
-											Seleccione el Per&iacute;odo:
-										</div>
-
-										<div class="basicrow">
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
-													<div class="basicrow f-med roboto-b m-bott-ii">
-														Mes
-													</div>
-
-													<select class="sel-f" id="select-month" >
-														<% _.each(months, function(value, index) { %>
-														<option value="<%= value.id %>" <%= value.id==currentMonth?'selected="selected"':'' %> >
-															<%= value.name %>
-														</option>
-														<% }); %>
-													</select>
-												</div>
-
-												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
-													<div class="basicrow f-med roboto-b m-bott-ii">
-														A&ntilde;o
-													</div>
-
-													<select class="sel-f" id="select-year">
-														<% _.each(years, function(value, index) { %>
-														<option value="<%= value %>">
-															<%= value %>
-														</option>
-														<% }); %>
-													</select>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
-													<select class="sel-f" id="select-type">
-														<% _.each(types, function(value, index) { %>
-														<option value="<%= value %>">
-															<%= value %>
-														</option>
-														<% }); %>
-													</select>
-												</div>
-
-												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
-													<select class="sel-f" id="select-status">
-														<% _.each(status, function(value, index) { %>
-														<option value="<%= value %>">
-															<%= value %>
-														</option>
-														<% }); %>
-													</select>
-												</div>
-											</div>
-										</div>
-
-										<div class="basicrow m-top-i">
-											<div class="btns red def-i pull-right vcenter rippleR" id="search">
-												<span class="tabcell">
-													Continuar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
-												</span>
-											</div>
-
-											<div class="btns gray def-i pull-left vcenter" id="return">
-												<span class="tabcell">
-													Cancelar
-												</span>
-											</div>
-										</div>
-									</div>
-
-									<div id="container-trans" style="display: none">
-
-										<div class="basicrow m-top-i">
-											<div class="logline full"></div>
-										</div>
-
-										<div class="basicrow m-top-i">
-
-											<div class="basicrow f-bmed roboto-b">
-												Transacciones Recientes
-											</div>
-
-											<div id="container-transactions">
-
-											</div>
-
-										</div>
-
-									</div>
-
+									<i class="fa fa-plus" aria-hidden="true"></i>
 								</div>
 							</div>
 						</div>
 
-					</div>
+						<div id="subscriber<%= subscriberIndex %>" class="collapse">
+							<div class="basicrow tabtopb f-black roboto-r f-reg">
+								<div class="basicr-line f-big">
+									Hist&oacute;rico de Transacciones
+								</div>
 
+								<div class="basicrow m-top-i text-center">
+									<div class="shortcont">
+										<div class="basicrow">
+											<div class="basicrow f-bmed roboto-b">
+												Seleccione el Per&iacute;odo:
+											</div>
+
+											<div class="basicrow">
+												<div class="row">
+													<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
+														<div class="basicrow f-med roboto-b m-bott-ii">
+															Mes
+														</div>
+
+														<select class="sel-f select-month" >
+															<% _.each(months, function(value, index) { %>
+															<option value="<%= value.id %>" <%= value.id==currentMonth?'selected="selected"':'' %> >
+																<%= value.name %>
+															</option>
+															<% }); %>
+														</select>
+													</div>
+
+													<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
+														<div class="basicrow f-med roboto-b m-bott-ii">
+															A&ntilde;o
+														</div>
+
+														<select class="sel-f select-year">
+															<% _.each(years, function(value, index) { %>
+															<option value="<%= value %>">
+																<%= value %>
+															</option>
+															<% }); %>
+														</select>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
+														<select class="sel-f select-type">
+															<% _.each(types, function(value, index) { %>
+															<option value="<%= value %>">
+																<%= value %>
+															</option>
+															<% }); %>
+														</select>
+													</div>
+
+													<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-top-i">
+														<select class="sel-f select-status">
+															<% _.each(status, function(value, index) { %>
+															<option value="<%= value %>">
+																<%= value %>
+															</option>
+															<% }); %>
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="basicrow m-top-i">
+												<div class="btns red def-i pull-right vcenter rippleR btn-search">
+													<span class="tabcell">
+														Continuar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+													</span>
+												</div>
+
+												<div class="btns gray def-i pull-left vcenter btn-return">
+													<span class="tabcell">
+														Cancelar
+													</span>
+												</div>
+											</div>
+										</div>
+
+										<div class="container-trans" style="display: none">
+
+											<div class="basicrow m-top-i">
+												<div class="logline full"></div>
+											</div>
+
+											<div class="basicrow m-top-i">
+
+												<div class="basicrow f-bmed roboto-b">
+													Transacciones Recientes
+												</div>
+
+												<div class="container-transactions">
+
+												</div>
+
+											</div>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<% });  %>
+
+					</div>
 				</div>
 			</div>
 

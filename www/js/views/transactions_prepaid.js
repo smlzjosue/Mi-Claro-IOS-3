@@ -1,6 +1,6 @@
 $(function() {
 
-    // Register step 1 View
+    // Transaction prepaid View
     // ---------------
 
     app.views.TransactionsPrepaidView = app.views.CommonView.extend({
@@ -12,8 +12,8 @@ $(function() {
             // events
             'pagecreate':                           'pageCreate',
 
-            'click #search':                        'search',
-            'click #return':                        'back',
+            'click .select-subscriber':             'changeSubscriber',
+            'click .btn-return':                    'back'
         },
 
         // Render the template elements
@@ -34,13 +34,6 @@ $(function() {
             }
 
             var subscribers = app.utils.Storage.getSessionItem('subscribers-info');
-            var selectedSubscriberValue = app.utils.Storage.getSessionItem('selected-subscriber-value');
-            var subscriberObj = null;
-            $.each(subscribers, function(index, subscriber) {
-                if (subscriber.subscriberNumberField == selectedSubscriberValue) {
-                    subscriberObj = subscriber;
-                }
-            });
 
             const currentMonth = new Date().getMonth();
 
@@ -64,7 +57,7 @@ $(function() {
             var self = this,
                 variables = {
                     typeOfTelephony: app.utils.tools.typeOfTelephony,
-                    subscriberObj: subscriberObj,
+                    subscribers: subscribers,
                     status: status,
                     types: types,
                     years: years,
@@ -89,23 +82,55 @@ $(function() {
         pageCreate: function(e) {
             var self = this;
             self.activateMenu(e);
+
+            var subscribers = app.utils.Storage.getSessionItem('subscribers-info');
+            if (subscribers.length == 1) {
+                $('.select-subscriber').eq(0).trigger('click');
+            }
         },
 
-        search: function (e) {
+        changeSubscriber: function(e) {
             var self = this;
 
-            $('#container-trans').hide();
+            var currentIndex = $(e.currentTarget).data('index'),
+                subscribers = app.utils.Storage.getSessionItem('subscribers-info'),
+                subscriber = subscribers[currentIndex];
 
-            const year = $.mobile.activePage.find('#select-year').val();
-            const month = $.mobile.activePage.find('#select-month').val();
-            const status = $.mobile.activePage.find('#select-status').val();
-            const type = $.mobile.activePage.find('#select-type').val();
+            const htmlID = '#subscriber'+currentIndex;
 
-            var selectedSubscriberValue = app.utils.Storage.getSessionItem('selected-subscriber-value');
+            $(e.currentTarget).toggleClass('mon');
+
+            if ($(e.currentTarget).data('search-info') == true) {
+                $(e.currentTarget).data('search-info', false);
+                return;
+            }
+            $(e.currentTarget).data('search-info', true);
+
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(htmlID).offset().top-40
+            }, 1000);
+
+            $(htmlID).find('.btn-search').click(function(){
+                self.search(htmlID, subscriber);
+            });
+        },
+
+        search: function (target, subscriber) {
+            const self = this;
+
+            $(target).find('.container-trans').hide();
+
+            const year = $(target).find('.select-year').val();
+            const month = $(target).find('.select-month').val();
+            const status = $(target).find('.select-status').val();
+            const type = $(target).find('.select-type').val();
+
             const idCustomerCard = app.utils.Storage.getSessionItem('prepaid-customer-card-id');
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');
 
             self.options.paymentModel.prepaidHistory(
-                selectedSubscriberValue,
+                selectedAccount.Account,
+                subscriber.subscriberNumberField,
                 idCustomerCard,
                 0,
                 parseFloat(year),
@@ -115,7 +140,7 @@ $(function() {
                 function (success) {
                     if (success.success) {
                         if (success.formTransactions != null) {
-                            $('#container-trans').show();
+                            $(target).find('.container-trans').show();
                             var html = '';
                             if (success.formTransactions.length > 0) {
                                 $.each(success.formTransactions, function(index, transaction) {
@@ -169,17 +194,18 @@ $(function() {
                                         '\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                                         '\t\t\t\t\t\t\t\t\t\t\t</div>\n';
                                 });
-                                $('#container-transactions').html(html);
+                                $(target).find('.container-transactions').html(html);
                             } else {
-                                $('#container-transactions').html(
+                                $(target).find('.container-transactions').html(
                                     '<div class="basicrow m-top">\n' +
                                     '        Estimado cliente no existen registros de acuerdo a su busqueda.\n' +
                                     '</div>'
                                 );
                             }
 
+                            $(target).find('.btn-return').focus();
                             $([document.documentElement, document.body]).animate({
-                                scrollTop: $('#return').offset().top-40
+                                scrollTop: $(target).find('.btn-return').offset().top-40
                             }, 1000);
                         }
                     } else {
