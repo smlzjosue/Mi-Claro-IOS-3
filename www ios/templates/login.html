@@ -1,0 +1,103 @@
+<script type="text/template" id="home">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="popupbg popup-chat" style="display: none">
+			<div class="popupcont">
+				<div class="basicrow f-black f-mildt roboto-m">
+					<img style="width: 40px; height: 40px;" src="images/miclaro-icon.png">
+					Bienvenido a Mi <b>Claro Asistencia</b>
+				</div>
+
+				<div class="basicrow m-top-i">
+					<div class="logline full"></div>
+				</div>
+
+				<div class="basicrow f-reg f-black roboto-r m-top-i text-justify" id="chat-error-text">
+					<b>Incidencia:</b> Hemos detectado una actividad inusual en el uso de tus credenciales de acceso.
+				</div>
+
+				<div class="basicrow m-top-i">
+					<div class="logline full"></div>
+				</div>
+
+				<div class="basicrow f-reg f-black roboto-r m-top-ii text-justify">
+					¿Desea que uno de nuestros agentes de servicio al cliente te asista en línea a través de nuestro Chat?
+				</div>
+
+				<div class="basicrow text-center m-top-i">
+					<div class="red btns savech centr vcenter rippleR" id="open-chat">
+						<span class="tabcell">
+							Conectar vía Chat&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="btns def-i gray pull-left vcenter" id="cancel-chat">
+						<span class="tabcell">
+							No, Gracias&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="allcont logsize">
+			<div class="basicrow">
+				<div class="container">
+					<div class="basicrow mbott text-center">
+						<div class="shortcont">
+							<div class="basicrow m-top text-center">
+								<img width="100%" class="difloglogo extra-margin" src="images/miclaro-logov2.png">
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="basicrow rel">
+									<!--<img width="100%" class="facerecog" src="images/facerecog.png">-->
+									<input id="login" placeholder="Correo o N&uacute;mero de Tel&eacute;fono" class="inp-f" autocapitalize="off">
+								</div>
+							</div>
+							<div class="basicrow m-top">
+								<div class="basicrow">
+									<input id="password" type="password" placeholder="Contrase&ntilde;a" class="inp-f" autocapitalize="off">
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="btns red vcenter rippleR">
+									<div class="tabcell" id="btn-login">
+										Iniciar Sesi&oacute;n
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow text-center m-top-ii">
+								<a id="btn-forgot" class="linkdefs">&#191;Olvidaste tu contrase&ntilde;a&#63;</a>
+							</div>
+
+							<div class="basicrow m-top-u-ii">
+								<div id="btn-register" class="btns blue vcenter rippleB">
+									<div class="tabcell">
+										&#191;No tienes cuenta&#63; Reg&iacute;strate&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow text-center m-top-i">
+								<a id="btn-guest" class="linkdefs">Volver al inicio de sesi&oacute;n&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

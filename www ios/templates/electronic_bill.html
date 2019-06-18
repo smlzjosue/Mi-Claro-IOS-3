@@ -1,0 +1,111 @@
+<script type="text/template" id="electronic_bill">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<% include tabs %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div class="basicr-line-i">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-01"></span> Factura Electr&oacute;nica
+						</div>
+
+						<div class="nroacc">
+							<label class="label-r sidenmbr vcenter">
+									<span class="tabcell">
+										N&uacute;mero de Cuenta
+									</span>
+							</label>
+
+							<select class="sel-f sidesel" id="select-account">
+								<% _.each(accounts, function(value, index) { %>
+								<option value="<%= value.Account %>"  <%= value.Account==selectedAccount.Account?'selected="selected"':'' %> ><%= value.Account %></option>
+								<% }); %>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott">
+				<div class="container">
+					<div class="basicrow">
+						<div class="autowcont m-top-i">
+							<div class="basicrow msidespad">
+								<div class="b-title">
+									<div class="autocont f-black roboto-m f-bmed pull-left vcenter">
+										<div class="tabcell">
+											Factura Electr&oacute;nica
+										</div>
+									</div>
+								</div>
+
+								<div class="basicrow m-top-i mbott-i">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+											<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 text-center">
+												<img width="100%" class="digfctr" src="images/fact-dig.png">
+											</div>
+
+											<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 f-black">
+												<% if (!paperless) { %>
+												<div class="basicrow f-bmed roboto-b text-justify">
+													&#191;Te gustar&iacute;a conservar el ambiente? Suscr&iacute;bete al servicio de Factura Electr&oacute;nica.
+												</div>
+												<% } %>
+
+												<div class="basicrow m-top-i">
+													<div class="row">
+															<% if (paperless) { %>
+														<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2" style="display: flex">
+															<div class="autocont nofloat alrd-mleft">
+																<div class="autocont f-green-i vcenter">
+																	<div class="tabcell">
+																		<span class="f-newfdig">Gracias, ya estas suscrito a Factura Electrónica.</span>
+																	</div>
+																</div>
+															</div>
+
+															<div class="autocont nofloat">
+																<div class="autocont vcenter">
+																	<div class="tabcell">
+																		<img class="fdig-check" width="100%" src="images/fact-dig-check.png">
+																	</div>
+																</div>
+															</div>
+															<% } else { %>
+														<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2">
+															<label class="switch dig-def m-left-i">
+																<input data-switch-type="PAPERLESS" type="checkbox" id="paperless-switch" class="paperless-switch">
+																<span class="checkdef-f">
+																  	<span class="t-otherc"></span>
+																  </span>
+															</label>
+															<% } %>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

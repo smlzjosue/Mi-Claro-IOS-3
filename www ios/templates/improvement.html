@@ -1,0 +1,66 @@
+<script type="text/template" id="improvement">
+
+    <div id="wrapper" class="appsize">
+
+        <div class="allcont logsize">
+
+            <% include header_help %>
+
+            <div class="basicrow m-top">
+                <div class="container">
+                    <div class="basicrow">
+                        <div class="fulltitle m-top-i f-btitle autodef">
+                            <span class="icon-dash-13"></span> Sugerencias
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="basicrow mbott m-top-ii">
+                <div class="container">
+                    <div class="autowcont allpads">
+                        <div class="row allpads f-reg roboto-r f-black">
+
+                            <div class="basicrow text-left">
+                                <div class="basicrow f-bmed roboto-b">
+                                    Detalla tu Comentario
+                                </div>
+
+                                <% if (!isLogged) { %>
+
+                                <div class="basicrow">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-top">
+                                            <input id="email" name="email" type="email" placeholder="Correo Electrónico" class="inp-f">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <% } %>
+
+                                <div class="basicrow m-top-i">
+                                    <textarea id="improvement-comment" name="improvement_comment" class="t-areadef" placeholder="Ingrese aqu&iacute; una breve explicaci&oacute;n de lo que desea reportar" maxlength="500"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="basicrow m-top-i">
+                                <div class="logline full"></div>
+                            </div>
+
+                            <div class="basicrow m-top">
+                                <div class="btns def-i red pull-right vcenter rippleR" id="send-improvement">
+									<span class="tabcell">
+										Enviar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</script>

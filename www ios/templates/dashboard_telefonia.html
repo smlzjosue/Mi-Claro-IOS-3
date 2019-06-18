@@ -1,0 +1,203 @@
+<script type="text/template" id="dashboard_telefonia">
+
+	<div class="basicrow m-top-i lessm">
+		<div class="container">
+			<div class="autowcont dashapp m-top">
+				<div class="basicrow msidespad">
+					<div class="b-title">
+						<div class="autocont f-black roboto-m f-bmed pull-left vcenter">
+							<div class="tabcell">
+								Balance
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="basicrow msidespad m-top-u-i">
+		<div class="balancesptr-i">
+			<label class="label-r">N&uacute;mero de Cuenta</label>
+
+			<div class="basicrow">
+				<select id="select-account" class="sel-f">
+					<% _.each(accounts, function(value, index) { %>
+					<option value="<%= value.Account %>" <%= value.Account==selectedAccountValue?'selected="selected"':'' %> ">
+					<%= value.Account %>
+					</option>
+					<% }); %>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="basicrow msidespad">
+		<div class="balancesptr-iicont refdef">
+			<div class="balancesptr-ii text-center">
+				<span class="roboto-b">
+					Balance Pendiente
+				</span>
+				<br/>
+				<span class="f-red f-lsemi roboto-b">
+					&#36;<%= amountDue %>
+				</span>
+			</div>
+
+			<div class="balancesptr-ii no-brd-i text-center">
+				<span class="roboto-b">
+					Su Factura Vence
+				</span>
+				<br/>
+				<span class="f-black f-big roboto-b">
+					<%= billDueDate %>
+				</span>
+			</div>
+		</div>
+
+		<div class="basicrow m-bott visible-xs">
+			<div class="logline full"></div>
+		</div>
+
+		<div class="balancesptr-iv refdef f-reg roboto-r text-center">
+			<div class="basicrow m-top-u">
+				Fecha de Factura<br/>
+				<span class="roboto-b"><%= billDate %></span>
+			</div>
+		</div>
+
+		<div class="balancesptr-iv refdef no-brd f-reg roboto-r text-center">
+			<div class="basicrow m-top-u">
+				&Uacute;ltimo Pago<br/>
+				<span class="roboto-b">&#36;<%= lastPaymentAmount %></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="basicrow bg-gray">
+		<div class="container">
+			<div class="autowcont dashapp m-top-i">
+				<div class="basicrow msidespad">
+					<div class="b-title">
+						<div class="autocont f-black roboto-m f-bmed pull-left vcenter">
+							<div class="tabcell">
+								Opciones de Pago
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="basicrow msidespad m-top-u-i">
+					<div class="balancesptr-i refdef text-center" style="margin-bottom: 0">
+						<span class="roboto-b">
+							Descuento Disponibles
+						</span>
+						<img class="tooltip-amount" data-toggle="popover" data-html="true" data-content="El Monto aplicable de credito es el 50% de su Balance Pendiente." data-placement="bottom" src="images/tooltip1.png">
+						<br/>
+						<span id="sumAvialable" class="f-blue f-lsemi roboto-b">
+							0 %
+						</span>
+					</div>
+
+					<div class="balancesptr-iii refdef">
+
+						<div class="title-amount-container">
+							<label class="label-r roboto-b">&nbsp;&nbsp;</label>
+						</div>
+
+						<div class="basicrow">
+							<div id="btn-apply" class="btns blue payup vcenter rippleB" style="width: 100%">
+								<span class="tabcell">
+									Aplicar a Renta Mensual&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="basicrow m-bott visible-xs">
+						<div class="logline full"></div>
+					</div>
+
+					<div class="balancesptr-iii refdef no-brd">
+						<div class="title-amount-container">
+							<label class="label-r roboto-b text-title-amount">Monto a Pagar (&#36;)</label>
+
+							<img class="tooltip-amount" data-toggle="popover" data-html="true" data-content="Ahora puedes abonar hasta $800.00. Si la cantidad indica CR, significa que usted tiene cr&eacute;dito en su cuenta." data-placement="bottom" src="images/tooltip1.png">
+						</div>
+
+						<div class="basicrow rel">
+							<input type="number" value="<%= amountPayable %>" class="inp-f payup qt due-amount">
+
+							<div class="btns red payup vcenter rippleR btn-bill">
+								<span class="tabcell">
+									Pagar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="basicrow">
+		<div class="container">
+			<div class="row">
+
+				<% if (selectedAccount.guest == false) { %>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="dashdirect-digf">
+						<img class="digf-def-i" width="100%" src="images/fact-dig.png">
+						<% if (paperless) { %>
+						<div class="autocont nofloat alrd-mleft">
+							<div class="autocont f-green-i vcenter">
+								<div class="tabcell">
+									<span class="f-newfdig">Suscrito a Factura Electr&oacute;nica</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="autocont nofloat">
+							<div class="autocont vcenter">
+								<div class="tabcell">
+									<img class="fdig-check" width="100%" src="images/fact-dig-check.png">
+								</div>
+							</div>
+						</div>
+						<% } else { %>
+						<div class="autocont nofloat m-septrt">
+							<div class="autocont vcenter">
+								<div class="tabcell">
+									Factura Electr&oacute;nica:
+								</div>
+							</div>
+						</div>
+
+						<div class="autocont nofloat m-septrt">
+							<div class="autocont vcenter">
+								<div class="tabcell">
+									<label class="switch m-left-i">
+										<input data-switch-type="PAPERLESS" type="checkbox" id="paperless-switch" class="paperless-switch">
+										<span class="slider"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<% } %>
+					</div>
+				</div>
+				<% } %>
+
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="dashdirect-chat vcenter">
+						<img class="direct-chat-i" width="100%" src="images/chatnow-icon.png">
+						<span class="tabcell">
+							Chatea con Nosotros
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+</script>

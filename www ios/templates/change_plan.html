@@ -1,0 +1,176 @@
+<script type="text/template" id="change_plan">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<% include tabs %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div class="basicr-line-i">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-05"></span> Cambio de Plan
+						</div>
+
+						<div class="nroacc">
+							<label class="label-r sidenmbr vcenter">
+									<span class="tabcell">
+										N&uacute;mero de Cuenta
+									</span>
+							</label>
+
+							<select class="sel-f sidesel" id="select-account">
+								<% _.each(accounts, function(value, index) { %>
+								<option value="<%= value.Account %>"  <%= value.Account==selectedAccount.Account?'selected="selected"':'' %> >
+								<%= value.Account %>
+								</option>
+								<% }); %>
+							</select>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott m-top-i">
+				<div class="container">
+
+					<div class="autowcont notopbrd list-subscriber">
+
+						<% _.each(subscribers, function(subscriberObj, subscriberIndex) { %>
+
+						<div data-toggle="collapse" data-target="#subscriber<%= subscriberIndex %>" class="digs-box vcenter select-subscriber" data-index="<%= subscriberIndex %>" data-subscriber="<%= subscriberObj.subscriberNumberField %>">
+							<div class="tabcell">
+								<div class="autorow pull-left">
+									<span class="roboto-l"><%= typeOfTelephony(subscriberObj.productTypeField) %></span> <span class="roboto-m"><%= formatNumber(subscriberObj.subscriberNumberField) %></span>
+								</div>
+
+								<div class="autorow pull-right">
+									<i class="fa fa-minus" aria-hidden="true"></i>
+
+									<i class="fa fa-plus" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+
+						<div id="subscriber<%= subscriberIndex %>" class="collapse">
+							<div class="basicrow tabtopb f-black roboto-r f-reg">
+								<div class="basicr-line f-big">
+									<% if (subscriberObj.planInfoField.sOCDescriptionField != null) { %>
+									Plan Actual
+									<% } else { %>
+									No posee plan
+									<% }  %>
+								</div>
+
+								<div class="basicrow m-top-i">
+									<div class="row">
+
+										<% if (subscriberObj.planInfoField.sOCDescriptionField != null) { %>
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<div class="userinfo full nomtops">
+												<div class="basicrow m-bott">
+													<div class="basicrow f-bmed roboto-b m-bott">
+														Detalle del Plan
+													</div>
+
+													<div class="redstat">
+														<div class="autorow roboto-r pull-left">
+															Plan Actual
+														</div>
+
+														<div class="autorow roboto-b pull-right plan-name">
+
+														</div>
+													</div>
+												</div>
+
+												<div class="basicrow m-top-ii">
+													<div class="basicrow f-reg roboto-b">
+														Descripci&oacute;n del Plan:
+													</div>
+
+													<div class="plan-packs">
+
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<% } %>
+
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<div class="basicrow m-top text-center">
+												<div class="servs-monthly planchg">
+													<div class="basicrow">
+														<span class="roboto-b">
+															Precio
+														</span>
+														<br/>
+														<span class="f-red f-semi roboto-m total-rent">
+															&#36;0.00
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="basicrow m-top-i m-bott not-additional-plans" style="display: none; color: #ef3829">
+									<h3> Estimado cliente en estos momentos no tenemos planes para este suscriptor.</h3>
+								</div>
+							</div>
+
+							<div class="carousel-container">
+								<div class="basicrow f-big m-bott-ii text-center">
+									Planes Sugeridos
+								</div>
+								<!-- [INIT CAROUSEL PLANES EN MOVIL] -->
+								<div id="carousel<%= subscriberIndex %>" class="basicrow carousel slide visible-xs" data-interval="false">
+									<!-- Indicators -->
+									<ol class="carousel-indicators" style="display: none;">
+
+									</ol>
+
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner">
+
+									</div>
+
+
+									<!-- Left and right controls -->
+									<a class="left carousel-control" href="#carousel<%= subscriberIndex %>" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left">
+											<i class="fa fa-angle-left" aria-hidden="true"></i>
+										</span>
+									</a>
+									<a class="right carousel-control" href="#carousel<%= subscriberIndex %>" data-slide="next">
+										<span class="glyphicon glyphicon-chevron-right">
+											<i class="fa fa-angle-right" aria-hidden="true"></i>
+										</span>
+									</a>
+								</div>
+								<!-- [END CAROUSEL PLANES EN MOVIL] -->
+							</div>
+
+						</div>
+
+						<% });  %>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

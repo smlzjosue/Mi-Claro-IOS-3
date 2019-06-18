@@ -1,0 +1,279 @@
+/* styles made by Yornel Marval for Claro 3.0 */
+
+.dashconts {
+    width: 50%;
+}
+
+.basicrow.mt-name {
+    margin: 0 !important;
+}
+
+.mclosex {
+    margin: auto 10px auto auto;
+}
+
+.extra-margin {
+    margin-top: 36px;
+    margin-bottom: 36px;
+}
+
+.rippleR,
+.rippleB {
+    background-position: center;
+    transition: background 0.8s;
+}
+.rippleR:hover {
+    background: #F7543F radial-gradient(circle, transparent 1%, #F7543F 1%) center/15000%;
+}
+.rippleR:active {
+    background-color: #ff7054;
+    background-size: 100%;
+    transition: background 0s;
+}
+.rippleB:hover {
+    background: #40B0C7 radial-gradient(circle, transparent 1%, #40B0C7 1%) center/15000%;
+}
+.rippleB:active {
+    background-color: #60c8e0;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.dashbox.gray:active {
+    background-color: #ffffff;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.dashbox.white:active {
+    background-color: #e0e0e0;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.dashbox.blue:active {
+    background-color: #60c8e0;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.dashbox.red:active {
+    background-color: #ff7054;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.ripple-c {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.ripple-c:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+
+.ripple-c:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+}
+
+.navheadicon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 2px;
+    margin: auto 10px auto auto;
+    cursor: pointer;
+}
+
+.sectclose {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 15px;
+    margin: auto;
+}
+
+.section-title {
+    text-transform: capitalize;
+}
+
+.m-navmenu {
+    font-size: 16px;
+    line-height: 16px;
+    color: #222222;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding-left: 6px;
+}
+
+/*****/
+.appsize {
+    overflow-x: hidden;
+}
+
+.popupcont {
+    background-image:none;
+    background-color: #ffffff;
+}
+
+.container .reflinkdef {
+    min-height: 50px !important;
+    display: flex; !important;
+}
+
+#share-link {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.title-amount-container {
+    display: flex;
+    margin-bottom: 4px
+}
+
+.text-title-amount {
+    width: auto !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: 3px !important;
+}
+
+.tooltip-amount {
+    margin: 0 0 0 4px;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+}
+
+#notifications {
+    padding-top: 1px;
+}
+
+/* for input emails */
+input:focus, .tags-input.focus {
+    border-color: #59F;
+    outline: none;
+}
+.bootstrap-tagsinput{
+    background: transparent !important;
+    border: none !important;
+}
+/* for input emails */
+
+.text-required {
+    color: #ef3829
+}
+
+/* for remove padding bottom on chat */
+.ui-page-active {
+    padding-bottom: 0 !important;
+}
+
+.cred-opts.prep {
+    padding: 3px;
+    border: 1px solid white;
+    margin-right: 0;
+    margin-top: 6px;
+}
+.cred-opts.prep.on {
+    border: 1px solid #cccccc;
+    background-color: #1f97ae;
+    color: #ffffff;
+}
+
+.cred-opts.prep img {
+    width: 63px;
+    height: auto;
+    margin-left: 0;
+}
+
+/* init styles for header*/
+.header.container.rel {
+    padding: 0 1%
+}
+
+.header .item {
+    width: 50px;
+    height: 50px;
+    display: flex
+}
+
+.header .item img {
+    position: inherit
+}
+
+#count-notifications {
+    margin-left: 12px
+}
+
+.item .autocont {
+    position: absolute;
+}
+/* finished styles for header*/
+
+#maincont, .ui-page-active {
+    padding-bottom: 0;
+}
+
+.termr-t, .text-terms {
+    white-space: pre-line;
+}
+
+.flicker.active {
+    background-color: #edf2fa;
+}
+
+.flicker.active {
+    animation-name: flicker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+
+    -webkit-animation-name:flicker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+}
+
+@-moz-keyframes flicker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes flicker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes flicker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+.sidenav {
+    left: -100%;
+}
+

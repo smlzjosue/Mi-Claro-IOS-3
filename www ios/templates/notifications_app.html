@@ -1,0 +1,69 @@
+<script type="text/template" id="notifications_app">
+
+	<div id="wrapper" class="appsize">
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="basicrow mbott">
+				<div class="container">
+					<div class="fulltitle m-top-i f-btitle">
+						<span class="icon-dash-12"></span> Tus Notificaciones
+					</div>
+
+					<div class="basicrow">
+
+						<div class="row">
+
+							<% if (notifications.length > 0) { %>
+
+							<% _.each(notifications, function(notification, index) { %>
+
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+								<div class="autowcont m-top-i flicker <%= notification.status == 0 ? 'active' : '' %>">
+									<div class="basicrow msidespad">
+										<div class="b-title">
+											<div class="autocont f-black roboto-m f-bmed pull-left vcenter">
+												<div class="tabcell">
+													<%= notification.subject %>
+												</div>
+											</div>
+										</div>
+
+										<div class="basicrow m-bott-i">
+											<div class="basicrow">
+												<%= notification.message %>
+											</div>
+
+											<div class="basicrow roboto-b m-top-u-ii f-bgray">
+												<%= notification.message_date %>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<% }); %>
+
+							<% } else { %>
+
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+								<div class="text-center m-top-iii">
+									Actualmente no posee notificaciones
+								</div>
+							</div>
+
+							<% } %>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</script>

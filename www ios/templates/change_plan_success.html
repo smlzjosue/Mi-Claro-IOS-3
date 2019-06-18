@@ -1,0 +1,103 @@
+<script type="text/template" id="change_plan_success">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div class="basicr-line-i">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-05"></span> Confirmaci&oacute;n de Cambio de Plan
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott m-top-i">
+				<div class="container">
+					<div class="basicrow mbott-i">
+						<div class="basicrow text-center">
+							<div class="rdtitles">
+								El cambio fue <span class="roboto-b">exitoso</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="autowcont notopbrd">
+						<div class="digs-box defnohov vcenter">
+							<div class="tabcell">
+								<div class="autorow pull-left">
+									<span class="roboto-l"><%= typeOfTelephony(subscriberObj.productTypeField) %></span> <span class="roboto-m"><%= formatNumber(subscriberObj.subscriberNumberField) %></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="basicrow tabtopb f-black roboto-r f-reg">
+							<div class="basicrow">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-lg-offset-3 col-md-offset-3">
+										<div class="userinfo full nomtops">
+											<div class="basicrow m-bott">
+												<div class="basicrow f-bmed roboto-b m-bott">
+													Resumen de Cambio
+												</div>
+
+												<div class="redstat">
+													<div class="autorow roboto-r pull-left">
+														N&uacute;mero de Orden
+													</div>
+
+													<div class="autorow roboto-b pull-right">
+														<%= orderId %>
+													</div>
+												</div>
+
+												<div class="redstat m-top-ii">
+													<div class="basicrow">
+														Nuevo Plan
+													</div>
+
+													<div class="basicrow roboto-b m-top-u-i">
+														<%= selectedPlan %>
+													</div>
+												</div>
+											</div>
+
+											<div class="basicrow text-center m-top-ii">
+												<div class="basicrow">
+													<span class="roboto-b">
+														Precio
+													</span>
+													<br>
+													<span class="f-red f-semi roboto-m">
+														&#36;<%= selectedRent %>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow text-center m-top">
+								<div id="close" class="btns def-i gray centr vcenter">
+									<span class="tabcell">
+										Cerrar
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

@@ -1,0 +1,57 @@
+<script type="text/template" id="signin_guest">
+
+	<div id="wrapper" class="appsize">
+		<div class="allcont logsize">
+			<div class="basicrow">
+				<div class="container">
+					<div class="basicrow mbott text-center">
+						<div class="shortcont">
+							<div class="basicrow m-top">
+								<div class="basicrow f-btitle text-center">
+									<div class="basicrow extra-margin">
+										<img width="100%" class="mc-icon" src="images/reg-b-icon.png">
+										C&oacute;digo de seguridad
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow m-top f-reg f-black roboto-r text-justify">
+								Introduce el c&oacute;digo de seis d&iacute;gitos que hemos enviado a su Correo y n&uacute;mero de tel&eacute;fono que termina en <b><%=number_cut%></b>.
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="basicrow">
+									<input id="code" type="number" style="-webkit-text-security:disc;" placeholder="C&oacute;digo de seguridad" class="inp-f">
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="btns red vcenter rippleR">
+									<div class="tabcell" id="btn-next">
+										Confirmar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow m-top f-reg f-black roboto-r text-center">
+								&#191;No has recibido el c&oacute;digo de seguridad&#63; <a id="btn-resend" class="linkdefs">Reenviar</a>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow text-center m-top-i">
+								<a id="btn-login" class="linkdefs">Volver al inicio de sesi&oacute;n&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>

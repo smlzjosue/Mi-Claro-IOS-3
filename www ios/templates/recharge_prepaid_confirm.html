@@ -1,0 +1,125 @@
+<script type="text/template" id="recharge_prepaid_confirm">
+
+	<div id="wrapper" class="appsize">
+
+		<div class="allcont logsize">
+
+			<% include header %>
+
+			<% include navmenu %>
+
+			<div class="basicrow m-top">
+				<div class="container">
+					<div class="basicr-line-i">
+						<div class="fulltitle m-top-i f-btitle autodef">
+							<span class="icon-dash-24"></span> Recarga de Prepago
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="basicrow mbott m-top-i">
+				<div class="container">
+					<div class="autowcont allpads">
+						<div class="basicrow f-reg f-black roboto-r">
+							<div class="basicrow f-big">
+								Recargar
+							</div>
+
+							<div class="dts-rcrg m-top-ii text-center">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+										<div class="basicrow">
+											<span class="roboto-b">N&uacute;mero de T&eacute;lefono</span><br/>
+											<span class="f-big roboto-b"> <%= selectedSubscriberValue %> </span>
+										</div>
+									</div>
+
+									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+										<div class="basicrow l-pline-i">
+											<span class="roboto-b">Balance en Prepago Disponible</span><br/>
+											<span class="f-lsemi roboto-b f-red">&#36;<%= prepaidBalance %></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow m-top-i">
+
+								<div class="dtail-tab" style="border-top: none">
+									<div class="dtail-i vcenter" style="padding-left: 0">
+										<div class="tabcell">
+											MONTO DE RECARGA
+										</div>
+									</div>
+
+									<div class="dtail-ii vcenter">
+										<div class="tabcell">
+											&#36;<%= amount %>
+										</div>
+									</div>
+								</div>
+
+								<div class="dtail-tab" style="border-top: none">
+									<div class="dtail-i vcenter" style="padding-left: 0">
+										<div class="tabcell">
+											IVU
+										</div>
+									</div>
+
+									<div class="dtail-ii vcenter">
+										<div class="tabcell">
+											&#36;<%= amountIvu %>
+										</div>
+									</div>
+								</div>
+
+								<div class="dtail-tab" style="border-top: none">
+									<div class="dtail-i vcenter" style="padding-left: 0">
+										<div class="tabcell">
+											CANTIDAD A PAGAR
+										</div>
+									</div>
+
+									<div class="dtail-ii vcenter">
+										<div class="tabcell" style="color: #ef3829;">
+											&#36;<%= totalAmount %>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow m-top-i m-bott-ii">
+								<div class="btns red def-i pull-right vcenter rippleR" id="next">
+									<span class="tabcell">
+										Continuar&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</span>
+								</div>
+
+								<div class="btns gray def-i pull-left vcenter"id="cancel">
+									<span class="tabcell">
+										Cancelar
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<% include footer %>
+
+	</div>
+
+</script>
