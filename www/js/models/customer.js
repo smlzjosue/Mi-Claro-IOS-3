@@ -93,7 +93,7 @@ $(function() {
 
             const parameters = JSON.stringify({
                 currentPassword: currentPassword,
-                newPassword: newPassword,
+                newPassword: btoa(newPassword),
                 method: method,
                 token: tokenSession
             });

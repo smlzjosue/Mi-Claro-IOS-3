@@ -59,12 +59,6 @@ $(function() {
                             trigger: true
                         });
                     } else {
-                        // NO more auto login full
-                        //console.log('trying to login previous user');
-                        //var username = app.utils.Storage.getLocalItem('username-used');
-                        //if (username == undefined || username == null) { username = app.utils.Storage.getLocalItem('username'); } // TODO, esta linea se debe borrar
-                        //const password = app.utils.Storage.getLocalItem('password');
-                        //self.signOn(username, password);
                         var username = app.utils.Storage.getLocalItem('username-used');
                         $('#login').val(username);
                     }
@@ -74,7 +68,7 @@ $(function() {
                     $('#password').focus();
 
                     $([document.documentElement, document.body]).animate({
-                        scrollTop: $("#password").offset().top - 20
+                        scrollTop: $("#password").offset().top - 50
                     }, 1000);
                 }
             } else {
@@ -101,13 +95,13 @@ $(function() {
 
             $('#login').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#login').offset().top-20
+                    scrollTop: $('#login').offset().top-50
                 }, 1000);
             });
 
             $('#password').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#login').offset().top-20
+                    scrollTop: $('#login').offset().top-50
                 }, 1000);
             });
 		},
@@ -315,7 +309,7 @@ $(function() {
                 if (loginAccounts[i].Account == response.account) { // default login account
                     defaultAccount = loginAccounts[i];
                     loginAccounts[i].isDefault = true;
-                    i = loginAccounts.length; // para salir del for
+                    i = loginAccounts.length; // para salir
                 }
             }
 

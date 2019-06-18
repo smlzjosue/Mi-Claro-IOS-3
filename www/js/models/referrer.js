@@ -56,15 +56,19 @@ $(function() {
         getCredits: function(account, successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
+
+            const method = 'getCreditsByAccount';
+
             const parameters = JSON.stringify({
-                token: tokenSession,
-                account: account,
+                Account: account,
+                method: method,
+                token: tokenSession
             });
-
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
-
-            const method = 'getCredits';
-            app.utils.network.requestReferrer(method, headers, parameters, successCB, errorCB);
+            //app.utils.network.processRequest(parameters, successCB, errorCB);
+            $.getJSON("js/pojo/get-credits.json", function(json) {
+                var data = json;
+                successCB(data);
+            });
         },
 
         getReferrerAccountsAllStatus: function(account, successCB, errorCB){

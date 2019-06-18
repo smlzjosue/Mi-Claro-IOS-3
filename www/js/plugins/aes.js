@@ -1,7 +1,6 @@
 $(function(){
 	window.aes = function(str, callback) {
-		//var cordova = window.cordova || window.Cordova;
-  		
+		//var cordova = window.cordova || window.Cordova;		
 	    cordova.exec(
     	function(data){
     		callback(data);

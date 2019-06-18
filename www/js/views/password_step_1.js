@@ -49,7 +49,7 @@ $(function() {
 
             $('#number').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#number').offset().top-20
+                    scrollTop: $('#number').offset().top-50
                 }, 1000);
             });
         },
@@ -93,8 +93,8 @@ $(function() {
             $('#number').blur();
             self.options.loginModel.getSecurityQuestions(number,
                 function (response) {
-                    if(response.hasError){
-                        showAlert('Error', response.errorDisplay, 'Aceptar');
+                    if (response.hasError){
+                        showAlert('Error', 'El número de teléfono o correo ingresado no se encuentra registrado en nuestros sistemas, su formato es incorrecto o no pertenece a nuestra red. Por favor intente nuevamente.', 'Aceptar');
                     } else {
                         if (response.subscriber == null) {
                             showAlert('Error', 'El número de teléfono o correo ingresado no se encuentra registrado en nuestros sistemas, su formato es incorrecto o no pertenece a nuestra red. Por favor intente nuevamente.', 'Aceptar');

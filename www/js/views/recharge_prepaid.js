@@ -66,13 +66,13 @@ $(function() {
                         self.getPaymentsType(e);
                     } else {
                         showAlert('Error', 'Disculpe, no cuenta con recargas disponibles.', 'Aceptar',
-                            function () { self.back(e);
+                            function () { self.navigateHome(e);
                             });
                     }
                 },
                 function () {
                     showAlert('Error', 'Disculpe, no se puede obtener su informacion para la recarga.', 'Aceptar',
-                        function () { self.back(e);
+                        function () { self.navigateHome(e);
                         });
                 }
             );
@@ -89,13 +89,13 @@ $(function() {
                         self.getProducts(e);
                     } else {
                         showAlert('Error', 'Disculpe, no cuenta con recargas disponibles.', 'Aceptar',
-                            function () { self.back(e);
+                            function () { self.navigateHome(e);
                             });
                     }
                 },
                 function () {
                     showAlert('Error', 'Disculpe, no se puede obtener su informacion para la recarga.', 'Aceptar',
-                        function () { self.back(e);
+                        function () { self.navigateHome(e);
                         });
                 }
             );
@@ -112,13 +112,13 @@ $(function() {
                         self.setupData(response.formProducts);
                     } else {
                         showAlert('Error', 'Disculpe, no cuenta con recargas disponibles.', 'Aceptar',
-                            function () { self.back(e);
+                            function () { self.navigateHome(e);
                             });
                     }
                 },
                 function () {
                     showAlert('Error', 'Disculpe, no se puede obtener su informacion para la recarga.', 'Aceptar',
-                        function () { self.back(e);
+                        function () { self.navigateHome(e);
                         });
                 }
             );
@@ -165,7 +165,7 @@ $(function() {
                 $('#input-other').val('');
 
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#radioOther").offset().top - 20
+                    scrollTop: $("#radioOther").offset().top - 50
                 }, 1000);
             }
         },

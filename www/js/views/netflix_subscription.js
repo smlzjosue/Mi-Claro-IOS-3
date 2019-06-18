@@ -86,7 +86,7 @@ $(function() {
                     'mantenimiento. Por favor intente nuevamente en unos minutos.';
                 showAlert('Error', message, 'Aceptar',
                     function(){
-                        self.back(e);
+                        self.navigateHome(e);
                     });
                 return;
             } else if (accountsSubscribers.length == 1
@@ -98,11 +98,11 @@ $(function() {
                 showConfirm('', message, ['Salir', 'Chat'],
                     function(btnIndex){
                         if(btnIndex==1){
-                            self.back(e);
+                            self.navigateHome(e);
                         }
                         if(btnIndex==2){
                             app.router.history = ['menu'];
-                            self.chat(e);
+                            self.navigateHome(e);
                         }
                     });
                 return;
@@ -114,7 +114,7 @@ $(function() {
                     'mantenimiento. Por favor intente nuevamente en unos minutos.';
                 showAlert('Error', message, 'Aceptar',
                     function(){
-                        self.back(e);
+                        self.navigateHome(e);
                     });
                 return;
             }
@@ -146,11 +146,11 @@ $(function() {
                 showConfirm('', message, ['Salir', 'Chat'],
                     function(btnIndex){
                         if(btnIndex==1){
-                            self.back(e);
+                            self.navigateHome(e);
                         }
                         if(btnIndex==2){
                             app.router.history = ['menu'];
-                            self.chat(e);
+                            self.navigateHome(e);
                         }
                     });
             }

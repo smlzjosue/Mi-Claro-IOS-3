@@ -36,7 +36,6 @@
     <allow-intent href="geo:*" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
-    
     <allow-navigation href="https://chat.clarotodo.com/*" />
     <allow-navigation href="https://chat2.claropr.com/*" />
     <allow-navigation href="http://miclarouatend.claropr.com/*" />
@@ -46,7 +45,6 @@
     <allow-navigation href="http://localhost:3000/*" />
     <allow-navigation href="https://miclaroapi.claropr.com/*" />
     <allow-navigation href="https://miclaro.clarotodo.com/*" />
-    
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />
@@ -109,6 +107,10 @@
     </feature>
     <feature name="MiClaroPlugin">
         <param name="ios-package" value="MiClaroPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SocialSharing">
+        <param name="ios-package" value="SocialSharing" />
         <param name="onload" value="true" />
     </feature>
 </widget>

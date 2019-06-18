@@ -82,7 +82,7 @@ $(function() {
         return: function (e) {
             var self = this;
 
-            self.back(e);
+            self.navigateHome(e);
         }
     });
 

@@ -38,8 +38,7 @@ $(function() {
 			//Go to help
 			app.router.navigate('help_section',{trigger: true});
 
-		},
-		
+		}
 	});
 	
 });

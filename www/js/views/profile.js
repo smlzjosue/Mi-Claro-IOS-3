@@ -6,6 +6,8 @@ $(function() {
 	app.views.ProfileView = app.views.CommonView.extend({
 
 		name: 'profile',
+
+        questions: [],
 		
 		// The DOM events specific.
 		events: {
@@ -17,10 +19,12 @@ $(function() {
             'click #tab-email':                     'tabEmail',
             'click #tab-password':                  'tabPassword',
             'click #tab-postal':                    'tabPostal',
+            'click #tab-questions':                 'tabQuestions',
             'click #save-personal':                 'savePersonal',
             'click #save-email':                    'saveEmail',
             'click #save-password':                 'savePassword',
             'click #save-address':                  'saveAddress',
+            'click #save-questions':                'saveQuestions',
 
             'input #phone':                         'numberChanged',
             'input #phone_f':                       'numberChanged',
@@ -71,13 +75,13 @@ $(function() {
 
             if (app.utils.Storage.getSessionItem('required-updates').requiredAccountUpdate) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#label_update').offset().top-25
+                    scrollTop: $('#label_update').offset().top-50
                 }, 1000);
             }
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top-40
+                    scrollTop: $(e.currentTarget).offset().top-60
                 }, 1000);
             });
 
@@ -189,6 +193,7 @@ $(function() {
         },
 
         setupData: function(data) {
+            var self = this;
 
             const username = app.utils.Storage.getLocalItem('username');
             $('#current_user').val(username);
@@ -205,6 +210,78 @@ $(function() {
             $('#state').val(data.State);
             $('#country').val(data.Country);
             $('#zip_code').val(data.ZipCode);
+
+            self.getQuestions();
+        },
+
+        getQuestions: function() {
+            var self = this;
+            self.options.userModel.getQuestions(
+                function (response) {
+                    if (!response.hasError) {
+                        self.setQuestionData(response.QuestionsItemsList)
+                    } else {
+                        showAlert('Error', response.errorDisplay, 'Aceptar');
+                    }
+                },
+                app.utils.network.errorRequest
+            );
+        },
+
+        setQuestionData: function(questions) {
+            var self = this;
+
+            self.questions = questions;
+
+            var htmlA = '';
+            var htmlB = '';
+            $.each(questions, function(index, question) {
+                if (index == 0) {
+                    htmlA += '<option value="'+question.questionID+'" selected>'+question.question+'</option>\n';
+                    htmlB += '<option value="'+question.questionID+'">'+question.question+'</option>\n';
+                } else if (index == 1) {
+                    htmlA += '<option value="'+question.questionID+'">'+question.question+'</option>\n';
+                    htmlB += '<option value="'+question.questionID+'" selected>'+question.question+'</option>\n';
+                } else {
+                    htmlA += '<option value="'+question.questionID+'">'+question.question+'</option>\n';
+                    htmlB += '<option value="'+question.questionID+'">'+question.question+'</option>\n';
+                }
+            });
+            $('#questions_1').html(htmlA);
+            $('#questions_2').html(htmlB);
+
+            self.getUserChallengeQuestions();
+        },
+
+        getUserChallengeQuestions: function() {
+            var self = this;
+            self.options.userModel.getChallengeQuestions(
+                function (response) {
+                    if (!response.hasError) {
+                        if (response.ResponseList) {
+                            $.each(self.questions, function(index, question) {
+                                if (response.ResponseList.length > 0) {
+                                    const questionId1 = response.ResponseList[0].questionID;
+                                    if (questionId1 == question.questionID) {
+                                        $('#questions_1').prop('selectedIndex', index);
+                                        $('#answer_1').val(response.ResponseList[0].response);
+                                    }
+                                }
+                                if (response.ResponseList.length > 1) {
+                                    const questionId2 = response.ResponseList[1].questionID;
+                                    if (questionId2 == question.questionID) {
+                                        $('#questions_2').prop('selectedIndex', index);
+                                        $('#answer_2').val(response.ResponseList[1].response);
+                                    }
+                                }
+                            });
+                        }
+                    } else {
+                        showAlert('Error', response.errorDisplay, 'Aceptar');
+                    }
+                },
+                app.utils.network.errorRequest
+            );
         },
 
         tabInfo: function (e) {
@@ -212,11 +289,13 @@ $(function() {
             $('#tab-email').removeClass('on');
             $('#tab-password').removeClass('on');
             $('#tab-postal').removeClass('on');
+            $('#tab-questions').removeClass('on');
 
             $('#content-info').show();
             $('#content-email').hide();
             $('#content-password').hide();
             $('#content-postal').hide();
+            $('#content-questions').hide();
         },
 
         tabEmail: function (e) {
@@ -224,11 +303,13 @@ $(function() {
             $('#tab-email').addClass('on');
             $('#tab-password').removeClass('on');
             $('#tab-postal').removeClass('on');
+            $('#tab-questions').removeClass('on');
 
             $('#content-info').hide();
             $('#content-email').show();
             $('#content-password').hide();
             $('#content-postal').hide();
+            $('#content-questions').hide();
         },
 
         tabPassword: function (e) {
@@ -236,11 +317,13 @@ $(function() {
             $('#tab-email').removeClass('on');
             $('#tab-password').addClass('on');
             $('#tab-postal').removeClass('on');
+            $('#tab-questions').removeClass('on');
 
             $('#content-info').hide();
             $('#content-email').hide();
             $('#content-password').show();
             $('#content-postal').hide();
+            $('#content-questions').hide();
 
             if (app.utils.Storage.getSessionItem('required-updates').requiredAccountUpdate) {
                 $('#container_required_update').show();
@@ -251,16 +334,32 @@ $(function() {
             }
         },
 
-        tabPostal: function (e) {
+        tabPostal: function(e) {
             $('#tab-info').removeClass('on');
             $('#tab-email').removeClass('on');
             $('#tab-password').removeClass('on');
             $('#tab-postal').addClass('on');
+            $('#tab-questions').removeClass('on');
 
             $('#content-info').hide();
             $('#content-email').hide();
             $('#content-password').hide();
             $('#content-postal').show();
+            $('#content-questions').hide();
+        },
+
+        tabQuestions: function(e) {
+            $('#tab-info').removeClass('on');
+            $('#tab-email').removeClass('on');
+            $('#tab-password').removeClass('on');
+            $('#tab-postal').removeClass('on');
+            $('#tab-questions').addClass('on');
+
+            $('#content-info').hide();
+            $('#content-email').hide();
+            $('#content-password').hide();
+            $('#content-postal').hide();
+            $('#content-questions').show();
         },
 
         savePersonal: function (e) {
@@ -488,7 +587,58 @@ $(function() {
                 app.utils.network.errorRequest
             );
         },
-	
+
+        saveQuestions: function (e) {
+            var self = this;
+
+            const answer1 = $('#answer_1').val();
+            const answer2 = $('#answer_2').val();
+
+            const questionId1 = $('#questions_1').val();
+            const questionId2 = $('#questions_2').val();
+
+            if(answer1.length == 0){
+                message = 'Porfavor introduzca su respuesta a la primera pregunta de Seguridad.';
+                showAlert('Error', message, 'Aceptar', function(e){});
+                return;
+            }
+
+            if(answer2.length == 0){
+                message = 'Porfavor introduzca su respuesta a la segunda pregunta de Seguridad.';
+                showAlert('Error', message, 'Aceptar', function(e){});
+                return;
+            }
+
+            self.options.userModel.setChallengeQuestions(
+                questionId1,
+                answer1,
+                function (response) {
+                    if (!response.hasError) {
+                        self.setQuestion2(questionId2, answer2);
+                    } else {
+                        showAlert('Error', response.errorDisplay, 'Aceptar');
+                    }
+                },
+                app.utils.network.errorRequest
+            );
+        },
+
+        setQuestion2: function (questionId2, answer2) {
+            var self = this;
+
+            self.options.userModel.setChallengeQuestions(
+                questionId2,
+                answer2,
+                function (response) {
+                    if (!response.hasError) {
+                        showAlert('', 'Se actualizaron sus preguntas de seguridad con éxito.', 'Aceptar');
+                    } else {
+                        showAlert('Error', response.errorDisplay, 'Aceptar');
+                    }
+                },
+                app.utils.network.errorRequest
+            );
+        }
 	});
 
     function hasCapital(password) {

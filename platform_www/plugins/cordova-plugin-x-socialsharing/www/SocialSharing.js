@@ -1,10 +1,10 @@
 cordova.define("cordova-plugin-x-socialsharing.SocialSharing", function(require, exports, module) {
 function SocialSharing() {
-} 
+}
 
 // Override this method (after deviceready) to set the location where you want the iPad popup arrow to appear.
 // If not overridden with different values, the popup is not used. Example:
-// 
+//
 //   window.plugins.socialsharing.iPadPopupCoordinates = function() {
 //     return "100,100,200,300";
 //   };
@@ -138,7 +138,13 @@ SocialSharing.install = function () {
   }
 
   window.plugins.socialsharing = new SocialSharing();
-  navigator.share = window.plugins.socialsharing.shareW3C;
+
+  // Note only polyfill navigator.share if it is not defined, since shareW3C implements L1 of the spec,
+  // and an existing navigator.share method could implement L2.
+  if (!navigator.share) {
+    navigator.share = window.plugins.socialsharing.shareW3C;
+  }
+
   return window.plugins.socialsharing;
 };
 

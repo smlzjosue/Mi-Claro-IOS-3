@@ -73,13 +73,6 @@ $(function() {
                     const subscriber = app.utils.Storage.getLocalItem('logged-subscriber-used');
                     if (subscriber != null) {
                         self.signOnGuest(subscriber);
-                    } else {
-                        const isGuest = app.utils.Storage.getLocalItem('logged-guest');
-                        if (!isGuest) {
-                            app.router.navigate('login', {
-                                trigger: true
-                            });
-                        }
                     }
                 } else {
                     var loginGuest = true;
@@ -95,7 +88,6 @@ $(function() {
                 }
             }
 
-
             /**
              * set enter event
              */
@@ -107,7 +99,7 @@ $(function() {
 
             $('#number').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#number").offset().top-20
+                    scrollTop: $("#number").offset().top-50
                 }, 1000);
             });
 		},
@@ -244,7 +236,7 @@ $(function() {
                 if (loginAccounts[i].Account == response.account) { // default login account
                     defaultAccount = loginAccounts[i];
                     loginAccounts[i].isDefault = true;
-                    i = loginAccounts.length; // para salir del for
+                    i = loginAccounts.length; // para salir
                 }
             }
 

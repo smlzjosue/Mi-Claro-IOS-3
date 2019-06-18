@@ -80,7 +80,7 @@ $(function() {
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top-40
+                    scrollTop: $(e.currentTarget).offset().top-60
                 }, 1000);
             });
         },
@@ -255,8 +255,8 @@ $(function() {
                 function (success) {
                     if (!success.HasError) {
                         app.utils.Storage.setSessionItem('gift-send-text',
-                        'Gracias: La recarga se ha enviado con <span class="roboto-b">Éxito</span>');
-                            app.router.navigate('gift_sent', {
+                            'Gracias: La recarga se ha enviado con <span class="roboto-b">Éxito</span>');
+                        app.router.navigate('gift_sent', {
                             trigger: true,
                             replace: true
                         });
@@ -280,7 +280,7 @@ $(function() {
         return: function (e) {
             var self = this;
     
-            self.back(e);
+            self.navigateHome(e);
         },
     });
 });

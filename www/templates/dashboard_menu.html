@@ -8,16 +8,16 @@
 
 			<% _.each(section.Pages, function(page) { %>
 
-				<% if (page.accessID == 26) { %>
-					<div class="dashconts <%= page.extraClass %>">
-						<div class="dashbox gray vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_recharge' %>">
-							<span class="tabcell">
-								<span class="icon-dash-24"></span>
-								Recarga
-							</span>
-						</div>
-					</div>
-					<% } %>
+			<% if (page.accessID == 26) { %>
+			<div class="dashconts <%= page.extraClass %>">
+				<div class="dashbox gray vcenter <%= page.extraClass == 'offnouse' ? '' : 'dash_recharge' %>">
+					<span class="tabcell">
+						<span class="icon-dash-24"></span>
+						Recarga
+					</span>
+				</div>
+			</div>
+			<% } %>
 
 			<% if (page.accessID == 9) { %>
 			<div class="dashconts <%= page.extraClass %>">
@@ -202,10 +202,18 @@
 		</div>
 	</div>
 
+	<% if (!isPrepaid) { %>
 	<div class="basicrow m-top-i m-bott">
 		<div class="container">
-			<img width="100%" src="images/clarobannernetflix.jpg">
+			<img width="100%" src="images/banner_netflix_app.jpg">
 		</div>
 	</div>
+	<% } else { %>
+	<div class="basicrow m-top-i m-bott">
+		<div class="container">
+			<img width="100%" src="images/banner-prepago.jpg">
+		</div>
+	</div>
+	<% } %>
 
 </script>

@@ -27,9 +27,7 @@
 		4D605798CEAE476BA8540BAC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDCC3E31B324988B5151017 /* MapKit.framework */; };
 		50AF59F179984B54B16B74F9 /* CDVAppRate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEF69E72C2D4057B9C879A9 /* CDVAppRate.m */; };
 		548B1317F4AA4B0A9E33FFFF /* LN_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C5DA21926D467A99FA6616 /* LN_Reachability.m */; };
-		5D49BFC120322DDA007AA9F2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8F63A42031F46C00452886 /* NotificationCenter.framework */; };
-		5D49BFCC20322DDA007AA9F2 /* Mi Claro Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5D49BFC020322DDA007AA9F2 /* Mi Claro Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5D49BFDC20322EA5007AA9F2 /* MiClaroWidget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D49BFDA20322EA5007AA9F2 /* MiClaroWidget.storyboard */; };
+		5621DC58643C4092BCC0336A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E387B95D9F34F98AC7EFF89 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5D49BFDD20323901007AA9F2 /* AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63CE2032290D00452886 /* AES.m */; };
 		5D49BFDE20323901007AA9F2 /* MiClaroPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63CC2032290D00452886 /* MiClaroPlugin.m */; };
 		5D49C00720323A0E007AA9F2 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63C32031F7A500452886 /* CJSONDeserializer.m */; };
@@ -37,16 +35,9 @@
 		5D49C00920323A0E007AA9F2 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63BB2031F7A500452886 /* NSData+Base64.m */; };
 		5D49C00A20323A0E007AA9F2 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63BD2031F7A500452886 /* NSData+CommonCrypto.m */; };
 		5D49C00B20323A0E007AA9F2 /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63BF2031F7A500452886 /* NSData+Conversion.m */; };
-		5D49C00C20323A0F007AA9F2 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63C32031F7A500452886 /* CJSONDeserializer.m */; };
-		5D49C00D20323A0F007AA9F2 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63C12031F7A500452886 /* CJSONSerializer.m */; };
-		5D49C00E20323A0F007AA9F2 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63BB2031F7A500452886 /* NSData+Base64.m */; };
-		5D49C00F20323A0F007AA9F2 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63BD2031F7A500452886 /* NSData+CommonCrypto.m */; };
-		5D49C01020323A0F007AA9F2 /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F63BF2031F7A500452886 /* NSData+Conversion.m */; };
-		5D49C01220323B79007AA9F2 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D49BFD220322E0B007AA9F2 /* LoadingViewController.m */; };
-		5D49C01320323B79007AA9F2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D49BFD320322E0B007AA9F2 /* LoginViewController.m */; };
-		5D49C01420323B79007AA9F2 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D49BFC420322DDA007AA9F2 /* TodayViewController.m */; };
 		5D88BE3D2039D1F00033610E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D88BE3B2039D1F00033610E /* Crashlytics.framework */; };
 		5D88BE3E2039D1F00033610E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D88BE3C2039D1F00033610E /* Fabric.framework */; };
+		5E5E9863517F4BECB9940BB6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86BC923E89F4EB9AB3200F7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		612E2ADBB8B048E493A8D74E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 078A8A117CE54E149F3B1265 /* libz.tbd */; };
 		64CB83173A2141A0A2EB5196 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5684C5F100784E758D3B8ACE /* CDVNotification.m */; };
 		65D6B0662AB340CEBA27C40B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7413FDC3BE4C12823E6E1D /* CoreTelephony.framework */; };
@@ -62,9 +53,11 @@
 		A873C0E2FF0A0641CD9C6029 /* libPods-MiClaro.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A95212863B61CDE2C9A82F98 /* libPods-MiClaro.a */; };
 		CCBAD2303E0D45C98A3EB222 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F84D03813FF4636980605AA /* LocalAuthentication.framework */; };
 		CD43ADBABAED4974B21AAF82 /* ActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7700CF7804467CBF6F1256 /* ActionSheet.m */; };
+		D3B795A0A2C84BC98D5A9588 /* NSString+SSURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC653481C7C4C4691E6F682 /* NSString+SSURLEncoding.m */; };
 		D5BB266934A04AB7846805C9 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC116C2A4F744C8878B8E15 /* CDVInAppBrowser.m */; };
 		D5BCF266EABF4BCDAA733A67 /* UniversalAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA49BE5865C4938A465F09A /* UniversalAnalyticsPlugin.m */; };
 		D87857C8885C48EC874E2F42 /* LaunchNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = E91905A23D434784B61DB79D /* LaunchNavigator.m */; };
+		DE8195E70FF54766A01C87E8 /* SocialSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AF00B1C334249AAF547E4 /* SocialSharing.m */; };
 		DEDCCD88FDDB47C5AB67323A /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 09166A73D62D42C5A64DC782 /* CDVDevice.m */; };
 		EE5D04A4A20D4586859D2AE2 /* AppPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF03D8310AE4A509BA02456 /* AppPreferences.m */; };
 		EEF292DBC4424D8297915077 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 616B847A005F4D8ABFD2A410 /* CDVViewController+SplashScreen.m */; };
@@ -86,13 +79,6 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = CordovaLib;
 		};
-		5D49BFCA20322DDA007AA9F2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5D49BFBF20322DDA007AA9F2;
-			remoteInfo = "Mi Claro Widget";
-		};
 		5D8F639D2031F40500452886 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */;
@@ -109,7 +95,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5D49BFCC20322DDA007AA9F2 /* Mi Claro Widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +121,7 @@
 		25EB0AAE7DDD4D449241A94E /* CDVGlobalization.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVGlobalization.m; path = "cordova-plugin-globalization/CDVGlobalization.m"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D66BB3404474968A615D7B2 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = "cordova-plugin-google-analytics/GAIEcommerceProductAction.h"; sourceTree = "<group>"; };
+		2E387B95D9F34F98AC7EFF89 /* MessageUI.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
 		302D95EE14D2391D003F00A1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -154,7 +140,6 @@
 		5684C5F100784E758D3B8ACE /* CDVNotification.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVNotification.m; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; };
 		5B7D5308D80F491292552E75 /* CDVNotification.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; };
 		5BF03D8310AE4A509BA02456 /* AppPreferences.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = AppPreferences.m; path = "cordova-plugin-app-preferences/AppPreferences.m"; sourceTree = "<group>"; };
-		5D49BFC020322DDA007AA9F2 /* Mi Claro Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Mi Claro Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D49BFC320322DDA007AA9F2 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		5D49BFC420322DDA007AA9F2 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		5D49BFC920322DDA007AA9F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -193,6 +178,7 @@
 		6AA49BE5865C4938A465F09A /* UniversalAnalyticsPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = UniversalAnalyticsPlugin.m; path = "cordova-plugin-google-analytics/UniversalAnalyticsPlugin.m"; sourceTree = "<group>"; };
 		6AD9F11E5F5C49939EDF5C93 /* GAILogger.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = "cordova-plugin-google-analytics/GAILogger.h"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = MiClaro/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		6B5AF00B1C334249AAF547E4 /* SocialSharing.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = SocialSharing.m; path = "cordova-plugin-x-socialsharing/SocialSharing.m"; sourceTree = "<group>"; };
 		6D7413FDC3BE4C12823E6E1D /* CoreTelephony.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		6E12D29E0F65427C857A0163 /* PushPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = PushPlugin.m; path = "phonegap-plugin-push/PushPlugin.m"; sourceTree = "<group>"; };
 		729010D3E4CE4892B2BDB416 /* CDVReachability.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVReachability.h; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; };
@@ -207,6 +193,7 @@
 		95DF7696ED4444A687070791 /* CDVDevice.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVDevice.h; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; };
 		9B5A44A5CA4C41C1BECEDE79 /* TouchID.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = TouchID.h; path = "cordova-plugin-touch-id/TouchID.h"; sourceTree = "<group>"; };
 		9F5CAE1D4DDF459BAC9F1F53 /* PushPlugin.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = PushPlugin.h; path = "phonegap-plugin-push/PushPlugin.h"; sourceTree = "<group>"; };
+		A022356C3D6D42E088BA0E24 /* NSString+SSURLEncoding.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "NSString+SSURLEncoding.h"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.h"; sourceTree = "<group>"; };
 		A5E98B98B0794FF4B56E2390 /* LN_Reachability.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = LN_Reachability.h; path = uk.co.workingedge.phonegap.plugin.launchnavigator/LN_Reachability.h; sourceTree = "<group>"; };
 		A95212863B61CDE2C9A82F98 /* libPods-MiClaro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiClaro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC98DB14E8D24FA9A4437190 /* GAITrackedViewController.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = "cordova-plugin-google-analytics/GAITrackedViewController.h"; sourceTree = "<group>"; };
@@ -221,11 +208,14 @@
 		ED1D45B68AF94E9CB2487DE6 /* CDVAppRate.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVAppRate.h; path = "cordova-plugin-apprate/CDVAppRate.h"; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		ED5CDCA072E746F0B4E2A91F /* CDVReachability.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVReachability.m; path = "cordova-plugin-network-information/CDVReachability.m"; sourceTree = "<group>"; };
+		EDC653481C7C4C4691E6F682 /* NSString+SSURLEncoding.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "NSString+SSURLEncoding.m"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.m"; sourceTree = "<group>"; };
 		F0DF367EF119409486D5E6BD /* CDVLocation.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVLocation.h; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; };
 		F326F0183D2841619D8BB916 /* libAdIdAccess.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; name = libAdIdAccess.a; path = "MiClaro/Plugins/cordova-plugin-google-analytics/libAdIdAccess.a"; sourceTree = "<group>"; };
 		F58B7D82831F47819153A3CE /* CDVInAppBrowser.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowser.h; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = MiClaro/config.xml; sourceTree = "<group>"; };
+		F86BC923E89F4EB9AB3200F7 /* Social.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FBEF69E72C2D4057B9C879A9 /* CDVAppRate.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVAppRate.m; path = "cordova-plugin-apprate/CDVAppRate.m"; sourceTree = "<group>"; };
+		FC177E41B7AB4EF3A43DFF3E /* SocialSharing.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = SocialSharing.h; path = "cordova-plugin-x-socialsharing/SocialSharing.h"; sourceTree = "<group>"; };
 		FE8AA6B586604DDCBD5C6FF0 /* GAIFields.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = "cordova-plugin-google-analytics/GAIFields.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,14 +243,8 @@
 				6D4B4884DB664FE0978EC95E /* libz.dylib in Frameworks */,
 				28EFA331E0AF47CD9F0C3304 /* libsqlite3.dylib in Frameworks */,
 				A873C0E2FF0A0641CD9C6029 /* libPods-MiClaro.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5D49BFBD20322DDA007AA9F2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5D49BFC120322DDA007AA9F2 /* NotificationCenter.framework in Frameworks */,
+				5E5E9863517F4BECB9940BB6 /* Social.framework in Frameworks */,
+				5621DC58643C4092BCC0336A /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* MiClaro.app */,
-				5D49BFC020322DDA007AA9F2 /* Mi Claro Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,6 +347,8 @@
 				62B403C16F724E90902F9D81 /* libsqlite3.dylib */,
 				A95212863B61CDE2C9A82F98 /* libPods-MiClaro.a */,
 				5D8F63A42031F46C00452886 /* NotificationCenter.framework */,
+				F86BC923E89F4EB9AB3200F7 /* Social.framework */,
+				2E387B95D9F34F98AC7EFF89 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -440,6 +425,10 @@
 				2292EF11C5A84DA18FD16CAB /* TouchID.m */,
 				C77D7A860FE44BD5A71B7A91 /* UniversalAnalyticsPlugin.h */,
 				6AA49BE5865C4938A465F09A /* UniversalAnalyticsPlugin.m */,
+				EDC653481C7C4C4691E6F682 /* NSString+SSURLEncoding.m */,
+				6B5AF00B1C334249AAF547E4 /* SocialSharing.m */,
+				A022356C3D6D42E088BA0E24 /* NSString+SSURLEncoding.h */,
+				FC177E41B7AB4EF3A43DFF3E /* SocialSharing.h */,
 			);
 			name = Plugins;
 			path = MiClaro/Plugins;
@@ -498,29 +487,11 @@
 			);
 			dependencies = (
 				301BF551109A68C00062928A /* PBXTargetDependency */,
-				5D49BFCB20322DDA007AA9F2 /* PBXTargetDependency */,
 			);
 			name = MiClaro;
 			productName = MiClaro;
 			productReference = 1D6058910D05DD3D006BFB54 /* MiClaro.app */;
 			productType = "com.apple.product-type.application";
-		};
-		5D49BFBF20322DDA007AA9F2 /* Mi Claro Widget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5D49BFD020322DDA007AA9F2 /* Build configuration list for PBXNativeTarget "Mi Claro Widget" */;
-			buildPhases = (
-				5D49BFBC20322DDA007AA9F2 /* Sources */,
-				5D49BFBD20322DDA007AA9F2 /* Frameworks */,
-				5D49BFBE20322DDA007AA9F2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Mi Claro Widget";
-			productName = "Mi Claro Widget";
-			productReference = 5D49BFC020322DDA007AA9F2 /* Mi Claro Widget.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -531,23 +502,12 @@
 				LastUpgradeCheck = 1000;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = CSG9B6JZ9G;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
-							};
-						};
-					};
-					5D49BFBF20322DDA007AA9F2 = {
-						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = CSG9B6JZ9G;
-						ProvisioningStyle = Manual;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 						};
@@ -559,6 +519,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -574,7 +535,6 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* MiClaro */,
-				5D49BFBF20322DDA007AA9F2 /* Mi Claro Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -605,14 +565,6 @@
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
 				1B2D5320DE2644049E5265E9 /* CDVNotification.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5D49BFBE20322DDA007AA9F2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5D49BFDC20322EA5007AA9F2 /* MiClaroWidget.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,21 +679,8 @@
 				D5BCF266EABF4BCDAA733A67 /* UniversalAnalyticsPlugin.m in Sources */,
 				07A375879BDE4D36BAA5432F /* AppDelegate+notification.m in Sources */,
 				240EE87C18BA4ADEB3B3B355 /* PushPlugin.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5D49BFBC20322DDA007AA9F2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5D49C01420323B79007AA9F2 /* TodayViewController.m in Sources */,
-				5D49C01320323B79007AA9F2 /* LoginViewController.m in Sources */,
-				5D49C00C20323A0F007AA9F2 /* CJSONDeserializer.m in Sources */,
-				5D49C01020323A0F007AA9F2 /* NSData+Conversion.m in Sources */,
-				5D49C00F20323A0F007AA9F2 /* NSData+CommonCrypto.m in Sources */,
-				5D49C01220323B79007AA9F2 /* LoadingViewController.m in Sources */,
-				5D49C00E20323A0F007AA9F2 /* NSData+Base64.m in Sources */,
-				5D49C00D20323A0F007AA9F2 /* CJSONSerializer.m in Sources */,
+				D3B795A0A2C84BC98D5A9588 /* NSString+SSURLEncoding.m in Sources */,
+				DE8195E70FF54766A01C87E8 /* SocialSharing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,11 +691,6 @@
 			isa = PBXTargetDependency;
 			name = CordovaLib;
 			targetProxy = 301BF550109A68C00062928A /* PBXContainerItemProxy */;
-		};
-		5D49BFCB20322DDA007AA9F2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5D49BFBF20322DDA007AA9F2 /* Mi Claro Widget */;
-			targetProxy = 5D49BFCA20322DDA007AA9F2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -785,7 +719,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = CSG9B6JZ9G;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -809,7 +743,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.todoclaro.miclaroapp;
 				PRODUCT_NAME = MiClaro;
 				PROVISIONING_PROFILE = "398627ef-dded-4f29-8d72-880881118779";
-				PROVISIONING_PROFILE_SPECIFIER = "Mi Claro Develop";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -824,11 +758,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MiClaro/MiClaro.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Puerto Rico Telephone Company Inc (CSG9B6JZ9G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Puerto Rico Telephone Company Inc (CSG9B6JZ9G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Speedy Movil Servicos S.A. de C.V. (44W73F6DDD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Speedy Movil Servicos S.A. de C.V. (44W73F6DDD)";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = CSG9B6JZ9G;
+				DEVELOPMENT_TEAM = 44W73F6DDD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -850,85 +784,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.todoclaro.miclaroapp;
 				PRODUCT_NAME = MiClaro;
 				PROVISIONING_PROFILE = "8183fe0a-8e0d-4734-a5de-9c4c2bfca4e7";
-				PROVISIONING_PROFILE_SPECIFIER = "Mi Claro AdHoc";
+				PROVISIONING_PROFILE_SPECIFIER = Mi_Claro_PR_Dist;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		5D49BFCD20322DDA007AA9F2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Mi Claro Widget/Mi Claro Widget.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = CSG9B6JZ9G;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "Mi Claro Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.todoclaro.miclaroapp.today-extension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0ac6b5a2-4ce7-458b-895d-832033576918";
-				PROVISIONING_PROFILE_SPECIFIER = "Mi Claro Extension Development";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		5D49BFCE20322DDA007AA9F2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Mi Claro Widget/Mi Claro Widget.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = CSG9B6JZ9G;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "Mi Claro Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.todoclaro.miclaroapp.today-extension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b5d6c6a-79ba-4127-90ab-bff402b9e630";
-				PROVISIONING_PROFILE_SPECIFIER = "Mi Claro Extension Ad Hoc";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -1020,15 +877,6 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5D49BFD020322DDA007AA9F2 /* Build configuration list for PBXNativeTarget "Mi Claro Widget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5D49BFCD20322DDA007AA9F2 /* Debug */,
-				5D49BFCE20322DDA007AA9F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -88,6 +88,7 @@ $(function() {
 			url += '&lastname='+lastname;
 			url += '&Question='+question;
 
+            url = url.replace(/\s+/g,'%20');
 			console.log(url);
 
 			var browser = app.utils.browser.show(url, true);

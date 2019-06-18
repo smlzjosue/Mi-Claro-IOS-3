@@ -1,11 +1,14 @@
 var subscriberObj = {
     equipmentInfoField: {
-        itemIdField: '30609H         ',
+        itemBrandField: 'not_set',
+        itemIdField: '30609H',
         itemDescriptionField: 'SAMSUNG GALAXY J4 J400M GOLD',
+        itemImageField: 'https://miclaro.clarotodo.com/ImageHandler/OracleImageHandler.ashx?DEVICE_ID=56571H',
         pricecodeField: null,
         installmentsField: null,
         installmentValueField: null,
-        PropertyChanged: null
+        PropertyChanged: null,
+        techField: 'LTE'
     },
     planInfoField: {
         sOCInfoField: 'FEBIS29L',

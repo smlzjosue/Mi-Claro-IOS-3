@@ -41,7 +41,7 @@ $(function() {
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top-40
+                    scrollTop: $(e.currentTarget).offset().top-60
                 }, 1000);
             });
 
@@ -118,12 +118,14 @@ $(function() {
                                     const questionId1 = response.ResponseList[0].questionID;
                                     if (questionId1 == question.questionID) {
                                         $('#questions_1').prop('selectedIndex', index);
+                                        $('#answer_1').val(response.ResponseList[0].response);
                                     }
                                 }
                                 if (response.ResponseList.length > 1) {
-                                    const questionId1 = response.ResponseList[1].questionID;
-                                    if (questionId1 == question.questionID) {
+                                    const questionId2 = response.ResponseList[1].questionID;
+                                    if (questionId2 == question.questionID) {
                                         $('#questions_2').prop('selectedIndex', index);
+                                        $('#answer_2').val(response.ResponseList[1].response);
                                     }
                                 }
                             });

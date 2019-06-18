@@ -38,20 +38,24 @@
 				<div class="container">
 					<div class="basicrow m-top-i mbott">
 						<div class="difftabs">
-							<div id="tab-info" class="difft-def on fourths">
+							<div id="tab-info" class="difft-def on fvdef">
 								Informaci&oacute;n Personal
 							</div>
 
-							<div id="tab-email" class="difft-def fourths">
+							<div id="tab-email" class="difft-def fvdef">
 								Actualiza Tu Correo
 							</div>
 
-							<div id="tab-password" class="difft-def fourths">
+							<div id="tab-password" class="difft-def fvdef">
 								Cambiar Contrase&ntilde;a
 							</div>
 
-							<div id="tab-postal" class="difft-def fourths">
+							<div id="tab-postal" class="difft-def fvdef">
 								Direcci&oacute;n Postal
+							</div>
+
+							<div id="tab-questions" class="difft-def fvdef">
+								Preguntas de Seguridad
 							</div>
 						</div>
 					</div>
@@ -148,7 +152,7 @@
 						<div class="shortcont">
 
 							<div id="container_required_update" style="display: none">
-								<div id="label_update" class="basicrow bg-gray-u-i allpads bordsdef m-top-ii roboto-b text-justify text-required">
+								<div id="label_update" class="basicrow bg-gray-u-i allpads bordsdef roboto-b text-justify text-required">
 									<b>Actualización de Acceso:</b> Por su seguridad, es necesario que actualice su usuario y contraseña
 								</div>
 
@@ -233,7 +237,7 @@
 
 					<div id="content-postal" class="basicrow f-black roboto-r f-reg m-top-ii text-center" style="display: none">
 						<div class="shortcont">
-							<div class="basicrow m-top-ii">
+							<div class="basicrow">
 								<div class="basicrow">
 									<label class="label-f">
 										&#42; Direcci&oacute;n 1
@@ -297,6 +301,65 @@
 
 							<div class="basicrow m-top-i text-center">
 								<div class="btns def-iv red centr vcenter rippleR" id="save-address">
+									<span class="tabcell">
+										Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="content-questions" class="basicrow f-black roboto-r f-reg m-top-ii text-center" style="display: none">
+						<div class="shortcont">
+							<div class="basicrow">
+
+								<div class="basicrow text-justify">
+									Por favor selecciona dos preguntas de seguridad. Esto nos ayudar&aacute; a verificar tu identidad en caso de que olvides tu contrase&ntilde;a.
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Primera Pregunta de Seguridad
+									</label>
+
+									<select class="sel-f" id="questions_1">
+
+									</select>
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Respuesta Secreta
+									</label>
+
+									<input class="inp-f" id="answer_1">
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Segunda Pregunta de Seguridad
+									</label>
+
+									<select class="sel-f" id="questions_2">
+
+									</select>
+								</div>
+
+								<div class="basicrow m-top-i">
+									<label class="label-f">
+										&#42; Respuesta Secreta
+									</label>
+
+									<input class="inp-f" id="answer_2">
+								</div>
+							</div>
+
+							<div class="basicrow m-top-i">
+								<div class="logline full"></div>
+							</div>
+
+							<div class="basicrow m-top-i text-center">
+								<div class="btns def-iv red centr vcenter rippleR" id="save-questions">
 									<span class="tabcell">
 										Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
 									</span>

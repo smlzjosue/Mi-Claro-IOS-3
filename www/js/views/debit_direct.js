@@ -73,7 +73,7 @@ $(function() {
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top-40
+                    scrollTop: $(e.currentTarget).offset().top-60
                 }, 1000);
             });
 

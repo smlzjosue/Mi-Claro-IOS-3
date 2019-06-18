@@ -57,7 +57,7 @@ $(function() {
 
             $('#code').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#code").offset().top-20
+                    scrollTop: $("#code").offset().top-50
                 }, 1000);
             })
         },

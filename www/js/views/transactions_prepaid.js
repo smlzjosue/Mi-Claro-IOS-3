@@ -107,7 +107,7 @@ $(function() {
             $(e.currentTarget).data('search-info', true);
 
             $([document.documentElement, document.body]).animate({
-                scrollTop: $(htmlID).offset().top-40
+                scrollTop: $(htmlID).offset().top-60
             }, 1000);
 
             $(htmlID).find('.btn-search').click(function(){
@@ -205,7 +205,7 @@ $(function() {
 
                             $(target).find('.btn-return').focus();
                             $([document.documentElement, document.body]).animate({
-                                scrollTop: $(target).find('.btn-return').offset().top-40
+                                scrollTop: $(target).find('.btn-return').offset().top-60
                             }, 1000);
                         }
                     } else {

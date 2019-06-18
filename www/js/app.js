@@ -1,6 +1,5 @@
 var app = {
 
-
     // App Information
     id: '775322054',
     country: 'pr',
@@ -25,8 +24,9 @@ var app = {
     debug: true,
      /**** START URLs REBRANDING ****/
      newUrl: 'http://wslogin2.claroinfo.com/api/', // PROD
-  // processURL: 'http://miclaroreferals.claroinfo.com/proccess/procesos-dev.aspx', // DEV
+    // processURL: 'http://miclaroreferals.claroinfo.com/proccess/procesos-dev.aspx', // DEV
     processURL: 'http://rebranding.claroinfo.com/proccess/procesos-dev.aspx', // PROD
+     // processURL: 'https://4a8684d0-43d1-4ed6-9b60-22d53110b3a6.mock.pstmn.io/proccess/procesos-dev.aspx', // MOC SERVER
      // Chat URL
      chatURL: 'https://chat3.claropr.com/webapiserver/ECSApp/ChatWidget3/ChatPanel.aspx',
      /**** END URLs REBRANDING ****/
@@ -34,13 +34,9 @@ var app = {
     // Help URL
     helpURL: 'http://soporteapps.speedymovil.com:8090/appFeedback/service/feedback/application',
 
-    // Captive Portal
-    captivePortalURL: 'http://datapaqqa-ws.clarotodo.com/',
-
     // App group
     // appGroup: 'group.com.claro.pr.MiClaro', // Prod
     appGroup: 'group.com.todoclaro.miclaroapp.test', // Test
-    
 
     // Touch ID
     isTouchIdAvailable: false,
@@ -60,6 +56,10 @@ var app = {
     // Update email
     updateEmailTime: 1,
 
+    /* 
+    // File System
+    fileSystem: null,
+    */
     //Google Analitycs
     gaPlugin: null,
     gaAccountID: 'UA-44057429-1',
@@ -69,7 +69,16 @@ var app = {
 
     // Application boolena
     isApplication: true,
+/* 
+// Loader
+    spinner: null,
 
+	//Menu
+	isMenuOpen: false,
+
+    timeoutID: null,
+
+*/
     // Application Constructor
     initialize: function() {
 
@@ -105,10 +114,9 @@ var app = {
 
     	// save init session time
         this.utils.Storage.setSessionItem('init-session',new Date());
-        this.utils.Storage.setLocalItem('loginModeGuest', true);//*
-        this.utils.Storage.setLocalItem('skip_signin', false);//*
-        this.utils.Storage.setLocalItem('logged-is-active', false);//*
-
+        this.utils.Storage.setLocalItem('loginModeGuest', true);
+        this.utils.Storage.setLocalItem('skip_signin', false);
+        this.utils.Storage.setLocalItem('logged-is-active', false);
 
         // init loader
         app.utils.Loader.initialize();
@@ -122,6 +130,15 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('resume', this.onResume, false);
 
+        document.addEventListener("mousemove", app.resetTimer, false);
+        document.addEventListener("mousedown", app.resetTimer, false);
+        document.addEventListener("keypress", app.resetTimer, false);
+        document.addEventListener("DOMMouseScroll", app.resetTimer, false);
+        document.addEventListener("mousewheel", app.resetTimer, false);
+        document.addEventListener("touchmove", app.resetTimer, false);
+        document.addEventListener("MSPointerMove", app.resetTimer, false);
+
+        app.startTimer();
     },
 
     //-------------------------------------------------------------
@@ -261,22 +278,6 @@ var app = {
 
     },
 
-    initializeSideMenu: function(e){
-
-    	console.log('init menu...');
-
-    	var sideMenu = new app.views.SideMenuView();
-
-		// Render HTML content
-		sideMenu.render(function(e){
-			// Trigger pageload event
-			$(sideMenu.el).trigger('pagecreate');
-		});
-
-		// Append html
-		$('#sidemenu').append($(sideMenu.el));
-    },
-
  	// APN Initializer
     //
     initializeAPN: function(){
@@ -382,7 +383,14 @@ var app = {
 		        // TODO, para no chequear version
                 navigator.splashscreen.hide();
                 app.utils.Storage.setLocalItem('outdated-app', false);
-                app.router.navigate('login_guest',{trigger: true});
+
+                const isLogged = app.utils.Storage.getLocalItem('isLogged');
+                const isGuest = app.utils.Storage.getLocalItem('logged-guest');
+                if (isLogged && !isGuest) {
+                    app.router.navigate('login',{trigger: true});
+                } else {
+                    app.router.navigate('login_guest',{trigger: true});
+                }
                 return;  
 
                 parameters = '{' +
@@ -396,9 +404,7 @@ var app = {
                     //success function
                     function(response){
 
-                        console.log(response);
-
-                        //hide splash screen
+                         //hide splash screen
                         navigator.splashscreen.hide();
 
                         if(!response.hasError){
@@ -460,13 +466,6 @@ var app = {
         if (app.utils.Storage.getLocalItem('app-rated') == null || !app.utils.Storage.getLocalItem('app-rated')) {
         	app.rate.promptForRating(false);
         }
-    },
-
-    handleOpenURL: function(url) {
-
-        app.utils.Storage.setSessionItem('navegation-path', url);
-        $.mobile.activePage.trigger('active');
-
     }
 
 };

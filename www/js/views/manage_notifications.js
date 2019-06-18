@@ -71,6 +71,7 @@ $(function() {
 
             if ($(e.currentTarget).data('search-info') == true) {
                 $(e.currentTarget).data('search-info', false);
+                $(htmlID).find('.btn-save').unbind('click');
                 return;
             }
             $(e.currentTarget).data('search-info', true);
@@ -95,9 +96,17 @@ $(function() {
         setData: function (htmlID, accountInfo, subscriber, response) {
             var self = this;
             var html = '';
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account')
             response.QuestionList.forEach(function(question) {
                 var disabled = '';
                 if (question.Question.includes('impresa en papel')) {
+                    disabled = ' style="display: none"';
+                }
+                if (app.utils.tools.accountIsTelephony(
+                        selectedAccount.mAccountType,
+                        selectedAccount.mAccountSubType,
+                        selectedAccount.mProductType)
+                    && question.Question.includes('SMS')) {
                     disabled = ' style="display: none"';
                 }
                 html +=

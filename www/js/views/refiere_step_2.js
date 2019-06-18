@@ -66,7 +66,7 @@ $(function() {
                         $('#tags').tagsinput('add', email);
                         $('#email').val('');
                         $([document.documentElement, document.body]).animate({
-                            scrollTop: $("#tags").offset().top-20
+                            scrollTop: $("#tags").offset().top-50
                         }, 1000);
                     } else {
                         showAlert('Error', 'Debe ingresar un correo electrónico válido.')
@@ -81,7 +81,7 @@ $(function() {
             self.options.referrerModel.getCredits(selectedAccountValue,
                 function (success) {
                     if (!success.hasError) {
-
+                        
                         var totalCredits = success.PayOutsDetailsItems[0].TotalCredits;
                         var totalRedeem = success.PayOutsDetailsItems[0].TotalRedeem;
                         var sumAvialable = success.PayOutsDetailsItems[0].SumAvialable;
@@ -89,15 +89,15 @@ $(function() {
                         $('#totalCredits').html(totalCredits+'');
                         $('#totalRedeem').html(totalRedeem+'');
                         $('#sumAvialable').html(sumAvialable+'');
-
+                        
                         self.getSharingMedia(e);
                     } else {
-                        self.back(e);
+                        self.navigateReferSystem(e);
                         showAlert('Error', response.errorDisplay, 'Aceptar');
                     }
                 },
                 function (data, status, error) {
-                    self.back(e);
+                    self.navigateReferSystem(e);
                     app.utils.network.errorRequest(data, status, error);
                 });
         },
@@ -128,12 +128,12 @@ $(function() {
                         }
 
                     } else {
-                        self.back(e);
+                        self.navigateReferSystem(e);
                         showAlert('Error', response.errorDisplay, 'Aceptar');
                     }
                 },
                 function (data, status, error) {
-                    self.back(e);
+                    self.navigateReferSystem(e);
                     app.utils.network.errorRequest(data, status, error);
                 });
         },
@@ -148,7 +148,7 @@ $(function() {
             var check = $('#checkbox-terms').is(':checked');
             if (!check) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#tags").offset().top-20
+                    scrollTop: $("#tags").offset().top-50
                 }, 1000);
                 this.alertRequiredTerms();
                 return

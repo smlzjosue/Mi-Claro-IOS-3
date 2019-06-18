@@ -74,12 +74,12 @@ $(function() {
                         self.getUserRedeemCredits(e);
 
                     } else {
-                        self.back(e);
+                        self.navigateReferSystem(e);
                         showAlert('Error', response.errorDisplay, 'Aceptar');
                     }
                 },
                 function (data, status, error) {
-                    self.back(e);
+                    self.navigateReferSystem(e);
                     app.utils.network.errorRequest(data, status, error);
                 });
         },
@@ -130,12 +130,12 @@ $(function() {
                         }
 
                     } else {
-                        self.back(e);
+                        self.navigateReferSystem(e);
                         showAlert('Error', response.errorDisplay, 'Aceptar');
                     }
                 },
                 function (data, status, error) {
-                    self.back(e);
+                    self.navigateReferSystem(e);
                     app.utils.network.errorRequest(data, status, error);
                 });
         },

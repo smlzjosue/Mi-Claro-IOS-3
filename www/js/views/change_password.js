@@ -185,7 +185,7 @@ $(function() {
             var self = this;
 
             self.options.customerModel.passwordUpdate(
-                currentPassword, password,
+                btoa(currentPassword), password,
                 function (response) {
                     if(response.hasError){
                         showAlert('Error', response.errorDisplay, 'Aceptar'); // TODO, mostrar error exacto

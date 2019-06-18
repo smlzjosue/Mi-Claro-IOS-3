@@ -1,4 +1,19 @@
 $(function(){
+
+	
+	window.telephone = function(str, callback) {
+	    cordova.exec(
+    	function(data){
+    		callback(data);
+    	}, 
+    	function(err){
+    		callback(err);
+    	}, 
+    	'MiClaroPlugin', 
+    	'telephone',
+    	[str]);
+	};	
+	
 	window.build = function(str, callback) {
 	    cordova.exec(
     	function(data){
@@ -35,21 +50,23 @@ $(function(){
     		error(err);
     	}, 
     	'MiClaroPlugin', 
-    	'sendPaymentInfo',
-    	[url, json]);
+		'send-payment-info',
+		[url, json]);
 	};
 	
-	window.sendPostForm = function(url, json, sucess, error) {
+	window.sendPostForm = function(url, json, success, error) {
 	    
 	    cordova.exec(
     	function(data){
-    		sucess(data);
+    		success(data);
     	}, 
     	function(err){	
     		error(err);
     	}, 
     	'MiClaroPlugin', 
-    	'sendPostForm',
+    	'send-post-form',
     	[url, json]);
-	};		
+	};	
+
+
 });

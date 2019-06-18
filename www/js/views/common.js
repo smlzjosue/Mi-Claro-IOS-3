@@ -32,7 +32,7 @@ $(function() {
         activateMenu: function(e) {
             var self = this;
 
-            //app.resetTimer();
+           app.resetTimer();
 
             $('.m-menuin.offnouse').click(function(){
                 self.dialogAccessLimited();
@@ -240,45 +240,41 @@ $(function() {
             $('#nav-access'+id).find('p').html(name);
         },
 
-        openNav: function() {
-            /*
-            document.getElementById("mySidenav").style.left = "0";
-            //document.getElementById("mySidenav").style.visibility = "visible";            
-            $('.mnu-icon').addClass('m-open');
-            $.mobile.activePage.find('.mySidenav').offcanvas('show');
-            app.isMenuOpen = true;
-            */
+        openNav: function() {           
            var sideNav = document.getElementById("mySidenav");
            sideNav.style.left = "0";
            $('#nav-open').hide();
            $('#nav-close').show();
-           app.isMenuOpen = true;
-            
+           app.isMenuOpen = true;         
         },
 
         closeNav: function () {
             if (app.isMenuOpen === true) {
-                /*
-                document.getElementById("mySidenav").style.left= "-100%";
-                //document.getElementById("mySidenav").style.visibility = "hidden";
-                $('.mnu-icon').removeClass('m-open');
-                $.mobile.activePage.find('.mySidenav').offcanvas('hide');
-                
-                app.isMenuOpen = false;
-                */
-
                var sideNav = document.getElementById("mySidenav");
                sideNav.style.left = "-100%";
                $('#nav-close').hide();
                $('#nav-open').show();
-               app.isMenuOpen = false;
-                
+               app.isMenuOpen = false;              
             }
         },
 
-        back: function(e){
+        back: function(e) {
+            console.log('back click on APP Header');
+            e.preventDefault();
 
-            if (Backbone.history.fragment=='profile_update_username') {
+            if (app.isMenuOpen == true) {
+                var sideNav = document.getElementById("mySidenav");
+                if (sideNav) {
+                    sideNav.style.right = "100%";
+                    $('#nav-close').hide();
+                    $('#nav-open').show();
+                    app.isMenuOpen = false;
+                }
+                return;
+            }
+
+
+            /*if (Backbone.history.fragment=='profile_update_username') {
                 showConfirm(
                     'Salir',
                     '¿Esta seguro que desea cerrar la sesión?',
@@ -292,7 +288,7 @@ $(function() {
                     }
                 );
                 return
-            }
+            }*/
 
             var analytics = null;
 
@@ -301,7 +297,7 @@ $(function() {
                 analytics.trackEvent('button', 'click', 'back');
             }
 
-            e.preventDefault();
+           // e.preventDefault();
             app.router.back = true;
 
             app.router.backPage();
@@ -642,7 +638,7 @@ $(function() {
             var listSections = app.utils.Storage.getSessionItem('accounts-available-sections');
 
             const isGuest = app.utils.Storage.getLocalItem('logged-guest');
-            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');///*
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');
 
             const newList = [];
             listSections.forEach(function(section) {

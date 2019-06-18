@@ -53,13 +53,13 @@ $(function() {
 
             $('#password').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#password').offset().top-20
+                    scrollTop: $('#password').offset().top-50
                 }, 1000);
             });
 
             $('#password_repeat').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#password').offset().top-20
+                    scrollTop: $('#password').offset().top-50
                 }, 1000);
             });
         },
@@ -161,10 +161,7 @@ $(function() {
         validatePassword: function(e) {
             var self = this;
 
-            var password = null;
-
-            password = $.mobile.activePage.find('#password').val();
-
+            var  password = $.mobile.activePage.find('#password').val();
             // validate
             if(password.length < 8 || password.length > 15){
                 message = 'Debe tener entre 8 y 15 caracteres';

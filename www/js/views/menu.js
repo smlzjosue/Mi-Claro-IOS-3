@@ -10,8 +10,12 @@ $(function() {
         rechargeAmount: 0,
 
         dataGiftReceived: null,
-				
-		// The DOM events specific.
+
+        TotalAvailable: 0,
+        CreditAsReferer: 0,
+        CreditAsRefererCount: 0,
+
+        // The DOM events specific.
 		events: {
             // events
         	'active':                                       'active',
@@ -210,25 +214,51 @@ $(function() {
         getUserCredits : function() {
             var self = this;
             var selectedAccountValue = app.utils.Storage.getSessionItem('selected-account-value');
-            self.options.referrerModel.getCredits(selectedAccountValue,
-                function (success) {
-                    if (!success.hasError) {
+            self.options.referrerModel.getCredits(String(selectedAccountValue),
+                function (response) {
+                    if (!response.hasError) {
+                        console.log(response);
+                        if (response.CreditAsReferer !== null &&
+                            response.CreditAsReferer.CuponStatus === 'Disponible' &&
+                            response.CreditAsReferer.referrID !== 0 &&
+                            response.CreditAsReferer.referrID !== null) {
 
-                        var sumAvialable = '$0';
-                        if (success.PayOutsDetailsItems.length > 0) {
-                            sumAvialable = success.PayOutsDetailsItems[0].SumAvialable;
+                            self.CreditAsReferer = true;
+                            self.CreditAsRefererCount = response.CreditAsReferer.discount;
+                            var totalDescuentosDisponibles = self.mascaraDescuentosDisponibles(50);
+                            console.log(totalDescuentosDisponibles);
                         }
-                        var accountInfo = app.utils.Storage.getSessionItem('account-info');
-                        var dsl = accountInfo.accountSubtypeField == 'W' && accountInfo.accountTypeField == 'I';
-                        if (dsl) {
-                            sumAvialable = '0 %';
-                        } else {
-                            if (sumAvialable >= 50) {
-                                $('#credit-amount').val('&#36;50.00');
-                            }
-                        }
-                        app.utils.Storage.setSessionItem('credits-available', sumAvialable.replace("$", ""));
-                        $('#sumAvialable').html(sumAvialable+'');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        // var sumAvialable = '$0';
+                        // if (success.PayOutsDetailsItems.length > 0) {
+                        //     sumAvialable = success.PayOutsDetailsItems[0].SumAvialable;
+                        // }
+                        // var accountInfo = app.utils.Storage.getSessionItem('account-info');
+                        // var dsl = accountInfo.accountSubtypeField == 'W' && accountInfo.accountTypeField == 'I';
+                        // if (dsl) {
+                        //     sumAvialable = '0 %';
+                        // } else {
+                        //     if (sumAvialable >= 50) {
+                        //         $('#credit-amount').val('&#36;50.00');
+                        //     }
+                        // }
+                        // app.utils.Storage.setSessionItem('credits-available', sumAvialable.replace("$", ""));
+                        // $('#sumAvialable').html(sumAvialable+'');
                     } else {
                         showAlert('Error', response.errorDisplay, 'Aceptar');
                     }
@@ -582,6 +612,38 @@ $(function() {
             setTimeout(function(){
                 $.mobile.activePage.find('[data-toggle="popover"]').popover('hide');
             },4000);
+        },
+
+        mascaraDescuentosDisponibles: function(){
+		    var self = this;
+
+            var montoTemp = parseFloat(self.TotalAvailable).toFixed(2);
+            var montoTxt = String(montoTemp).trim();
+
+            if (self.CreditAsReferer && self.CreditAsRefererCount > parseInt(montoTemp)) {
+                // Ajuste cuando CreditItens es vacio y cupon disponible
+                montoTemp = parseFloat(self.CreditAsRefererCount).toFixed(2);
+                montoTxt = String(montoTemp).trim();
+
+                if (montoTemp > 1000) {
+                    return montoTxt.substr(0, 1) + ',' + montoTxt.substr(1, montoTxt.length, 1);
+                } else {
+                    if (montoTemp > 0) {
+                        return montoTemp;
+                    } else {
+                        return '0.00';
+                    }
+                }
+
+            } else if (montoTemp > 1000) {
+                return montoTxt.substr(0, 1) + ',' + montoTxt.substr(1, montoTxt.length, 1);
+            } else {
+                if (montoTemp > 0) {
+                    return montoTemp;
+                } else {
+                    return '0.00';
+                }
+            }
         },
 
 	});

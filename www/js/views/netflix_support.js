@@ -12,7 +12,8 @@ $(function() {
             // events
             'pagecreate':                           'pageCreate',
 
-            'click #netflix-support':               'netflixSupport'
+            'click #netflix-support':               'netflixSupport',
+            'click #netflix-contact':             'navigateSupport'
         },
 
         // Render the template elements

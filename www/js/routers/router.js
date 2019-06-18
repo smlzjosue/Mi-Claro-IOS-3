@@ -365,14 +365,6 @@ $(function() {
 
 			$(page.el).addClass('ui-page-active');
 
-            // Google analitycs track
-//	        if(app.isApplication &&
-//	        		analytics !== undefined &&
-//	        		analytics !== null ){
-//	        	console.log(analytics+' page.name='+page.name);
-//	        	//analytics.trackView(page.name, function(success){}, function(error){});
-//	        }
-
 	        // Set ative page
 	    	if($.mobile === undefined){
 	    		$.mobile = {};
@@ -382,12 +374,9 @@ $(function() {
 
 			// Append html
 			$('#maincont').append($(page.el));
-
-            if (Backbone.history.fragment !== 'payment_step_3'){
+          
                 this.history.push(Backbone.history.fragment);
-            }
-
-            // to save navigation menu like closed
+            
             app.isMenuOpen = false;
 		},
 
@@ -396,22 +385,31 @@ $(function() {
 	    },
 
         backPage:function(){
-
               // Hidden loading
               app.utils.loader.hide();
 
-              var current = this.history.pop();
-              var prev = this.history.pop();
+              var current = this.history.slice(-1)[0];
+              console.log('current page: '+current);
   
-              if (current=='chat' && prev=='login'){
-                  app.router.navigate('login', {trigger: true});
-              } else if(Backbone.history.fragment=='login'
-                  || Backbone.history.fragment=='login_guest'
-                  || Backbone.history.fragment == ''){
-                  // Exit application for Android
-                  navigator.app.exitApp();
-              } else if(Backbone.history.fragment=='menu'){
+              if (current == 'profile_update_username') {
                   showConfirm(
+                      'Salir',
+                      '¿Esta seguro que desea cerrar la sesión?',
+                      ['Si', 'No'],
+                      function (btnIndex) {
+                          if (btnIndex == 1) {
+                              app.removeSession();
+                              app.router.history = ['login_guest'];
+                              app.router.navigate('login_guest', {trigger: true});
+                          }
+  
+                      }
+                  );
+                  return;
+              }
+  
+              if (current == 'menu'){
+                      showConfirm(
                       'Confirmación',
                       '¿Esta seguro que desea salir de la aplicación?',
                       ['Cancelar', 'Si, Salir'],
@@ -419,13 +417,23 @@ $(function() {
                           if (btnIndex == 2) {
                               navigator.app.exitApp();
                           }
-  
                       }
                   );
+                  return;
+            }
+
+            current = this.history.pop();
+            var prev = this.history.pop();
+            console.log('previous page: '+prev);
+
+            if (current == 'login'
+                || current == 'login_guest'
+                || current == ''){
+                // Exit application for Android
+                navigator.app.exitApp();
               } else {
                   app.router.navigate(prev, {trigger: true});
               }
-  
 	    },
         
         debitDirect: function() {

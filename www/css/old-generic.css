@@ -550,7 +550,7 @@ f    .menubar {
         font-size: 14px;
         color: #666;
         overflow-y: none;
-        height: 100px !important;
+        height: 85px !important;
         padding-top: 35px;
     }
 }

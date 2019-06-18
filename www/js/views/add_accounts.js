@@ -83,13 +83,13 @@ $(function() {
 
             $('#number').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#number").offset().top-20
+                    scrollTop: $("#number").offset().top-50
                 }, 1000);
             });
 
             $('#ssn').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#ssn").offset().top-20
+                    scrollTop: $("#ssn").offset().top-50
                 }, 1000);
             });
 
