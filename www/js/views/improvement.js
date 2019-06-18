@@ -14,7 +14,7 @@ $(function() {
             'active'							:'active',        
 			
 			// header
-			'click #btn-back'					:'back',
+			'click #btn-back'					:'toReturn',
 			
 			//content
 			'click #send-improvement'			:'sendImprovement',
@@ -51,13 +51,13 @@ $(function() {
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top - 60
+                    scrollTop: $(e.currentTarget).offset().top - 40
                 }, 1000);
             });
 
             $('#improvement-comment').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top - 60
+                    scrollTop: $(e.currentTarget).offset().top - 40
                 }, 1000);
             });
         },

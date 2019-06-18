@@ -165,7 +165,7 @@ $(function() {
                 $('#input-other').val('');
 
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#radioOther").offset().top - 50
+                    scrollTop: $("#radioOther").offset().top - 20
                 }, 1000);
             }
         },

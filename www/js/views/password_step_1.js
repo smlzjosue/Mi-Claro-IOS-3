@@ -49,7 +49,7 @@ $(function() {
 
             $('#number').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#number').offset().top-50
+                    scrollTop: $('#number').offset().top-20
                 }, 1000);
             });
         },

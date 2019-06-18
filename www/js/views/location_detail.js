@@ -15,7 +15,7 @@ $(function() {
 			'active'                            :'active',
 			            
 			// content
-			'click #btn-back'                   :'back',
+			'click #btn-back'                   :'toReturn',
             'click .store-route'                :'showStoreRoute'
 		},
 

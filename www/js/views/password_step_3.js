@@ -72,13 +72,13 @@ $(function() {
 
             $('#answer1').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#question1').offset().top-50
+                    scrollTop: $('#question1').offset().top-20
                 }, 1000);
             });
 
             $('#answer2').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#question1').offset().top-50
+                    scrollTop: $('#question1').offset().top-20
                 }, 1000);
             });
         },

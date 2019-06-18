@@ -11,7 +11,7 @@ $(function() {
 		events: {
 			
 			//header
-			'click #btn-back':					'back',
+			'click #btn-back':					'toReturn',
             
         	// evets
 			'active': 							'active',

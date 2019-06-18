@@ -13,7 +13,7 @@ $(function() {
             'pagecreate':                           'pageCreate',
 			
 			// header
-			'click #btn-back'					:'back',
+			'click #btn-back'					:'toReturn',
 
 			//content
 			'click #send-failure'				:'sendFailure',
@@ -51,13 +51,13 @@ $(function() {
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top - 60
+                    scrollTop: $(e.currentTarget).offset().top - 40
                 }, 1000);
             });
 
             $('#failure-comment').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top - 60
+                    scrollTop: $(e.currentTarget).offset().top - 40
                 }, 1000);
             });
         },

@@ -32,8 +32,6 @@
 		</div>
 	</div>
 
-	<% if (redeemProgramAvailable) { %>
-
 	<div class="basicrow msidespad">
 		<div class="balancesptr-iicont refdef">
 			<div class="balancesptr-ii text-center">
@@ -141,77 +139,6 @@
 			</div>
 		</div>
 	</div>
-
-	<% } else { %>
-
-	<div class="basicrow msidespad">
-		<div class="balancesptr-iicont">
-			<div class="balancesptr-ii text-center">
-				<span class="roboto-b">
-					Balance Pendiente
-				</span>
-				<br/>
-				<span class="f-red f-lsemi roboto-b">
-					&#36;<%= amountDue %>
-				</span>
-			</div>
-
-			<div class="balancesptr-ii no-brd-i text-center">
-				<span class="roboto-b">
-					Su Factura Vence
-				</span>
-				<br/>
-				<span class="f-black f-big roboto-b">
-					<%= billDueDate %>
-				</span>
-			</div>
-		</div>
-
-		<div class="basicrow m-bott visible-md visible-sm">
-			<div class="logline full"></div>
-		</div>
-
-		<div class="balancesptr-iii">
-			<div class="title-amount-container">
-				<label class="label-r roboto-b text-title-amount">Monto a Pagar (&#36;)</label>
-
-				<img class="tooltip-amount" data-toggle="popover" data-html="true" data-content="Ahora puedes abonar hasta $800.00. Si la cantidad indica CR, significa que usted tiene cr&eacute;dito en su cuenta." data-placement="bottom" src="images/tooltip1.png">
-			</div>
-
-			<div class="basicrow rel">
-				<input type="number" value="<%= amountPayable %>" class="inp-f payup qt due-amount">
-
-				<div class="btns red payup vcenter rippleR btn-bill">
-					<div class="tabcell">
-						Pagar
-					</div>
-					</a>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="basicrow m-bott visible-xs">
-			<div class="logline full"></div>
-		</div>
-
-		<div class="balancesptr-iv f-reg roboto-r text-center">
-			<div class="basicrow m-top-u">
-				Fecha de Factura<br/>
-				<span class="roboto-b"><%= billDate %></span>
-			</div>
-		</div>
-
-		<div class="balancesptr-iv no-brd f-reg roboto-r text-center">
-			<div class="basicrow m-top-u">
-				&Uacute;ltimo Pago<br/>
-				<span class="roboto-b">&#36;<%= lastPaymentAmount %></span>
-			</div>
-		</div>
-	</div>
-
-	<% } %>
-
 
 	<div class="basicrow">
 		<div class="container">

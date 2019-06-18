@@ -55,26 +55,12 @@ $(function() {
             $(document).scrollTop();
         },
 
-
         pageCreate: function(e) {
             var self = this;
             self.activateMenu(e);
             $('#nav-open').hide();
 
-            self.reloadAccount(e);
-        },
-
-        reloadAccount: function(e){
-            var self = this;
-
-            var selectedAccount = app.utils.Storage.getSessionItem('selected-account');
-
-            self.getAccountDetails(selectedAccount,
-                function () {
-                    // nothing to do;
-                },
-                app.utils.network.errorRequest
-            );
+            self.self.reloadCurrentAccountDetails();
         }
     });
 

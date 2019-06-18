@@ -15,7 +15,7 @@ $(function() {
             'click .select-account':                'changeAccount',
             'click .select-subscriber':             'changeSubscriber',
             'click #next':                          'continue',
-            'click #cancel':                        'back',
+            'click #cancel':                        'toReturn',
         },
 
         // Render the template elements
@@ -101,7 +101,7 @@ $(function() {
                             self.navigateHome(e);
                         }
                         if(btnIndex==2){
-                            app.router.history = ['menu'];
+                            app.router.navigation = ['menu'];
                             self.navigateHome(e);
                         }
                     });
@@ -149,7 +149,7 @@ $(function() {
                             self.navigateHome(e);
                         }
                         if(btnIndex==2){
-                            app.router.history = ['menu'];
+                            app.router.navigation = ['menu'];
                             self.navigateHome(e);
                         }
                     });

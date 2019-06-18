@@ -15,7 +15,7 @@ $(function() {
             // Content
             'click #save':                          'saveData',
             'click #btn-help':                      'helpSection',
-            'click #btn-back':                      'back',
+            'click #btn-back':                      'toReturn',
 		},
 
 		// Render the template elements        
@@ -39,7 +39,7 @@ $(function() {
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top-60
+                    scrollTop: $(e.currentTarget).offset().top-40
                 }, 1000);
             });
 

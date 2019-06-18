@@ -53,13 +53,13 @@ $(function() {
 
             $('#password').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#password').offset().top-50
+                    scrollTop: $('#password').offset().top-20
                 }, 1000);
             });
 
             $('#password_repeat').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#password').offset().top-50
+                    scrollTop: $('#password').offset().top-20
                 }, 1000);
             });
         },

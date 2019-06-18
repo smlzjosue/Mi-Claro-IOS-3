@@ -14,6 +14,8 @@ $(function() {
         TotalAvailable: 0,
         CreditAsReferer: 0,
         CreditAsRefererCount: 0,
+        TempAvailableCredits: 0,
+        CheckAvailableCredits: false,
 
         // The DOM events specific.
 		events: {
@@ -29,6 +31,7 @@ $(function() {
             'click .dashdirect-chat':                       'chat',
             'click #paperless-switch':                      'changePaperless',
             'click #close-1gb':                             'closePopup1GB',
+            'click #netflix-subscription':                  'netflixSubscription',
 
             'show.bs.popover div[data-toggle="popover"]':   'showPopOver'
 		},
@@ -101,8 +104,7 @@ $(function() {
 			    	$(self.el).html(template(variables));
 			    	callback();	
 			    	return this;
-			    });			
-				
+			    });
 			}
 			$(document).scrollTop();
 		},
@@ -140,7 +142,6 @@ $(function() {
     	                if(button==2) {
                             self.navigateInvoiceSummary();
                         }
-                    
                     });
             }
 
@@ -213,8 +214,8 @@ $(function() {
 
         getUserCredits : function() {
             var self = this;
-            var selectedAccountValue = app.utils.Storage.getSessionItem('selected-account-value');
-            self.options.referrerModel.getCredits(String(selectedAccountValue),
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');
+            self.options.referrerModel.getCredits(String(selectedAccount.Account),
                 function (response) {
                     if (!response.hasError) {
                         console.log(response);
@@ -225,40 +226,40 @@ $(function() {
 
                             self.CreditAsReferer = true;
                             self.CreditAsRefererCount = response.CreditAsReferer.discount;
-                            var totalDescuentosDisponibles = self.mascaraDescuentosDisponibles(50);
-                            console.log(totalDescuentosDisponibles);
+                            self.TotalAvailable = response.CreditItems[0].TotalAvailable;
+
+                            if (app.utils.tools.accountIsTelephony(selectedAccount.mAccountType, selectedAccount.mAccountSubType, selectedAccount.mProductType)) {
+                                if (self.TotalAvailable > 0) {
+                                    $('#sumAvialable').html('50 %');
+                                } else {
+                                    $('#sumAvialable').html('0 %');
+                                }
+                            } else {
+                                $('#sumAvialable').html('$'+app.utils.tools.formatAmount(self.TotalAvailable));
+                            }
+                            var mountToCompare = 50;
+                            if (app.utils.tools.accountIsPostpaid(selectedAccount.mAccountType, selectedAccount.mAccountSubType, selectedAccount.mProductType)) {
+                                mountToCompare = 50;
+                            } else if (app.utils.tools.accountIsPrepaid(selectedAccount.mAccountType, selectedAccount.mAccountSubType, selectedAccount.mProductType)) {
+                                mountToCompare = 25;
+                            }
+                            if (self.TotalAvailable >= mountToCompare) {
+                                $('#credit-amount').val('$'+mountToCompare+'.00');
+                            } else {
+                                $('#credit-amount').val('$0.00');
+                            }
+
+                            if (self.CheckAvailableCredits) {
+                                self.CheckAvailableCredits = false;
+                                if (self.TempAvailableCredits == self.TotalAvailable) {
+                                    showAlert('', 'Gracias por su interés en nuestro Programa Refiere y Gana! Su ' +
+                                        'balance se estará actualizando próximamente.', 'Aceptar');
+                                } else {
+                                    self.reloadCurrentAccountDetails();
+                                }
+                            }
+                            self.TempAvailableCredits = self.TotalAvailable;
                         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        // var sumAvialable = '$0';
-                        // if (success.PayOutsDetailsItems.length > 0) {
-                        //     sumAvialable = success.PayOutsDetailsItems[0].SumAvialable;
-                        // }
-                        // var accountInfo = app.utils.Storage.getSessionItem('account-info');
-                        // var dsl = accountInfo.accountSubtypeField == 'W' && accountInfo.accountTypeField == 'I';
-                        // if (dsl) {
-                        //     sumAvialable = '0 %';
-                        // } else {
-                        //     if (sumAvialable >= 50) {
-                        //         $('#credit-amount').val('&#36;50.00');
-                        //     }
-                        // }
-                        // app.utils.Storage.setSessionItem('credits-available', sumAvialable.replace("$", ""));
-                        // $('#sumAvialable').html(sumAvialable+'');
                     } else {
                         showAlert('Error', response.errorDisplay, 'Aceptar');
                     }
@@ -312,117 +313,103 @@ $(function() {
             );
         },
 
-        changePaperless: function(e) {
+        applyCredits: function() {
             var self = this;
 
-            var check = $('#paperless-switch').is(':checked');
-            if (check) {
-                setTimeout(function() {
-                    var account = app.utils.Storage.getSessionItem('selected-account-value');
-                    self.options.customerModel.updateBillParameters(account,
-                        function (success) {
-                            if (!success.HasError) {
-                                var selectedAccount = app.utils.Storage.getSessionItem('selected-account');
-                                self.getAccountDetails(selectedAccount,
-                                    function (response) {
-                                        self.render(function(){
-                                            $.mobile.activePage.trigger('pagecreate');
-                                        });
-                                    },
-                                    app.utils.network.errorRequest
-                                );
-                            } else {
-                                $('#paperless-switch').prop('checked', false);
-                                showAlert('Error', success.ErrorDesc, 'Aceptar');
-                            }
-                        },
-                        function (data, status) {
-                            $('#paperless-switch').prop('checked', false);
-                            app.utils.network.errorRequest(data, status);
-                        }
-                    );
-                }, 500);
-            }
-        },
-        
-		invoice: function(e){
-            var self = this;
-
-			self.options.accountModel.getAccountBill(
-				//parameters
-				app.utils.Storage.getSessionItem('token'),
-				app.utils.Storage.getSessionItem('selected-account-value'),
-
-				//success callback
-				function(data){
-
-					if(!data.HasError || data.Desc.toLowerCase().search('pdf') > 0){
-
-						// account info
-						app.utils.Storage.setSessionItem('accounts-bill-info', data);
-
-						app.router.navigate('invoice', {trigger: true});
-
-					}else{
-
-						var message = 'En este momento no está disponible esta factura';
-
-						showAlert('Error', message, 'Aceptar');
-					}
-				},
-
-				// error function
-				app.utils.network.errorFunction
-			);
-
-			return false;
-		},
-
-        applyCredits: function() { // TODO, aun no funciona todo
-            var self = this;
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');
+            const postpaid = app.utils.tools.accountIsPostpaid(selectedAccount.mAccountType, selectedAccount.mAccountSubType, selectedAccount.mProductType);
+            const prepaid = app.utils.tools.accountIsPrepaid(selectedAccount.mAccountType, selectedAccount.mAccountSubType, selectedAccount.mProductType);
+            const telephony = app.utils.tools.accountIsTelephony(selectedAccount.mAccountType, selectedAccount.mAccountSubType, selectedAccount.mProductType);
 
             const accountInfo = app.utils.Storage.getSessionItem('account-info');
-            const dsl = accountInfo.accountSubtypeField == 'W' && accountInfo.accountTypeField == 'I';
+            const paperless = accountInfo.paperlessField;
 
-            var amount = 0;
-            if (!dsl) {
-                const creditAmount = $('#credit-amount').val();
-                amount = parseFloat(String(creditAmount.replace("$", "")));
+            const creditAmount = $('#credit-amount').val();
+            var amount = 50;
+            if (!telephony) {
+                amount = parseFloat(String(creditAmount.replace('$', '')));
             }
 
-            const amountDue = accountInfo.billBalanceField;
-            var amtDue = amountDue.includes('CR') ? 0 : amountDue;
-            var creditsAvailable = app.utils.Storage.getSessionItem('credits-available');
-            amtDue = parseFloat(String(amtDue));
+            const billBalance = accountInfo.billBalanceField;
+            var debt = billBalance.includes('CR') ? 0 : billBalance;
+            var creditsAvailable = self.TotalAvailable;
+            debt = parseFloat(String(debt));
             creditsAvailable = parseFloat(String(creditsAvailable));
-            console.log('creditsAvailable: '+creditsAvailable);
-            console.log('amount: '+amount);
 
-            if (creditsAvailable < amount) {
-                showAlert('Error', 'No posee suficientes créditos para aplicar.', 'ok');
-            } else if (amount > amtDue) {
+            if (!paperless) {
+                showAlert('Error', 'Para participar en nuestro Programa Refiere y Gana, debe suscribirse a facturación electrónica. Para detalles, verifique los términos y condiciones de este Programa.', 'ok');
+            } else if ((postpaid || telephony) && (billBalance.includes('CR') || parseFloat(billBalance) == 0)) {
+                showAlert('Error', 'Para aplicar su cupón de descuento deberá tener un balance pendiente.', 'ok');
+            } else if (creditsAvailable == 0) {
+                showAlert('Error', 'En estos momentos no cuenta con cupones disponibles.', 'ok');
+            } else if (telephony) {
                 showConfirm(
                     'Confirmación',
-                    'El monto del descuento a aplicar es mayor al balance pendiente de su factura, al aplicar este monto usted perdera el valor del descuento restante.',
+                    'Usted recibira un descuento de 50% aplicado a su balance.',
                     ['Regresar','Aplicar'],
                     function(button){
                         if(button == 2) {
-                            showAlert('', 'Credito aplicado', 'OK');
+                            self.applyCreditsToAccount(amount);
                         }
                     }
                 );
-            } else if (amount < amtDue) {
+            } else if (creditsAvailable < amount) {
+                showAlert('Error', 'En estos momentos no cuenta con suficientes cupones disponibles.', 'ok');
+            } else if (prepaid) {
                 showConfirm(
                     'Confirmación',
-                    'El valor del credito a aplicar es menor al balance pendiente de su factura. Favor realizar el pago del remanente de su factura antes de la fecha de vencimiento.',
+                    'El valor del cupón sera aplicado a su balance.',
                     ['Regresar','Aplicar'],
                     function(button){
                         if(button == 2) {
-                            showAlert('', 'Credito aplicado', 'OK');
+                            self.applyCreditsToAccount(amount);
+                        }
+                    }
+                );
+            } else if (amount > debt) {
+                showConfirm(
+                    'Confirmación',
+                    'El valor del cupón (descuento) redimido es mayor al balance pendiente de su factura, al redimir este cupón usted perderá el valor del descuento restante.',
+                    ['Regresar','Aplicar'],
+                    function(button){
+                        if(button == 2) {
+                            self.applyCreditsToAccount(amount);
+                        }
+                    }
+                );
+            } else if (amount < debt) {
+                showConfirm(
+                    'Confirmación',
+                    'El valor del cupón (descuento) redimido es menor al balance pendiente de su factura. Favor de realizar el pago remanente de su factura en o antes de la fecha de vencimiento.',
+                    ['Regresar','Aplicar'],
+                    function(button){
+                        if(button == 2) {
+                            self.applyCreditsToAccount(amount);
                         }
                     }
                 );
             }
+        },
+
+        applyCreditsToAccount: function(amount) {
+            var self = this;
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');
+            self.options.referrerModel.applyCredits(
+                String(selectedAccount.Account),
+                String(selectedAccount.DefaultSubscriber),
+                amount,
+                function (response) {
+                    if (!response.hasError) {
+                        showAlert('', response.errorDisplay, 'Continuar', function () {
+                            self.CheckAvailableCredits = true;
+                            self.getUserCredits();
+                        });
+                    } else {
+                        showAlert('Error', response.errorDisplay, 'Aceptar');
+                    }
+                },
+                app.utils.network.errorRequest
+            );
         },
 
         billPayment: function(e){
@@ -509,6 +496,31 @@ $(function() {
                     }
                 }
             );
+        },
+
+        changePaperless: function(e) {
+            var self = this;
+
+            var check = $('#paperless-switch').is(':checked');
+            if (check) {
+                setTimeout(function() {
+                    var account = app.utils.Storage.getSessionItem('selected-account-value');
+                    self.options.customerModel.updateBillParameters(account,
+                        function (success) {
+                            if (!success.HasError) {
+                                self.reloadCurrentAccountDetails();
+                            } else {
+                                $('#paperless-switch').prop('checked', false);
+                                showAlert('Error', success.ErrorDesc, 'Aceptar');
+                            }
+                        },
+                        function (data, status) {
+                            $('#paperless-switch').prop('checked', false);
+                            app.utils.network.errorRequest(data, status);
+                        }
+                    );
+                }, 500);
+            }
         },
 
         getAddress: function(e) {
@@ -612,6 +624,11 @@ $(function() {
             setTimeout(function(){
                 $.mobile.activePage.find('[data-toggle="popover"]').popover('hide');
             },4000);
+        },
+
+        netflixSubscription: function (e) {
+            //app.utils.Storage.setSessionItem('netflix-accounts-subscribers-is-loaded', false);
+            app.router.navigate('netflix', {trigger: true});
         },
 
         mascaraDescuentosDisponibles: function(){

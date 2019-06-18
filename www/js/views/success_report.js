@@ -15,7 +15,7 @@ $(function() {
             'active'							:'active',
             
 			// body
-			'click #btn-back'					:'back',
+			'click #btn-back'					:'toReturn',
 			'click #btn-continue'				:'continue'
 		},
 
@@ -35,7 +35,7 @@ $(function() {
 		    });	
 			
 			// remove the current
-			app.router.history.pop();
+			app.router.navigation.pop();
 			
 		},
 

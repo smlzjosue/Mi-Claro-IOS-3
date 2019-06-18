@@ -502,7 +502,8 @@
 				LastUpgradeCheck = 1000;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 22Y469CH2X;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -717,9 +718,9 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MiClaro/MiClaro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 22Y469CH2X;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -758,11 +759,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MiClaro/MiClaro.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Speedy Movil Servicos S.A. de C.V. (44W73F6DDD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Speedy Movil Servicos S.A. de C.V. (44W73F6DDD)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 44W73F6DDD;
+				DEVELOPMENT_TEAM = 22Y469CH2X;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -784,7 +785,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.todoclaro.miclaroapp;
 				PRODUCT_NAME = MiClaro;
 				PROVISIONING_PROFILE = "8183fe0a-8e0d-4734-a5de-9c4c2bfca4e7";
-				PROVISIONING_PROFILE_SPECIFIER = Mi_Claro_PR_Dist;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

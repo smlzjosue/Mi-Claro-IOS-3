@@ -48,7 +48,7 @@ $(function () {
 
             // content
             'click #btn-pay':					            'pay',
-            'click #btn-return':                            'back'
+            'click #btn-return':                            'toReturn'
         },
 
         // Render the template elements
@@ -103,7 +103,7 @@ $(function () {
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top-60
+                    scrollTop: $(e.currentTarget).offset().top-40
                 }, 1000);
             });
 

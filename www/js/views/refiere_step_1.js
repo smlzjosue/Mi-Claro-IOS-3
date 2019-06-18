@@ -6,7 +6,10 @@ $(function() {
     app.views.RefiereStep1 = app.views.CommonView.extend({
 
         name: 'refiere_step_1',
+
         goTo: '',
+        selectedAccount: null,
+        selectedSubscriber: null,
 
         // The DOM events specific.
         events: {
@@ -64,59 +67,51 @@ $(function() {
             self.activateMenu(e);
         },
 
-        changeAccount: function() {
-            const self = this;
-            const newAccountNumber = $.mobile.activePage.find('#select-account').val();
-
-            const accounts = app.utils.Storage.getSessionItem('accounts-list');
-
-            var selectedAccount = null;
-            $.each(accounts, function (i, object) {
-                if (object.Account == newAccountNumber) {
-                    selectedAccount = object;
-                }
-            });
-
-            $('.popup-select').hide();
-
-            self.options.customerModel.accountDetails(
-                selectedAccount.DefaultSubscriber,
-                selectedAccount.Account,
+        getAccounts: function() {
+            var self = this;
+            self.options.accountModel.getAccounts(
                 function (response) {
-                    const subscribers = [];
-                    $.each(response.SubscriberInfo, function (j, subscriberObj) {
-                        var subscriber = {
-                            subscriber: subscriberObj.subscriberNumberField,
-                            Status: subscriberObj.subscriberStatusField,
-                            ProductType: subscriberObj.productTypeField
-                        };
-                        subscribers[j] = subscriber;
-                    });
-                    selectedAccount.Subscribers = subscribers;
-                    self.showPopupSelect(selectedAccount);
+                    if (!response.hasError) {
+                        app.utils.Storage.setSessionItem('accounts-list-refer', response.accounts);
+                        app.utils.Storage.setSessionItem('accounts-refer-is-loaded', true);
+                        self.showPopupSelect();
+                    } else {
+                        showAlert('Error', response.errorDisplay, 'Aceptar');
+                    }
                 },
                 app.utils.network.errorRequest
             );
         },
 
-        showPopupSelect: function(selectedAccount) {
+        showPopupSelect: function() {
+            const self = this;
 
-            var self = this;
-
-            var accounts = app.utils.Storage.getSessionItem('accounts-list');
-            var selectedAccountValue = selectedAccount.Account;
+            const accounts = app.utils.Storage.getSessionItem('accounts-list-refer');
+            const selectedAccount = app.utils.Storage.getSessionItem('selected-account');
+            const selectedAccountValue =
+                self.selectedAccount == null ? selectedAccount.Account : self.selectedAccount;
+            var subscribers = [];
 
             var htmlA = '';
             $.each(accounts, function (i, account) {
-                htmlA += '<option value="'+account.Account+'"'+(selectedAccountValue==account.Account?' selected="selected"':'')+'>'+account.Account+'</option>\n'
+                htmlA += '<option value="'+account.account+'"'
+                    +(selectedAccountValue==account.account?' selected="selected"':'')
+                    +'>'+account.account+'</option>\n';
+                if (selectedAccountValue == account.account) {
+                    subscribers = account.subscribers;
+                    self.selectedAccount = account.account;
+                }
             });
 
             var htmlS = '';
-            $.each(selectedAccount.Subscribers, function (i, subscriber) {
-                if (subscriber.Status != 'C') {
+            $.each(subscribers, function (i, subscriber) {
+                if (subscriber.status != 'C') {
                     htmlS += '<option value="'+subscriber.subscriber+'"'
-                        +(selectedAccount.DefaultSubscriber==subscriber.subscriber?' selected="selected"':'')
+                        +(subscriber.defaultSubcriber?' selected="selected"':'')
                         +'>'+subscriber.subscriber+'</option>\n';
+                    if (subscriber.defaultSubcriber) {
+                        self.selectedSubscriber = subscriber.subscriber;
+                    }
                 }
             });
 
@@ -124,11 +119,38 @@ $(function() {
             $('#select-subscriber').html(htmlS);
 
             $('.popup-select').show();
+        },
 
+        changeAccount: function() {
+            const self = this;
+
+            const accounts = app.utils.Storage.getSessionItem('accounts-list-refer');
+            const selectedAccountValue = $.mobile.activePage.find('#select-account').val();
+            self.selectedAccount = selectedAccountValue;
+            var subscribers = [];
+
+            $.each(accounts, function (i, account) {
+                if (selectedAccountValue == account.account) {
+                    subscribers = account.subscribers;
+                }
+            });
+
+            var htmlS = '';
+            $.each(subscribers, function (i, subscriber) {
+                if (subscriber.status != 'C') {
+                    htmlS += '<option value="'+subscriber.subscriber+'"'
+                        +(subscriber.defaultSubcriber?' selected="selected"':'')
+                        +'>'+subscriber.subscriber+'</option>\n';
+                    if (subscriber.defaultSubcriber) {
+                        self.selectedSubscriber = subscriber.subscriber;
+                    }
+                }
+            });
+            $('#select-subscriber').html(htmlS);
         },
 
         changeSubscriber: function(e) {
-
+            self.selectedSubscriber = $.mobile.activePage.find('#select-subscriber').val();
         },
 
         onNextBalancePost: function(e) {
@@ -148,6 +170,7 @@ $(function() {
         },
 
         onNextUpdate: function(e) {
+            const self = this;
 
             const idHobby = $.mobile.activePage.find('#select-hobby').val();
             const date = $('#date').val();
@@ -207,7 +230,7 @@ $(function() {
             };
             console.log(referrerMember);
 
-            const self = this;
+            $('.popup-update').hide();
             self.options.customerModel.addMember(referrerMember,
                 function (success) {
                     if (!success.hasError) {
@@ -219,6 +242,7 @@ $(function() {
                                 });
                             });
                     } else {
+                        $('.popup-update').show();
                         showAlert('Error', success.errorDisplay, 'Aceptar');
                     }
                 },
@@ -345,15 +369,27 @@ $(function() {
         },
 
         refiere: function(e) {
-            //Go to refiere
-            this.goTo = 'refiere_step_2';
-            this.showPopupSelect(app.utils.Storage.getSessionItem('selected-account'));
+            const self = this;
+
+            self.goTo = 'refiere_step_2';
+
+            if (app.utils.Storage.getSessionItem('accounts-refer-is-loaded') == true) {
+                self.showPopupSelect();
+            } else {
+                self.getAccounts();
+            }
         },
 
         redimir: function(e) {
-            //Go to redimir
-            this.goTo = 'refiere_step_3';
-            this.showPopupSelect(app.utils.Storage.getSessionItem('selected-account'));
+            const self = this;
+
+            self.goTo = 'refiere_step_3';
+
+            if (app.utils.Storage.getSessionItem('accounts-refer-is-loaded') == true) {
+                self.showPopupSelect();
+            } else {
+                self.getAccounts();
+            }
         },
 
         questions: function(e) {

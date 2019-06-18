@@ -7,7 +7,7 @@ $(function() {
 
 		back: false,
 
-		history: [],
+		navigation: [],
 
 	    routes:{
             'login'	 						:'login',
@@ -375,7 +375,7 @@ $(function() {
 			// Append html
 			$('#maincont').append($(page.el));
           
-                this.history.push(Backbone.history.fragment);
+            this.navigation.push(page.name);
             
             app.isMenuOpen = false;
 		},
@@ -385,10 +385,11 @@ $(function() {
 	    },
 
         backPage:function(){
+            const self = this;
               // Hidden loading
               app.utils.loader.hide();
 
-              var current = this.history.slice(-1)[0];
+              var current = this.navigation.slice(-1)[0];
               console.log('current page: '+current);
   
               if (current == 'profile_update_username') {
@@ -399,7 +400,7 @@ $(function() {
                       function (btnIndex) {
                           if (btnIndex == 1) {
                               app.removeSession();
-                              app.router.history = ['login_guest'];
+                              self.navigation = ['login_guest'];
                               app.router.navigate('login_guest', {trigger: true});
                           }
   
@@ -422,8 +423,8 @@ $(function() {
                   return;
             }
 
-            current = this.history.pop();
-            var prev = this.history.pop();
+            current = this.navigation.pop();
+            var prev = this.navigation.pop();
             console.log('previous page: '+prev);
 
             if (current == 'login'
@@ -567,6 +568,7 @@ $(function() {
             console.log('#refiere_step_1');
             this.changePage(new app.views.RefiereStep1(
                 {
+                    accountModel: new app.models.Account(),
                     customerModel: new app.models.Customer(),
                     referrerModel: new app.models.Referrer()
                 }
@@ -577,7 +579,6 @@ $(function() {
             console.log('#refiere_step_2');
             this.changePage(new app.views.RefiereStep2(
                 {
-                    customerModel: new app.models.Customer(),
                     referrerModel: new app.models.Referrer()
                 }
             ));

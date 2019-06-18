@@ -332,10 +332,6 @@ $(function() {
 		    this.requestNew('customers', method, headers,  parameters, successCB, errorCB)
         },
 
-        requestReferrer: function(method, headers, parameters, successCB, errorCB) {
-            this.requestNew('referr', method, headers,  parameters, successCB, errorCB)
-        },
-
         requestNew: function(path, method, headers, parameters, successCB, errorCB) {
 
             var self = this;

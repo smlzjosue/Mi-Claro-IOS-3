@@ -13,7 +13,7 @@ $(function() {
             'click #btn-click':                     'questions',
             'click .link-terms':                    'showTerms',
             'click #close-terms':                   'closeTerms',
-            'click #return':                        'back',
+            'click #return':                        'toReturn',
         },
 
         // Render the template elements

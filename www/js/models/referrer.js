@@ -11,46 +11,47 @@ $(function() {
         getHobbies: function(account, successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
+
+            const method = 'gethobbies';
             const parameters = JSON.stringify({
-                token: tokenSession,
                 account: account,
+                method: method,
+                token: tokenSession
             });
 
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
-
-            const method = 'getHobbies';
-            app.utils.network.requestReferrer(method, headers, parameters, successCB, errorCB);
+            app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
         getValidateReferrer: function(account, subscriber, successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
-            const parameters = JSON.stringify({
-                token: tokenSession,
-                account: account,
-                subscriber: subscriber
-            });
-
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
 
             const method = 'getValidateReferrer';
-            app.utils.network.requestReferrer(method, headers, parameters, successCB, errorCB);
+
+            const parameters = JSON.stringify({
+                account: account,
+                subscriber: subscriber,
+                method: method,
+                token: tokenSession
+            });
+
+            app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
         getSharingMediaByUser: function(successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
+
+            const method = 'getSharingMediaByUser';
+
             const parameters = JSON.stringify({
-                ejecutar: 'GetSharingMediaByUser',
+                method: method,
                 token: tokenSession,
                 memberID: 1,
                 campaignID: 1,
             });
 
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
-
-            const method = 'getSharingMediaByUser';
-            app.utils.network.requestReferrer(method, headers, parameters, successCB, errorCB);
+            app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
         getCredits: function(account, successCB, errorCB){
@@ -64,43 +65,71 @@ $(function() {
                 method: method,
                 token: tokenSession
             });
-            //app.utils.network.processRequest(parameters, successCB, errorCB);
-            $.getJSON("js/pojo/get-credits.json", function(json) {
-                var data = json;
-                successCB(data);
+
+            app.utils.network.processRequest(parameters, successCB, errorCB);
+            // $.getJSON("js/pojo/get-credits.json", function(json) {
+            //     var data = json;
+            //     successCB(data);
+            // });
+        },
+
+        applyCredits: function(account, subscriber, amount, successCB, errorCB){
+
+            const tokenSession = app.utils.Storage.getSessionItem('token');
+
+            const method = 'RedeemCuponsByAccount';
+
+            const parameters = JSON.stringify({
+                account: account,
+                subscriber: subscriber,
+                total: amount,
+                applyDiscountID:1,
+                strcomentario: 'dashboard',
+                method: method,
+                token: tokenSession
             });
+
+            app.utils.network.processRequest(parameters, successCB, errorCB);
+            // $.getJSON("js/pojo/redeem-cupons.json", function(json) {
+            //     var data = json;
+            //     successCB(data);
+            // });
         },
 
         getReferrerAccountsAllStatus: function(account, successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
-            const parameters = JSON.stringify({
-                token: tokenSession,
-                account: account,
-                subscriber: '',
-
-            });
-
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
 
             const method = 'getReferrAccountsAllStatus';
-            app.utils.network.requestReferrer(method, headers, parameters, successCB, errorCB);
-        },
 
-        getValidateReferrer: function(account, subscriber, successCB, errorCB){
-
-            const tokenSession = app.utils.Storage.getSessionItem('token');
             const parameters = JSON.stringify({
-                token: tokenSession,
                 account: account,
-                subscriber: subscriber
+                subscriber: '',
+                campaignID: 1,
+                method: method,
+                token: tokenSession
             });
 
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
-
-            const method = 'getValidateReferrer';
-            app.utils.network.requestReferrer(method, headers, parameters, successCB, errorCB);
+            app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
+        sharedCoupons: function(memberID, account, subscriber, emails, userLink, successCB, errorCB) {
+
+            const tokenSession = app.utils.Storage.getSessionItem('token');
+
+            const method = 'sharedCupons';
+
+            const parameters = JSON.stringify({
+                account: account,
+                subscriber: subscriber,
+                memberID: memberID,
+                email: emails,
+                link: userLink,
+                method: method,
+                token: tokenSession
+            });
+
+            app.utils.network.processRequest(parameters, successCB, errorCB);
+        }
     });
 });

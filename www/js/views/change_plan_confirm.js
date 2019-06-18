@@ -148,7 +148,7 @@ $(function() {
         return: function (e) {
             var self = this;
 
-            self.back(e);
+            self.toReturn(e);
         },
 
         next: function (e) {
@@ -304,13 +304,13 @@ $(function() {
                         self.getPaymentsType(e);
                     } else {
                         showAlert('Error', 'Disculpe, no cuenta con recargas disponibles.', 'Aceptar',
-                            function () { self.back(e);
+                            function () { self.toReturn(e);
                             });
                     }
                 },
                 function () {
                     showAlert('Error', 'Disculpe, no se puede obtener su informacion para la recarga.', 'Aceptar',
-                        function () { self.back(e);
+                        function () { self.toReturn(e);
                         });
                 }
             );
@@ -327,13 +327,13 @@ $(function() {
                         self.getProducts(e);
                     } else {
                         showAlert('Error', 'Disculpe, no cuenta con recargas disponibles.', 'Aceptar',
-                            function () { self.back(e);
+                            function () { self.toReturn(e);
                             });
                     }
                 },
                 function () {
                     showAlert('Error', 'Disculpe, no se puede obtener su informacion para la recarga.', 'Aceptar',
-                        function () { self.back(e);
+                        function () { self.toReturn(e);
                         });
                 }
             );
@@ -350,13 +350,13 @@ $(function() {
                         self.goRecharge(response.formProducts);
                     } else {
                         showAlert('Error', 'Disculpe, no cuenta con recargas disponibles.', 'Aceptar',
-                            function () { self.back(e);
+                            function () { self.toReturn(e);
                             });
                     }
                 },
                 function () {
                     showAlert('Error', 'Disculpe, no se puede obtener su informacion para la recarga.', 'Aceptar',
-                        function () { self.back(e);
+                        function () { self.toReturn(e);
                         });
                 }
             );

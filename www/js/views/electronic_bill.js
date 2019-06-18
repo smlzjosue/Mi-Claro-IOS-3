@@ -59,15 +59,7 @@ $(function() {
                     self.options.customerModel.updateBillParameters(account,
                         function (success) {
                             if (!success.HasError) {
-                                var selectedAccount = app.utils.Storage.getSessionItem('selected-account');
-                                self.getAccountDetails(selectedAccount,
-                                    function (response) {
-                                        self.render(function(){
-                                            $.mobile.activePage.trigger('pagecreate');
-                                        });
-                                    },
-                                    app.utils.network.errorRequest
-                                );
+                                self.reloadCurrentAccountDetails();
                             } else {
                                 $('#paperless-switch').prop('checked', false);
                                 showAlert('Error', success.ErrorDesc, 'Aceptar');

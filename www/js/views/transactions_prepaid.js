@@ -13,7 +13,7 @@ $(function() {
             'pagecreate':                           'pageCreate',
 
             'click .select-subscriber':             'changeSubscriber',
-            'click .btn-return':                    'back'
+            'click .btn-return':                    'toReturn'
         },
 
         // Render the template elements
@@ -107,7 +107,7 @@ $(function() {
             $(e.currentTarget).data('search-info', true);
 
             $([document.documentElement, document.body]).animate({
-                scrollTop: $(htmlID).offset().top-60
+                scrollTop: $(htmlID).offset().top-40
             }, 1000);
 
             $(htmlID).find('.btn-search').click(function(){
@@ -205,7 +205,7 @@ $(function() {
 
                             $(target).find('.btn-return').focus();
                             $([document.documentElement, document.body]).animate({
-                                scrollTop: $(target).find('.btn-return').offset().top-60
+                                scrollTop: $(target).find('.btn-return').offset().top-40
                             }, 1000);
                         }
                     } else {

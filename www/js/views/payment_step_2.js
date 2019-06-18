@@ -16,7 +16,7 @@ $(function () {
 
             // content
             'click #btn-print':					            'print',
-            'click #btn-return':                            'back'
+            'click #btn-return':                            'toReturn'
         },
 
         // Render the template elements
@@ -44,7 +44,7 @@ $(function () {
             self.activateMenu(e);
 
             $('#nav-open').hide();
-            $('#btn-back').click(function() { self.back(); });
+            $('#btn-back').click(function() { self.toReturn(); });
 
             self.supplyPayment();
         },

@@ -13,7 +13,9 @@ $(function() {
             'click #subscription':					'subscription',
             'click #show-terms':                    'showTerms',
             'click #faq':					        'faq',
-            'click #support':					    'support'
+            'click #support':					    'support',
+            'click #recover-email':					'recoverEmail',
+            'click #recover-password':			    'recoverPassword'
         },
 
         // Render the template elements
@@ -61,7 +63,16 @@ $(function() {
 
         support: function(e) {
             app.router.navigate('netflix_support', {trigger: true});
-        }
+        },
+
+        recoverEmail: function(e) {
+            app.utils.Storage.setSessionItem('netflix-accounts-subscribers-is-loaded', false);
+            app.router.navigate('netflix_subscription', {trigger: true});
+        },
+
+        recoverPassword: function(e) {
+            app.router.navigate('netflix_support', {trigger: true});
+        },
     });
 
 });

@@ -12,7 +12,7 @@ $(function() {
             // events
             'pagecreate':                           'pageCreate',
 
-            'click #close':                         'back',
+            'click #close':                         'toReturn',
         },
 
         // Render the template elements
@@ -51,23 +51,10 @@ $(function() {
             $('#nav-open').hide();
 
             // reset navigation history
-            app.router.history	= ['menu', 'recharge_prepaid_success'];
+            app.router.navigation	= ['menu', 'recharge_prepaid_success'];
 
-            self.reloadAccount(e);
-        },
-
-        reloadAccount: function(e){
-            var self = this;
-
-            var selectedAccount = app.utils.Storage.getSessionItem('selected-account');
-
-            self.getAccountDetails(selectedAccount,
-                function () {
-                    // nothing to do;
-                },
-                app.utils.network.errorRequest
-            );
-        },
+            self.self.reloadCurrentAccountDetails();
+        }
     });
 
 });

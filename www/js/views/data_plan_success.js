@@ -59,21 +59,8 @@ $(function() {
             self.activateMenu(e);
             $('#nav-open').hide();
 
-            self.reloadAccount(e);
+            self.reloadCurrentAccountDetails();
         },
-
-        reloadAccount: function(e){
-            var self = this;
-
-            var selectedAccount = app.utils.Storage.getSessionItem('selected-account');
-
-            self.getAccountDetails(selectedAccount,
-                function () {
-                    // nothing to do;
-                },
-                app.utils.network.errorRequest
-            );
-        }
     });
 
 });

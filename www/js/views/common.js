@@ -148,7 +148,7 @@ $(function() {
         markSelectedPage: function(e) {
             var self = this;
 
-            var currentPage = app.router.history[app.router.history.length-1];
+            var currentPage = app.router.navigation[app.router.navigation.length-1];
 
             if (currentPage == 'notifications_app') {
                 self.mark('1');
@@ -273,23 +273,6 @@ $(function() {
                 return;
             }
 
-
-            /*if (Backbone.history.fragment=='profile_update_username') {
-                showConfirm(
-                    'Salir',
-                    '¿Esta seguro que desea cerrar la sesión?',
-                    ['Si', 'No'],
-                    function (btnIndex) {
-                        if (btnIndex == 1) {
-                            app.removeSession();
-                            app.router.navigate('login_guest', {trigger: true});
-                        }
-
-                    }
-                );
-                return
-            }*/
-
             var analytics = null;
 
             if(analytics !=null ){
@@ -304,7 +287,7 @@ $(function() {
         },
 
         menu: function(e){
-            app.router.history	= ['menu'];
+            app.router.navigation	= ['menu'];
             app.router.navigate('menu',{trigger: true});
             return false;
         },
@@ -340,7 +323,7 @@ $(function() {
         },
 
         navigateHome: function() {
-            app.router.history	= ['menu']; // TODO, este es el correcto
+            app.router.navigation	= ['menu']; // TODO, este es el correcto
             app.router.navigate('menu',{trigger: true}); // TODO, este es el correcto
             //app.router.navigate('payment_step_2',{trigger: true}); // TODO, Borrar
             //app.router.navigate('device',{trigger: true}); // TODO, Borrar
@@ -463,7 +446,7 @@ $(function() {
         navigateChangeEmail: function(e){
             app.utils.Storage.setSessionItem('profile-tab-selected', 1);
             app.router.navigate('profile', {trigger: true});
-            if (app.router.history[app.router.history.length-1] == 'profile') {
+            if (app.router.navigation[app.router.navigation.length-1] == 'profile') {
                 this.closeNav();
                 this.tabEmail(e);
             }
@@ -472,7 +455,7 @@ $(function() {
         navigateChangePassword: function(e){
             app.utils.Storage.setSessionItem('profile-tab-selected', 2);
             app.router.navigate('profile', {trigger: true});
-            if (app.router.history[app.router.history.length-1] == 'profile') {
+            if (app.router.navigation[app.router.navigation.length-1] == 'profile') {
                 this.closeNav();
                 this.tabPassword(e);
             }
@@ -989,7 +972,7 @@ $(function() {
                 $('#tab-postpago').addClass('on');
                 self.selectAccount(postpagoLoginAccounts[0]);
             } else {
-                var lastPage = app.router.history[app.router.history.length-1];
+                var lastPage = app.router.navigation[app.router.navigation.length-1];
                 app.utils.Storage.setSessionItem('is-from-dashboard', lastPage == 'menu');
                 app.utils.Storage.setSessionItem('selected-tab-empty', 0);
                 app.router.navigate('no_product_associated', {trigger: true});
@@ -1015,7 +998,7 @@ $(function() {
                 $('#tab-prepago').addClass('on');
                 self.selectAccount(prepagoLoginAccounts[0]);
             } else {
-                var lastPage = app.router.history[app.router.history.length-1];
+                var lastPage = app.router.navigation[app.router.navigation.length-1];
                 app.utils.Storage.setSessionItem('is-from-dashboard', lastPage == 'menu');
                 app.utils.Storage.setSessionItem('selected-tab-empty', 1);
                 app.router.navigate('no_product_associated',{trigger: true});
@@ -1041,7 +1024,7 @@ $(function() {
                 $('#tab-telephony').addClass('on');
                 self.selectAccount(fijoLoginAccounts[0]);
             } else {
-                var lastPage = app.router.history[app.router.history.length-1];
+                var lastPage = app.router.navigation[app.router.navigation.length-1];
                 app.utils.Storage.setSessionItem('is-from-dashboard', lastPage == 'menu');
                 app.utils.Storage.setSessionItem('selected-tab-empty', 2);
                 app.router.navigate('no_product_associated',{trigger: true});
@@ -1088,8 +1071,8 @@ $(function() {
             self.getAccountDetails(selectAccount,
                 function (response) {
                     if(analytics != null ){
-                        analytics.trackEvent('select', 'change', 'select account number on ' + app.router.history[app.router.history.length-1], accountNumber);
-                    }
+                        analytics.trackEvent('select', 'change', 'select account number on ' + app.router.navigation[app.router.navigation.length-1], accountNumber);
+                }
                     self.render(function(){
                         $.mobile.activePage.trigger('pagecreate');
                     });

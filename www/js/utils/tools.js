@@ -69,7 +69,7 @@ $(function() {
                 now = new Date(),
                 expire = new Date();
 
-            var currentPage = app.router.history[app.router.history.length-1];
+            var currentPage = app.router.navigation[app.router.navigation.length-1];
             if (currentPage == 'login' || currentPage == 'login_guest') {
                 return true;
             }

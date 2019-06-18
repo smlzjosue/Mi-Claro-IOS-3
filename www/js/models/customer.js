@@ -144,45 +144,26 @@ $(function() {
 
         getMember: function(account, successCB, errorCB){
 
+            const tokenSession = app.utils.Storage.getSessionItem('token');
+
             const parameters = JSON.stringify({
                 account: account,
+                method: 'getMember',
+                token: tokenSession
             });
 
-            const tokenSession = app.utils.Storage.getSessionItem('token');
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
-
-            const method = 'getMember';
-
-            app.utils.network.requestCustomers(method, headers, parameters, successCB, errorCB);
+            app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
         addMember: function(data, successCB, errorCB){
 
             const tokenSession = app.utils.Storage.getSessionItem('token');
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
+
             data.token = tokenSession;
+            data.method =  'addmember';
             const parameters = JSON.stringify(data);
 
-            const method = 'addMember';
-
-            app.utils.network.requestCustomers(method, headers, parameters, successCB, errorCB);
-        },
-
-        addCampaignAlerts: function(account, subscriber, emails, userLink, successCB, errorCB){
-
-            const parameters = JSON.stringify({
-                account: account,
-                emails: emails,
-                subscriber: subscriber,
-                userLink: userLink
-            });
-
-            const tokenSession = app.utils.Storage.getSessionItem('token');
-            const headers = { 'Authorization': 'Bearer ' + tokenSession};
-
-            const method = 'addCampaignAlerts';
-
-            app.utils.network.requestCustomers(method, headers, parameters, successCB, errorCB);
+            app.utils.network.processRequest(parameters, successCB, errorCB);
         },
 
         sendGift1GB: function(data, successCB, errorCB){

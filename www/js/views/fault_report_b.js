@@ -11,7 +11,7 @@ $(function() {
 
             // content
             'click #next_step':					        'nextStep',
-            'click #return':                            'back'
+            'click #return':                            'toReturn'
         },
 
         // Render the template elements

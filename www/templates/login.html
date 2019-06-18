@@ -2,186 +2,41 @@
 
 	<div id="wrapper" class="appsize">
 
-		<div class="popupbg popup-update-account" style="display: none">
+		<div class="popupbg popup-chat" style="display: none">
 			<div class="popupcont">
 				<div class="basicrow f-black f-mildt roboto-m">
-					Actualizaci&oacute;n de acceso
-				</div>
-
-				<div class="basicrow f-reg f-black roboto-r m-top-ii text-justify">
-					El sistema requiere que por favor actualice los siguientes datos:
-				</div>
-
-				<div class="basicrow m-top-i">
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-							<div class="basicrow">
-								<label class="label-f">&#42; Nombre de Usuario Actual</label>
-
-								<div class="basicrow">
-									<input class="inp-f">
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 h-mtop">
-							<div class="basicrow">
-								<label class="label-f">&#42; Crear Nuevo Usuario</label>
-
-								<div class="basicrow">
-									<input class="inp-f">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="basicrow m-top-i popless">
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-							<div class="basicrow">
-								<label class="label-f">&#42; Crear Nueva Contrase&ntilde;a</label>
-
-								<div class="basicrow">
-									<input class="inp-f">
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 h-mtop">
-							<div class="basicrow">
-								<label class="label-f">&#42; Repetir Nueva Contrase&ntilde;a</label>
-
-								<div class="basicrow">
-									<input class="inp-f">
-								</div>
-							</div>
-						</div>
-					</div>
+					<img style="width: 40px; height: 40px;" src="images/miclaro-icon.png">
+					Bienvenido a Mi <b>Claro Asistencia</b>
 				</div>
 
 				<div class="basicrow m-top-i">
 					<div class="logline full"></div>
 				</div>
 
-				<div class="basicrow text-center m-top-i">
-					<div class="red btns savech centr vcenter rippleR" id="save-update-account">
-						<span class="tabcell">
-							Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="popupbg popup-update-email" style="display: none">
-			<div class="popupcont">
-				<div class="basicrow f-black f-mildt roboto-m">
-					Actualizaci&oacute;n de acceso
-				</div>
-
-				<div class="basicrow f-reg f-black roboto-r m-top-ii text-justify">
-					El sistema requiere que por favor actualice los siguientes datos:
-				</div>
-
-				<div class="basicrow m-top-i">
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-							<div class="basicrow">
-								<label class="label-f">&#42; Correo Electr&oacute;nico Actual</label>
-
-								<div class="basicrow">
-									<input class="inp-f off" id="old-email">
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 h-mtop">
-							<div class="basicrow">
-								<label class="label-f">&#42; Nuevo Correo Electr&oacute;nico</label>
-
-								<div class="basicrow">
-									<input class="inp-f">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="basicrow m-top-i popless">
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-							<div class="basicrow">
-								<label class="label-f">&#42; Repetir Nuevo Correo Electr&oacute;nico</label>
-
-								<div class="basicrow">
-									<input class="inp-f">
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="basicrow f-reg f-black roboto-r m-top-i text-justify" id="chat-error-text">
+					<b>Incidencia:</b> Hemos detectado una actividad inusual en el uso de tus credenciales de acceso.
 				</div>
 
 				<div class="basicrow m-top-i">
 					<div class="logline full"></div>
 				</div>
 
-				<div class="basicrow text-center m-top-i">
-					<div class="red btns savech centr vcenter rippleR" id="save-update-email">
-						<span class="tabcell">
-							Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
-						</span>
-					</div>
-				</div>
-
-				<div class="btns def-i gray pull-left vcenter" id="cancel-update-email">
-					<span class="tabcell">
-						Cancelar
-					</span>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="popupbg popup-update-paperless" style="display: none">
-			<div class="popupcont">
-				<div class="basicrow f-black f-mildt roboto-m">
-					Actualizaci&oacute;n de Notificaciones de Pago
-				</div>
-
 				<div class="basicrow f-reg f-black roboto-r m-top-ii text-justify">
-					&#191;Desea recibir su factura en formato digital v&iacute;a SMS y Correo Electr&oacute;nico&#63;
-				</div>
-
-				<div class="basicrow f-reg f-black roboto-r m-top-ii text-justify">
-					<img class="plessicon" width="100%" src="images/fact-dig.png">
-
-					<div class="popopt">
-						<input type="radio" name="group_paperless" id="radio-paperless-y"> Si
-					</div>
-
-					<div class="popopt">
-						<input type="radio" name="group_paperless" id="radio-paperless-n"> No
-					</div>
-				</div>
-
-				<div class="basicrow m-top-i">
-					<div class="logline full"></div>
+					¿Desea que uno de nuestros agentes de servicio al cliente te asista en línea a través de nuestro Chat?
 				</div>
 
 				<div class="basicrow text-center m-top-i">
-					<div class="red btns savech centr vcenter"  id="save-update-paperless">
+					<div class="red btns savech centr vcenter rippleR" id="open-chat">
 						<span class="tabcell">
-							Guardar Cambios&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+							Conectar vía Chat&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
 						</span>
 					</div>
-				</div>
 
-				<div class="btns def-i gray pull-left vcenter" id="cancel-update-paperless">
-					<span class="tabcell">
-						Cancelar
-					</span>
+					<div class="btns def-i gray pull-left vcenter" id="cancel-chat">
+						<span class="tabcell">
+							No, Gracias&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>

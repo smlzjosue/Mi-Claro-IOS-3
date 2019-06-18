@@ -14,7 +14,7 @@ $(function() {
             'active'                            :'active',
 			
 			// header
-			'click #btn-back'					:'back',
+			'click #btn-back'					:'toReturn',
 		},
 		
 		// Render the template elements        

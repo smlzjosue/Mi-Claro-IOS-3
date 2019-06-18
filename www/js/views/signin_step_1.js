@@ -52,7 +52,7 @@ $(function() {
 
             $('#register_number').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#register_number").offset().top-50
+                    scrollTop: $("#register_number").offset().top-20
                 }, 1000);
             });
         },

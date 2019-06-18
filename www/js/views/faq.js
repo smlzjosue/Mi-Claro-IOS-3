@@ -11,11 +11,11 @@ $(function() {
 		events: {
         
 			// events
-            'pagecreate':                           'pageCreate',
-            'active'                            :'active',
+            'pagecreate':                       'pageCreate',
+            'active':							'active',
 			
 			// header
-			'click #btn-back'					:'back',
+			'click #btn-back':					'toReturn',
 		},
 		
 		// Render the template elements        

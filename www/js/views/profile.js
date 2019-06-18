@@ -75,13 +75,13 @@ $(function() {
 
             if (app.utils.Storage.getSessionItem('required-updates').requiredAccountUpdate) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#label_update').offset().top-50
+                    scrollTop: $('#label_update').offset().top-25
                 }, 1000);
             }
 
             $('input.inp-f').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $(e.currentTarget).offset().top-60
+                    scrollTop: $(e.currentTarget).offset().top-40
                 }, 1000);
             });
 

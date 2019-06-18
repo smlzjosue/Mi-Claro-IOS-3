@@ -18,7 +18,7 @@ $(function() {
             'click #minus-quote':                       'minusQuote',
             'change #pay1':                             'payTotal',
             'change #pay2':                             'payByQuote',
-            'click #cancel':                            'back',
+            'click #cancel':                            'toReturn',
             'click #next':                              'goPay',
         },
 

@@ -7,6 +7,9 @@ $(function() {
 
 		name:'login',
 
+        question: 'error',
+        subscriber: null,
+        account: null,
 		// The DOM events specific.
 		events: {
 
@@ -19,6 +22,8 @@ $(function() {
 			'click #btn-register': 						'register',
             'click #btn-guest':                         'activeLoginGuest',
             'input #login':                             'userTextSizeChanged',
+            'click #open-chat':                         'openChat',
+            'click #cancel-chat':                       'cancelChat',
 
 			// footer
 			'click #btn-help':							'helpSection'
@@ -68,7 +73,7 @@ $(function() {
                     $('#password').focus();
 
                     $([document.documentElement, document.body]).animate({
-                        scrollTop: $("#password").offset().top - 50
+                        scrollTop: $("#password").offset().top - 20
                     }, 1000);
                 }
             } else {
@@ -95,13 +100,13 @@ $(function() {
 
             $('#login').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#login').offset().top-50
+                    scrollTop: $('#login').offset().top-20
                 }, 1000);
             });
 
             $('#password').on('click focus', function () {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $('#login').offset().top-50
+                    scrollTop: $('#login').offset().top-20
                 }, 1000);
             });
 		},
@@ -157,18 +162,24 @@ $(function() {
              */
             $('#login').blur();
             $('#password').blur();
-            self.signOn(username, password); // TODO, change to cipherPassword
+            self.signOn(username, password);
 		},
 
-        openChat: function(account, subscriber, question) {
-            var url = app.chatURL;
+        cancelChat: function(e) {
+            $('.popup-chat').hide();
+        },
 
-            url += '?BAN='+account;
-            url += '&subcriptor='+subscriber;
+        openChat: function() {
+		    const self = this;
+            var url = app.chatURL;
+            $('.popup-chat').hide();
+
+            url += '?BAN='+self.account;
+            url += '&subcriptor='+self.subscriber;
             url += '&Department=2';
             url += '&firstname=Error';
             url += '&lastname=Acceso';
-            url += '&Question='+question;
+            url += '&Question='+self.question;
 
             console.log(url);
             var browser = app.utils.browser.show(url, true);
@@ -199,28 +210,23 @@ $(function() {
         },
 
         signOn: function(username, password) {
-            var self = this;
+            const self = this;
             self.options.loginModel.login(
                 username,
                 password,
                 function (response) {
                     if(response.hasError) {
                         if (response.errorNum > 0) {
-                            showConfirm(
-                                'Error',
-                                response.errorDisplay,
-                                ['Ir a asistencia', 'Salir'],
-                                function(btnIndex){
-                                    if(btnIndex==1){
-                                        var question = 'Error%20de%20acceso';
-                                        if (response.errorNum == 30) {
-                                            question = 'Error%20de%20contraseña';
-                                        } else if (response.errorNum == 32) {
-                                            question = 'Usuario%20Bloqueado';
-                                        }
-                                        self.openChat(response.account, response.subscriber, question)
-                                    }
-                                });
+                            $('#chatText').html('<b>Incidencia:</b> '+response.errorDisplay);
+                            $('.popup-chat').show();
+                            self.question = 'Error%20de%20acceso';
+                            if (response.errorNum == 30) {
+                                self.question = 'Error%20de%20contraseña';
+                            } else if (response.errorNum == 32) {
+                                self.question = 'Usuario%20Bloqueado';
+                            }
+                            self.account = response.account;
+                            self.subscriber = response.subscriber;
                         } else {
                             app.utils.network.errorRequest(response, 200, response.errorDisplay);
                         }

@@ -7,6 +7,8 @@ $(function() {
 
         name: 'refiere_step_2',
 
+        memberID: 1,
+
         // The DOM events specific.
         events: {
             'pagecreate':                               'pageCreate',
@@ -66,7 +68,7 @@ $(function() {
                         $('#tags').tagsinput('add', email);
                         $('#email').val('');
                         $([document.documentElement, document.body]).animate({
-                            scrollTop: $("#tags").offset().top-50
+                            scrollTop: $("#tags").offset().top-20
                         }, 1000);
                     } else {
                         showAlert('Error', 'Debe ingresar un correo electrónico válido.')
@@ -81,15 +83,15 @@ $(function() {
             self.options.referrerModel.getCredits(selectedAccountValue,
                 function (success) {
                     if (!success.hasError) {
-                        
-                        var totalCredits = success.PayOutsDetailsItems[0].TotalCredits;
-                        var totalRedeem = success.PayOutsDetailsItems[0].TotalRedeem;
-                        var sumAvialable = success.PayOutsDetailsItems[0].SumAvialable;
+
+                        var totalCredits = success.CreditItems[0].TotalCredits;
+                        var totalRedeem = success.CreditItems[0].TotalRedeem;
+                        var sumAvialable = success.CreditItems[0].TotalAvailable;
 
                         $('#totalCredits').html(totalCredits+'');
                         $('#totalRedeem').html(totalRedeem+'');
-                        $('#sumAvialable').html(sumAvialable+'');
-                        
+                        $('#sumAvialable').html('$'+sumAvialable);
+
                         self.getSharingMedia(e);
                     } else {
                         self.navigateReferSystem(e);
@@ -103,8 +105,7 @@ $(function() {
         },
 
         getSharingMedia: function(e) {
-            var self = this;
-            //var selectedAccountValue = app.utils.Storage.getSessionItem('selected-account-value');
+            const self = this;
             self.options.referrerModel.getSharingMediaByUser(
                 function (success) {
                     if (!success.hasError) {
@@ -123,6 +124,7 @@ $(function() {
                                 } else if (item.socialMedia == 'web') {
                                     $('#share-link').val(item.linkCode);
                                     $('#share-link').html(item.linkCode);
+                                    self.memberID = item.memberID;
                                 }
                             });
                         }
@@ -139,16 +141,17 @@ $(function() {
         },
 
         next: function(e) {
-            var self = this;
+            const self = this;
+
             if ($('#tags').tagsinput('items').length == 0) {
-                message = 'Debe ingresar al menos un correo electronico.';
+                message = 'Debe ingresar al menos un correo electronico y pulsar enter.';
                 showAlert('Error', message, 'Aceptar');
                 return;
             }
             var check = $('#checkbox-terms').is(':checked');
             if (!check) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#tags").offset().top-50
+                    scrollTop: $("#tags").offset().top-20
                 }, 1000);
                 this.alertRequiredTerms();
                 return
@@ -157,7 +160,7 @@ $(function() {
             $('#email').blur();
             var ReferrerData = app.utils.Storage.getSessionItem('referrer-data');
             var link = $('#share-link').val();
-            self.options.customerModel.addCampaignAlerts(ReferrerData.account, ReferrerData.subscriber, emails, link,
+            self.options.referrerModel.sharedCoupons(self.memberID, ReferrerData.account, ReferrerData.subscriber, emails, link,
                 function (success) {
                     if (!success.hasError) {
                         $('#tags').tagsinput('removeAll');

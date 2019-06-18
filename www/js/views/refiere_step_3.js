@@ -58,18 +58,17 @@ $(function() {
             self.options.referrerModel.getCredits(selectedAccountValue,
                 function (success) {
                     if (!success.hasError) {
-                        var accountName = success.PayOutsDetailsItems[0].accountName;
-                        var totalCredits = success.PayOutsDetailsItems[0].TotalCredits;
-                        var totalRedeem = success.PayOutsDetailsItems[0].TotalRedeem;
-                        var totalPending = success.PayOutsDetailsItems[0].TotalPending;
-                        var sumAvialable = success.PayOutsDetailsItems[0].SumAvialable;
-                        console.log(totalCredits);
+                        var accountName = success.CreditItems[0].accountName;
+                        var totalCredits = success.CreditItems[0].TotalCredits;
+                        var totalRedeem = success.CreditItems[0].TotalRedeem;
+                        var totalPending = success.CreditItems[0].CountPending;
+                        var sumAvialable = success.CreditItems[0].TotalAvailable;
 
                         $('#accountName').html(accountName+'');
                         $('#totalCredits').html(totalCredits+'');
                         $('#totalRedeem').html(totalRedeem+'');
                         $('#totalPending').html(totalPending+'');
-                        $('#sumAvialable').html(sumAvialable+'');
+                        $('#sumAvialable').html('$'+sumAvialable);
 
                         self.getUserRedeemCredits(e);
 

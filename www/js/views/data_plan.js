@@ -80,45 +80,20 @@ $(function() {
             }
         },
 
-        changeAccount: function(e){
-
-            var self = this,
-                analytics = null;
+        changeAccount: function(e) {
+            var self = this;
 
             app.utils.Storage.setSessionItem('selected-offer', null);
             app.utils.Storage.setSessionItem('selected-offer-id', 0);
 
-            this.selectedOffer = {
+            self.selectedOffer = {
                 offerId: 		'',
                 displayName: 	'',
                 price:		    '',
                 subscriber:		''
             };
 
-            const newAccountNumber = $.mobile.activePage.find('#select-account').val();
-            const accountNumber = app.utils.Storage.getSessionItem('selected-account-value');
-
-            const accountList = app.utils.Storage.getSessionItem('accounts-list');
-
-            var selectAccount = null;
-            $.each(accountList, function (i, object) {
-                if (object.Account == newAccountNumber) {
-                    selectAccount = object;
-                }
-            });
-
-            self.getAccountDetails(selectAccount,
-                function (response) {
-                    if(analytics != null ){
-                        // send GA statistics
-                        analytics.trackEvent('select', 'change', 'select account number data_plan', accountNumber);
-                    }
-                    self.render(function(){
-                        $.mobile.activePage.trigger('pagecreate');
-                    });
-                },
-                app.utils.network.errorRequest
-            );
+            self.simpleChangeAccount(e);
         },
 
         changeSubscriber: function(e) {

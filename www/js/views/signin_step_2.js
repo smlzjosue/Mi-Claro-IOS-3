@@ -65,17 +65,17 @@ $(function() {
 
             $('#ssn').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#ssn").offset().top-50
+                    scrollTop: $("#ssn").offset().top-20
                 }, 1000);
             });
             $('#code').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#code").offset().top-50
+                    scrollTop: $("#code").offset().top-20
                 }, 1000);
             });
             $('#email').on('click focus', function (e) {
                 $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#code").offset().top-50
+                    scrollTop: $("#code").offset().top-20
                 }, 1000);
             });
 

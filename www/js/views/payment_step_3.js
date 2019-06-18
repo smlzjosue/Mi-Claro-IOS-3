@@ -14,7 +14,7 @@ $(function() {
             'pagecreate':                               'pageCreate',
 
             // Content
-            'click #close':                             'back',
+            'click #close':                             'toReturn',
         },
 
         // Render the template elements
@@ -54,29 +54,15 @@ $(function() {
             $(document).scrollTop();
         },
 
-
         pageCreate: function(e) {
             var self = this;
             self.activateMenu(e);
             $('#nav-open').hide();
 
             // reset navigation history
-            app.router.history	= ['menu', 'payment_step_3'];
+            app.router.navigation	= ['menu', 'payment_step_3'];
 
-            self.reloadAccount(e);
-        },
-
-        reloadAccount: function(e){
-            var self = this;
-
-            var selectedAccount = app.utils.Storage.getSessionItem('selected-account');
-
-            self.getAccountDetails(selectedAccount,
-                function () {
-                    // nothing to do;
-                },
-                app.utils.network.errorRequest
-            );
+            self.self.reloadCurrentAccountDetails();
         },
 
         return: function (e) {
