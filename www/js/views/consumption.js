@@ -241,12 +241,22 @@ $(function() {
 
         createHTMLConsumption: function(plan) {
 
+            var unlimited = false;
+            var availableStyle = '';
+            if (plan.displayNameField.includes('PUJ')) {
+                unlimited = true;
+                availableStyle = ' style="display: none"';
+            }
+
             var usagePercentage = Math.round(100.0 * (plan.usedField / plan.quotaField));
             if (usagePercentage == 0 && plan.usedField > 0) {
                 usagePercentage = 1;
             }
 
             var htmlUsage = '<span class="f-red">'+plan.usedTextField+'</span> de '+plan.quotaTextField;
+            if (unlimited) {
+                htmlUsage = '<span class="f-red">'+plan.usedTextField+'</span>';
+            }
 
             var consumidos = 'Consumidos (' + plan.usedTextField + ')';
 
@@ -312,7 +322,7 @@ $(function() {
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t</div>\n' +
                 '\n' +
-                '\t\t\t\t\t\t\t\t\t\t\t\t<div class="twostats">\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t\t<div class="twostats" '+availableStyle+'>\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="statrectdef graystat"></div>\n' +
                 '\n' +
                 '\t\t\t\t\t\t\t\t\t\t\t\t\t<div class="autocont f-mini roboto-r f-black vcenter">\n' +

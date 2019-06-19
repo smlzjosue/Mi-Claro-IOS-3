@@ -71,8 +71,22 @@ $(function() {
         },
 
         recoverPassword: function(e) {
-            app.router.navigate('netflix_support', {trigger: true});
-        },
-    });
+            const url = 'https://www.netflix.com/co/LoginHelp';
+            var browser = app.utils.browser.show(url, true);
+            app.utils.loader.show();
 
+            // success event load url
+            browser.addEventListener('loadstop', function(e) {
+                app.utils.loader.hide();
+                browser.show();
+            });
+
+            // error event load url
+            browser.addEventListener('loaderror', function(e) {
+                app.utils.loader.hide();
+                browser.close();
+                showAlert('Error', 'No se puede cargar la pagina, compruebe su conexion a Internet.', 'OK');
+            });
+        }
+    });
 });
